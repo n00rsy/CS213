@@ -5,7 +5,28 @@ public class Album {
     private String artist;
     private Genre genre; //enum class; Classical, Country, Jazz, Pop, Unknown
     private Date releaseDate;
+
+    public Album(String title, String artist, Genre genre, Date releaseDate, boolean isAvailable) {
+        this.title = title;
+        this.artist = artist;
+        this.genre = genre;
+        this.releaseDate = releaseDate;
+        this.isAvailable = isAvailable;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
     private boolean isAvailable;
+
+    private String isAvailableToString() {
+        return isAvailable ? "is available" : "is not available";
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -19,7 +40,11 @@ public class Album {
     @Override
     public String toString() {
         String separator = "::";
-        String isAvailableString = isAvailable ? "is available" : "is not available";
-        return "";
+
+        return  title + separator +
+                artist + separator +
+                genre.toString() + separator +
+                releaseDate.toString() + separator +
+                isAvailableToString();
     }
 }

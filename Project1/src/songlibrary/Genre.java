@@ -5,5 +5,26 @@ public enum Genre {
     Country,
     Jazz,
     Pop,
-    Unknown
+    Unknown;
+
+    @Override
+    public String toString() {
+        switch (this) {
+            case Classical : {
+                return "Classical";
+            }
+            case Country : {
+                return "Country";
+            }
+            case Jazz : {
+                return "Jazz";
+            }
+            case Pop : {
+                return "Pop";
+            }
+            default : {
+                return "Unknown";
+            }
+        }
+    }
 }

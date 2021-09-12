@@ -15,4 +15,9 @@ public class Date implements Comparable<Date> {
     public int compareTo(Date date) {
         return 0;
     }
+
+    @Override
+    public String toString() {
+        return month + "/" + day + "/" + year;
+    }
 }
