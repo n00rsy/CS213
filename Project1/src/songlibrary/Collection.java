@@ -1,6 +1,7 @@
 package songlibrary;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Collection {
     private Album[] albums;
@@ -32,7 +33,9 @@ public class Collection {
         if (numAlbums == albums.length) {
             return false;
         }
-        //TODO: implement
+
+        albums[numAlbums] = album;
+        numAlbums++;
         return true;
     }
 
@@ -41,7 +44,12 @@ public class Collection {
         if (albumIndex < 0) {
             return false;
         }
-        //TODO: implement
+
+        for (int i = albumIndex; i < numAlbums; i++) {
+            albums[i] = albums[i+1];
+        }
+
+        numAlbums--;
         return true;
     }
 
@@ -67,19 +75,33 @@ public class Collection {
         }
     } //set to available
 
-    private void printAlbumArray (Album[] albums) {
-        for(int i = 0; i < numAlbums; i++) {
-            System.out.println(albums[i].toString());
-        }
-    }
-
     public void print() {
-        printAlbumArray(albums);
+        ArrayUtil.print(albums, 0, numAlbums);
     } //display the list without specifying the order
 
     public void printByReleaseDate() {
+        Album[] trimmedAlbums = (Album[]) ArrayUtil.copy(albums, 0, numAlbums);
+        ArrayUtil.insertionSort(trimmedAlbums, new Comparator<Object>() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                Album a1 = (Album) o1;
+                Album a2 = (Album) o2;
+                return a1.getReleaseDate().compareTo(a2.getReleaseDate());
+            }
+        });
+        ArrayUtil.print(trimmedAlbums, 0, numAlbums);
     }
 
     public void printByGenre() {
+        Album[] trimmedAlbums = (Album[]) ArrayUtil.copy(albums, 0, numAlbums);
+        ArrayUtil.insertionSort(trimmedAlbums, new Comparator<Object>() {
+            @Override
+            public int compare(Object o1, Object o2) {
+                Album a1 = (Album) o1;
+                Album a2 = (Album) o2;
+                return a1.getGenre().compareTo(a2.getGenre());
+            }
+        });
+        ArrayUtil.print(trimmedAlbums, 0, numAlbums);
     }
 }
