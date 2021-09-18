@@ -1,8 +1,5 @@
 package songlibrary;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
 public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
@@ -13,7 +10,7 @@ public class Collection {
                 return i;
             }
         }
-        return -1;
+        return Constants.NOT_FOUND;
     }
 
     //find the album index, or return NOT_FOUND
@@ -81,26 +78,20 @@ public class Collection {
 
     public void printByReleaseDate() {
         Album[] trimmedAlbums = (Album[]) ArrayUtil.copy(albums, 0, numAlbums);
-        ArrayUtil.insertionSort(trimmedAlbums, new Comparator<Object>() {
-            @Override
-            public int compare(Object o1, Object o2) {
-                Album a1 = (Album) o1;
-                Album a2 = (Album) o2;
-                return a1.getReleaseDate().compareTo(a2.getReleaseDate());
-            }
+        ArrayUtil.insertionSort(trimmedAlbums, (o1, o2) -> {
+            Album a1 = (Album) o1;
+            Album a2 = (Album) o2;
+            return a1.getReleaseDate().compareTo(a2.getReleaseDate());
         });
         ArrayUtil.print(trimmedAlbums, 0, numAlbums);
     }
 
     public void printByGenre() {
         Album[] trimmedAlbums = (Album[]) ArrayUtil.copy(albums, 0, numAlbums);
-        ArrayUtil.insertionSort(trimmedAlbums, new Comparator<Object>() {
-            @Override
-            public int compare(Object o1, Object o2) {
-                Album a1 = (Album) o1;
-                Album a2 = (Album) o2;
-                return a1.getGenre().compareTo(a2.getGenre());
-            }
+        ArrayUtil.insertionSort(trimmedAlbums, (o1, o2) -> {
+            Album a1 = (Album) o1;
+            Album a2 = (Album) o2;
+            return a1.getGenre().compareTo(a2.getGenre());
         });
         ArrayUtil.print(trimmedAlbums, 0, numAlbums);
     }
