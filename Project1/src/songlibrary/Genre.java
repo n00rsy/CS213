@@ -1,5 +1,9 @@
 package songlibrary;
 
+/**
+ * An enum containing the different Generes that an album can be.
+ * @author AUTHOR
+ */
 public enum Genre {
     Classical,
     Country,
@@ -10,19 +14,19 @@ public enum Genre {
     @Override
     public String toString() {
         switch (this) {
-            case Classical : {
+            case Classical: {
                 return "Classical";
             }
-            case Country : {
+            case Country: {
                 return "Country";
             }
-            case Jazz : {
+            case Jazz: {
                 return "Jazz";
             }
-            case Pop : {
+            case Pop: {
                 return "Pop";
             }
-            default : {
+            default: {
                 return "Unknown";
             }
         }

@@ -5,8 +5,8 @@ public class Collection {
     private int numAlbums; //number of albums currently in the collection
 
     private int find(Album album) {
-        for(int i = 0; i < numAlbums; i++) {
-            if(album.equals(albums[i])) {
+        for (int i = 0; i < numAlbums; i++) {
+            if (album.equals(albums[i])) {
                 return i;
             }
         }
@@ -19,7 +19,7 @@ public class Collection {
 
         Album[] newAlbums = new Album[albums.length + growthFactor];
 
-        for(int i = 0; i < numAlbums; i++) {
+        for (int i = 0; i < numAlbums; i++) {
             newAlbums[i] = albums[i];
         }
         albums = newAlbums;
@@ -43,7 +43,7 @@ public class Collection {
         }
 
         for (int i = albumIndex; i < numAlbums; i++) {
-            albums[i] = albums[i+1];
+            albums[i] = albums[i + 1];
         }
 
         numAlbums--;
@@ -54,8 +54,7 @@ public class Collection {
         int albumIndex = find(album);
         if (albumIndex < 0) {
             return false;
-        }
-        else {
+        } else {
             albums[albumIndex].setAvailable(false);
             return true;
         }
@@ -65,8 +64,7 @@ public class Collection {
         int albumIndex = find(album);
         if (albumIndex < 0) {
             return false;
-        }
-        else {
+        } else {
             albums[albumIndex].setAvailable(true);
             return true;
         }

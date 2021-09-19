@@ -2,6 +2,10 @@ package songlibrary;
 
 import java.util.Calendar;
 
+/**
+ * A class containing constants for use throughout the solution.
+ * @author Noor, Umar
+ */
 public class Constants {
     public static final int NOT_FOUND = -1;
 

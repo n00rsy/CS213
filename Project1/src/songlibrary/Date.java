@@ -6,6 +6,7 @@ public class Date implements Comparable<Date> {
     private int year;
     private int month;
     private int day;
+
     public Date(String date) {
         String[] parts = date.split("/");
 
@@ -50,15 +51,14 @@ public class Date implements Comparable<Date> {
 
         //  check if day is valid during feb and leap year
         if (month == Constants.FEBRUARY) {
-            if(isLeapYear(year)) {
+            if (isLeapYear(year)) {
                 if (day > Constants.FEB_LEAP_LENGTH) return false;
-            }
-            else {
+            } else {
                 if (day > Constants.FEB_NORMAL_LENGTH) return false;
             }
         }
 
-        if((year == currentYear && month == currentMonth && day > currentDay)) {
+        if ((year == currentYear && month == currentMonth && day > currentDay)) {
             return false;
         }
         return true;
@@ -85,8 +85,8 @@ public class Date implements Comparable<Date> {
     private boolean isLeapYear(int year) {
         if (year % Constants.QUADRENNIAL == 0) {
             if (year % Constants.CENTENNIAL == 0) {
-                if(year % Constants.QUARTERCENTENNIAL == 0) {
-                    return  true;
+                if (year % Constants.QUARTERCENTENNIAL == 0) {
+                    return true;
                 }
                 return false;
             }
