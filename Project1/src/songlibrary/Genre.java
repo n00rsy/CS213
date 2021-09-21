@@ -11,6 +11,11 @@ public enum Genre {
     Pop,
     Unknown;
 
+    /**
+     * Converts the enum to a human-readable string representation.
+     *
+     * @return string representation of Genre enum
+     */
     @Override
     public String toString() {
         switch (this) {

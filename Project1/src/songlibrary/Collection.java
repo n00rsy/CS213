@@ -55,8 +55,12 @@ public class Collection {
      * @return True if added, false otherwise.
      */
     public boolean add(Album album) {
-        if (numAlbums == albums.length) {
+        if (find(album) < 0) {
             return false;
+        }
+
+        if (numAlbums == albums.length) {
+            grow();
         }
 
         albums[numAlbums] = album;
