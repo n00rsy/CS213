@@ -1,9 +1,29 @@
 package songlibrary;
 
+/**
+ * A class that defines a mutable, dynamically resizable list of Albums that can be interacted with.
+ *
+ * @author Noor, Umar
+ */
 public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
 
+    /**
+     * Initializes a new collection.
+     */
+    public Collection() {
+        int initialSize = 4;
+        albums = new Album[initialSize];
+        numAlbums = 0;
+    }
+
+    /**
+     * Iterates through this collection to find the index of the album, or returns NOT_FOUND.
+     *
+     * @param album the album to search for
+     * @return index of the album, or NOT_FOUND if it is not found
+     */
     private int find(Album album) {
         for (int i = 0; i < numAlbums; i++) {
             if (album.equals(albums[i])) {
@@ -13,7 +33,9 @@ public class Collection {
         return Constants.NOT_FOUND;
     }
 
-    //find the album index, or return NOT_FOUND
+    /**
+     * Increase the capacity of the inner array by 4.
+     */
     private void grow() {
         int growthFactor = 4;
 
@@ -24,8 +46,14 @@ public class Collection {
         }
         albums = newAlbums;
 
-    } //increase the capacity of the array list by 4
+    }
 
+    /**
+     * Attempts to add the album to the list.
+     *
+     * @param album the album to add
+     * @return True if added, false otherwise.
+     */
     public boolean add(Album album) {
         if (numAlbums == albums.length) {
             return false;
@@ -36,6 +64,12 @@ public class Collection {
         return true;
     }
 
+    /**
+     * Removes the album from the list.
+     *
+     * @param album the album to remove.
+     * @return True if removed, false otherwise.
+     */
     public boolean remove(Album album) {
         int albumIndex = find(album);
         if (albumIndex < 0) {
@@ -50,6 +84,12 @@ public class Collection {
         return true;
     }
 
+    /**
+     * Finds the album in the array, then sets its availability to false.
+     *
+     * @param album the album to change
+     * @return true if successful, false otherwise.
+     */
     public boolean lendingOut(Album album) {
         int albumIndex = find(album);
         if (albumIndex < 0) {
@@ -58,8 +98,14 @@ public class Collection {
             albums[albumIndex].setAvailable(false);
             return true;
         }
-    } //set to not available
+    }
 
+    /**
+     * Finds the album in the array, then sets its availability to true.
+     *
+     * @param album the album to change
+     * @return true if successful, false otherwise.
+     */
     public boolean returnAlbum(Album album) {
         int albumIndex = find(album);
         if (albumIndex < 0) {
@@ -68,12 +114,18 @@ public class Collection {
             albums[albumIndex].setAvailable(true);
             return true;
         }
-    } //set to available
+    }
 
+    /**
+     * Displays all albums to the output stream without specifying the order.
+     */
     public void print() {
         ArrayUtil.print(albums, 0, numAlbums);
-    } //display the list without specifying the order
+    }
 
+    /**
+     * Displays all albums to the output stream, sorted by release dates in ascending order
+     */
     public void printByReleaseDate() {
         Album[] trimmedAlbums = (Album[]) ArrayUtil.copy(albums, 0, numAlbums);
         ArrayUtil.insertionSort(trimmedAlbums, (o1, o2) -> {
@@ -84,6 +136,9 @@ public class Collection {
         ArrayUtil.print(trimmedAlbums, 0, numAlbums);
     }
 
+    /**
+     * Displays all albums to the output stream, sorted by genres in ascending order
+     */
     public void printByGenre() {
         Album[] trimmedAlbums = (Album[]) ArrayUtil.copy(albums, 0, numAlbums);
         ArrayUtil.insertionSort(trimmedAlbums, (o1, o2) -> {
