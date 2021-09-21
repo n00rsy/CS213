@@ -29,6 +29,10 @@ public class Album {
         this.isAvailable = isAvailable;
     }
 
+    public Album(String tokens){
+        //TODO
+    }
+
     /**
      * Album title accessor
      *
