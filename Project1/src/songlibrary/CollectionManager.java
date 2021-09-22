@@ -11,7 +11,7 @@ public class CollectionManager {
 
         String separator = " >> ";
 
-        System.out.println("Collection Manager starts running.");
+        System.out.println("Collection Manager starts running");
 
         while (running) {
 
