@@ -55,7 +55,7 @@ public class Collection {
      * @return True if added, false otherwise.
      */
     public boolean add(Album album) {
-        if (find(album) < 0) {
+        if (find(album) >= 0) {
             return false;
         }
 

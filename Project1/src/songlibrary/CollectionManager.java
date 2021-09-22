@@ -16,38 +16,48 @@ public class CollectionManager {
         while (running) {
 
             String input = sc.nextLine();
-            String[] tokens = input.split(",");
+            int firstComma = input.indexOf(Constants.INPUT_REGEX);
+            int cmdIndex = (firstComma > 0) ? firstComma : input.length();
 
-            if (tokens.length > 0) {
+            if (cmdIndex > 0) {
 
-                String command = tokens[0];
+                String command = input.substring(0, cmdIndex);
                 Album album;
 
                 switch (command) {
 
                     case "A":
-                        album = new Album(input.substring(2));
-                        if (collection.add(album)) {
+                        album = new Album(input.substring(cmdIndex + 1));
+
+                        if (!album.getReleaseDate().isValid()) {
+                            System.out.println("Invalid Date!");
+                        }
+                        else if (collection.add(album)) {
                             System.out.println(album.toString() + separator + "added.");
                         }
                         else {
                             System.out.println(album.toString() + separator + "is already in the collection.");
                         }
-                        collection.add(album);
                         break;
 
                     case "D":
-                        album = new Album(input.substring(2));
-                        collection.remove(album);
+                        album = new Album(input.substring(cmdIndex + 1));
+
+                        if(collection.remove(album)) {
+                            System.out.println(album.toString() + separator + "deleted");
+                        }
+                        else {
+                            System.out.println(album.toString() + separator + "is not in the collection.");
+                        }
                         break;
 
                     case "L":
-                        album = new Album(input.substring(2));
+                        album = new Album(input.substring(cmdIndex + 1));
                         collection.lendingOut(album);
                         break;
 
                     case "R":
-                        album = new Album(input.substring(2));
+                        album = new Album(input.substring(cmdIndex + 1));
                         collection.returnAlbum(album);
                         break;
 

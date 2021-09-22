@@ -20,19 +20,19 @@ public enum Genre {
     public String toString() {
         switch (this) {
             case Classical: {
-                return "Classical";
+                return Constants.CLASSICAL;
             }
             case Country: {
-                return "Country";
+                return Constants.COUNTRY;
             }
             case Jazz: {
-                return "Jazz";
+                return Constants.JAZZ;
             }
             case Pop: {
-                return "Pop";
+                return Constants.POP;
             }
             default: {
-                return "Unknown";
+                return Constants.UNKNOWN;
             }
         }
     }

@@ -39,6 +39,19 @@ public class Constants {
     public static final int FEB_NORMAL_LENGTH = 28;
     public static final int FEB_LEAP_LENGTH = 29;
 
+    public static final String INPUT_REGEX = ",";
+    public static final int INPUT_TITLE_IDX = 0;
+    public static final int INPUT_ARTIST_IDX = 1;
+    public static final int INPUT_GENRE_IDX = 2;
+    public static final int INPUT_RELEASE_DATE_IDX = 3;
+
+    public static final String CLASSICAL = "Classical";
+    public static final String COUNTRY = "Country";
+    public static final String JAZZ = "Jazz";
+    public static final String POP = "Pop";
+    public static final String UNKNOWN = "Unkown";
+
+
 
 
 }
