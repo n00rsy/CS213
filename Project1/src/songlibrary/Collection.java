@@ -96,12 +96,12 @@ public class Collection {
      */
     public boolean lendingOut(Album album) {
         int albumIndex = find(album);
-        if (albumIndex < 0) {
+        if (albumIndex < 0 || !albums[albumIndex].isAvailable()) {
             return false;
-        } else {
-            albums[albumIndex].setAvailable(false);
-            return true;
         }
+        albums[albumIndex].setAvailable(false);
+        return true;
+
     }
 
     /**
@@ -112,7 +112,7 @@ public class Collection {
      */
     public boolean returnAlbum(Album album) {
         int albumIndex = find(album);
-        if (albumIndex < 0) {
+        if (albumIndex < 0 || albums[albumIndex].isAvailable()) {
             return false;
         } else {
             albums[albumIndex].setAvailable(true);
@@ -124,32 +124,54 @@ public class Collection {
      * Displays all albums to the output stream without specifying the order.
      */
     public void print() {
-        ArrayUtil.print(albums, 0, numAlbums);
+        if (numAlbums == 0) {
+            System.out.println("The collection is empty!");
+        }
+        else {
+            System.out.println("*List of albums in the collection.");
+            ArrayUtil.print(albums, 0, numAlbums);
+            System.out.println("*End of list");
+        }
     }
 
     /**
      * Displays all albums to the output stream, sorted by release dates in ascending order
      */
     public void printByReleaseDate() {
-        Album[] trimmedAlbums = (Album[]) ArrayUtil.copy(albums, 0, numAlbums);
-        ArrayUtil.insertionSort(trimmedAlbums, (o1, o2) -> {
-            Album a1 = (Album) o1;
-            Album a2 = (Album) o2;
-            return a1.getReleaseDate().compareTo(a2.getReleaseDate());
-        });
-        ArrayUtil.print(trimmedAlbums, 0, numAlbums);
+        if (numAlbums == 0) {
+            System.out.println("The collection is empty!");
+        }
+        else {
+            System.out.println("*Album collection by the release dates.");
+            Object[] trimmedAlbums = ArrayUtil.copy(albums, 0, numAlbums);
+            ArrayUtil.insertionSort(trimmedAlbums, (o1, o2) -> {
+                Album a1 = (Album) o1;
+                Album a2 = (Album) o2;
+                return a1.getReleaseDate().compareTo(a2.getReleaseDate());
+            });
+            ArrayUtil.print(trimmedAlbums, 0, numAlbums);
+            System.out.println("*End of list");
+        }
     }
 
     /**
      * Displays all albums to the output stream, sorted by genres in ascending order
      */
     public void printByGenre() {
-        Album[] trimmedAlbums = (Album[]) ArrayUtil.copy(albums, 0, numAlbums);
-        ArrayUtil.insertionSort(trimmedAlbums, (o1, o2) -> {
-            Album a1 = (Album) o1;
-            Album a2 = (Album) o2;
-            return a1.getGenre().compareTo(a2.getGenre());
-        });
-        ArrayUtil.print(trimmedAlbums, 0, numAlbums);
+        if (numAlbums == 0) {
+            System.out.println("The collection is empty!");
+        }
+        else {
+            System.out.println("*Album collection by genre.");
+            Object[] trimmedAlbums = ArrayUtil.copy(albums, 0, numAlbums);
+            ArrayUtil.insertionSort(trimmedAlbums, (o1, o2) -> {
+                Album a1 = (Album) o1;
+                Album a2 = (Album) o2;
+                return a1.getGenre().compareTo(a2.getGenre());
+            });
+            ArrayUtil.print(trimmedAlbums, 0, numAlbums);
+            System.out.println("*End of list");
+        }
+
     }
 }

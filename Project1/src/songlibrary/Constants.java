@@ -51,6 +51,8 @@ public class Constants {
     public static final String POP = "Pop";
     public static final String UNKNOWN = "Unkown";
 
+    public static final String separator = " >> ";
+
 
 
 

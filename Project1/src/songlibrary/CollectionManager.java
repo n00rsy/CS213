@@ -2,14 +2,21 @@ package songlibrary;
 
 import java.util.Scanner;
 
+/**
+ * The user interface class that manages the collection.
+ *
+ * @author Umar
+ */
 public class CollectionManager {
+
+    /**
+     * Contains the main logic loop that takes user input and interacts with the collection.
+     */
     public void run() {
 
         Collection collection = new Collection();
         Scanner sc = new Scanner(System.in);
         boolean running = true;
-
-        String separator = " >> ";
 
         System.out.println("Collection Manager starts running.");
 
@@ -22,43 +29,23 @@ public class CollectionManager {
             if (cmdIndex > 0) {
 
                 String command = input.substring(0, cmdIndex);
-                Album album;
 
                 switch (command) {
 
                     case "A":
-                        album = new Album(input.substring(cmdIndex + 1));
-
-                        if (!album.getReleaseDate().isValid()) {
-                            System.out.println("Invalid Date!");
-                        }
-                        else if (collection.add(album)) {
-                            System.out.println(album.toString() + separator + "added.");
-                        }
-                        else {
-                            System.out.println(album.toString() + separator + "is already in the collection.");
-                        }
+                        addAlbum(input, cmdIndex, collection);
                         break;
 
                     case "D":
-                        album = new Album(input.substring(cmdIndex + 1));
-
-                        if(collection.remove(album)) {
-                            System.out.println(album.toString() + separator + "deleted");
-                        }
-                        else {
-                            System.out.println(album.toString() + separator + "is not in the collection.");
-                        }
+                        removeAlbum(input, cmdIndex, collection);
                         break;
 
                     case "L":
-                        album = new Album(input.substring(cmdIndex + 1));
-                        collection.lendingOut(album);
+                        lendOutAlbum(input, cmdIndex, collection);
                         break;
 
                     case "R":
-                        album = new Album(input.substring(cmdIndex + 1));
-                        collection.returnAlbum(album);
+                        returnAlbum(input, cmdIndex, collection);
                         break;
 
                     case "P":
@@ -85,6 +72,51 @@ public class CollectionManager {
             } else {
                 System.out.println("Invalid command!");
             }
+        }
+    }
+
+    private void addAlbum(String input, int cmdIndex, Collection collection) {
+        Album album = new Album(input.substring(cmdIndex + 1));
+
+        if (!album.getReleaseDate().isValid()) {
+            System.out.println("Invalid Date!");
+        }
+        else if (collection.add(album)) {
+            System.out.println(album.toString() + Constants.separator + "added.");
+        }
+        else {
+            System.out.println(album.toString() + Constants.separator + "is already in the collection.");
+        }
+    }
+
+    private void removeAlbum(String input, int cmdIndex, Collection collection) {
+        Album album = new Album(input.substring(cmdIndex + 1));
+
+        if(collection.remove(album)) {
+            System.out.println(album.toString() + Constants.separator + "deleted.");
+        }
+        else {
+            System.out.println(album.toString() + Constants.separator + "is not in the collection.");
+        }
+    }
+
+    private void lendOutAlbum(String input, int cmdIndex, Collection collection) {
+        Album album = new Album(input.substring(cmdIndex + 1));
+        if(collection.lendingOut(album)) {
+            System.out.println(album + Constants.separator + "lending out and set to not available.");
+        }
+        else {
+            System.out.println(album + Constants.separator + "is not available.");
+        }
+    }
+
+    private void returnAlbum(String input, int cmdIndex, Collection collection) {
+        Album album = new Album(input.substring(cmdIndex + 1));
+        if(collection.returnAlbum(album)) {
+            System.out.println(album + Constants.separator + "returning and set to available.");
+        }
+        else {
+            System.out.println(album + Constants.separator + "return cannot be completed.");
         }
     }
 }
