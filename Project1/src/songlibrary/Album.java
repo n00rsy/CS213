@@ -33,17 +33,18 @@ public class Album {
 
     /**
      * Builds up an Album object by parsing an input string containing a delimited list of arguments.
+     *
      * @param details
      */
-    public Album(String details){
+    public Album(String details) {
         String[] tokens = details.split(Constants.INPUT_REGEX);
 
-        if(tokens.length >= 2) {
+        if (tokens.length >= 2) {
             setTitle(tokens[Constants.INPUT_TITLE_IDX]);
             setArtist(tokens[Constants.INPUT_ARTIST_IDX]);
         }
 
-        if(tokens.length == 4) {
+        if (tokens.length == 4) {
             setGenreByString(tokens[Constants.INPUT_GENRE_IDX]);
             setReleaseDate(new Date(tokens[Constants.INPUT_RELEASE_DATE_IDX]));
         }
@@ -108,11 +109,12 @@ public class Album {
 
     /**
      * Sets Album genre based on an input string.
+     *
      * @param genreStr String representation of new album genre
      */
     private void setGenreByString(String genreStr) {
-        if(genreStr.length() > 0) {
-            genreStr = genreStr.substring(0,1).toUpperCase() + genreStr.substring(1).toLowerCase();
+        if (genreStr.length() > 0) {
+            genreStr = genreStr.substring(0, 1).toUpperCase() + genreStr.substring(1).toLowerCase();
             switch (genreStr) {
                 case Constants.CLASSICAL:
                     genre = Genre.Classical;
@@ -130,8 +132,7 @@ public class Album {
                     genre = Genre.Unknown;
                     break;
             }
-        }
-        else {
+        } else {
             genre = Genre.Unknown;
         }
 

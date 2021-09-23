@@ -2,7 +2,8 @@ package songlibrary;
 
 /**
  * An enum containing the different Generes that an album can be.
- * @author AUTHOR
+ *
+ * @author Umar
  */
 public enum Genre {
     Classical,

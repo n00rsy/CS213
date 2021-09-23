@@ -2,19 +2,33 @@ package songlibrary;
 
 import java.util.Calendar;
 
+/**
+ * A class implementing date.
+ * Stores year, month, and day.
+ *
+ * @author Noor
+ */
 public class Date implements Comparable<Date> {
     private int year;
     private int month;
     private int day;
 
+    /**
+     * Constructor that parses a string date in the form “mm/dd/yyyy” and creates a Date object.
+     *
+     * @param date String representation of the date
+     */
     public Date(String date) {
         String[] parts = date.split("/");
 
         year = Integer.parseInt(parts[Constants.YEAR_INDEX]);
         month = Integer.parseInt(parts[Constants.MONTH_INDEX]);
         day = Integer.parseInt(parts[Constants.DAY_INDEX]);
-    } //take “mm/dd/yyyy” and create a Date object
+    }
 
+    /**
+     * Constructor that creates a Date object with today's date.
+     */
     public Date() {
         Calendar today = Calendar.getInstance();
 
@@ -22,8 +36,13 @@ public class Date implements Comparable<Date> {
         month = today.get(Calendar.MONTH);
         day = today.get(Calendar.DAY_OF_MONTH);
 
-    } //create an object with today’s date (see Calendar class)
+    }
 
+    /**
+     * Checks if the date is valid or not against a set of constraints.
+     *
+     * @return true if the date is valid, false otherwise.
+     */
     public boolean isValid() {
         Calendar today = Calendar.getInstance();
 
@@ -64,6 +83,12 @@ public class Date implements Comparable<Date> {
         return true;
     }
 
+    /**
+     * Helper method that checks if a month has 31 days
+     *
+     * @param month the month to check
+     * @return true if long month, false otherwise
+     */
     private boolean isLongMonth(int month) {
         for (int m : Constants.LONG_MONTHS) {
             if (month == m) {
@@ -73,6 +98,12 @@ public class Date implements Comparable<Date> {
         return false;
     }
 
+    /**
+     * Helper method that checks if a month has 30 days
+     *
+     * @param month the month to check
+     * @return true if short month, false otherwise
+     */
     private boolean isShortMonth(int month) {
         for (int m : Constants.SHORT_MONTHS) {
             if (month == m) {
@@ -82,6 +113,12 @@ public class Date implements Comparable<Date> {
         return false;
     }
 
+    /**
+     * Helper method that checks if a year is a leap year or not
+     *
+     * @param year the year to check
+     * @return true if leap year, false if otherwise
+     */
     private boolean isLeapYear(int year) {
         if (year % Constants.QUADRENNIAL == 0) {
             if (year % Constants.CENTENNIAL == 0) {
@@ -95,6 +132,12 @@ public class Date implements Comparable<Date> {
         return false;
     }
 
+    /**
+     * Compares this date against another object.
+     *
+     * @param date
+     * @return positive number if this date is greater, 0 if equal, negative if smaller
+     */
     @Override
     public int compareTo(Date date) {
 
@@ -105,6 +148,11 @@ public class Date implements Comparable<Date> {
         return 0;
     }
 
+    /**
+     * Returns the string representation of this date object.
+     *
+     * @return
+     */
     @Override
     public String toString() {
         return month + "/" + day + "/" + year;

@@ -126,8 +126,7 @@ public class Collection {
     public void print() {
         if (numAlbums == 0) {
             System.out.println("The collection is empty!");
-        }
-        else {
+        } else {
             System.out.println("*List of albums in the collection.");
             ArrayUtil.print(albums, 0, numAlbums);
             System.out.println("*End of list");
@@ -140,8 +139,7 @@ public class Collection {
     public void printByReleaseDate() {
         if (numAlbums == 0) {
             System.out.println("The collection is empty!");
-        }
-        else {
+        } else {
             System.out.println("*Album collection by the release dates.");
             Object[] trimmedAlbums = ArrayUtil.copy(albums, 0, numAlbums);
             ArrayUtil.insertionSort(trimmedAlbums, (o1, o2) -> {
@@ -160,8 +158,7 @@ public class Collection {
     public void printByGenre() {
         if (numAlbums == 0) {
             System.out.println("The collection is empty!");
-        }
-        else {
+        } else {
             System.out.println("*Album collection by genre.");
             Object[] trimmedAlbums = ArrayUtil.copy(albums, 0, numAlbums);
             ArrayUtil.insertionSort(trimmedAlbums, (o1, o2) -> {

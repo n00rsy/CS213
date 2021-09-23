@@ -18,8 +18,6 @@ public class CollectionManager {
         Scanner sc = new Scanner(System.in);
         boolean running = true;
 
-        String separator = " >> ";
-
         System.out.println("Collection Manager starts running");
 
         while (running) {
@@ -82,11 +80,9 @@ public class CollectionManager {
 
         if (!album.getReleaseDate().isValid()) {
             System.out.println("Invalid Date!");
-        }
-        else if (collection.add(album)) {
+        } else if (collection.add(album)) {
             System.out.println(album.toString() + Constants.separator + "added.");
-        }
-        else {
+        } else {
             System.out.println(album.toString() + Constants.separator + "is already in the collection.");
         }
     }
@@ -94,30 +90,27 @@ public class CollectionManager {
     private void removeAlbum(String input, int cmdIndex, Collection collection) {
         Album album = new Album(input.substring(cmdIndex + 1));
 
-        if(collection.remove(album)) {
+        if (collection.remove(album)) {
             System.out.println(album.toString() + Constants.separator + "deleted.");
-        }
-        else {
+        } else {
             System.out.println(album.toString() + Constants.separator + "is not in the collection.");
         }
     }
 
     private void lendOutAlbum(String input, int cmdIndex, Collection collection) {
         Album album = new Album(input.substring(cmdIndex + 1));
-        if(collection.lendingOut(album)) {
+        if (collection.lendingOut(album)) {
             System.out.println(album + Constants.separator + "lending out and set to not available.");
-        }
-        else {
+        } else {
             System.out.println(album + Constants.separator + "is not available.");
         }
     }
 
     private void returnAlbum(String input, int cmdIndex, Collection collection) {
         Album album = new Album(input.substring(cmdIndex + 1));
-        if(collection.returnAlbum(album)) {
+        if (collection.returnAlbum(album)) {
             System.out.println(album + Constants.separator + "returning and set to available.");
-        }
-        else {
+        } else {
             System.out.println(album + Constants.separator + "return cannot be completed.");
         }
     }
