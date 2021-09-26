@@ -2,7 +2,7 @@ package songlibrary.test;
 
 import org.junit.Assert;
 import org.junit.Test;
-import songlibrary.Date;
+import songlibrary.models.Date;
 
 public class DateTest {
 
