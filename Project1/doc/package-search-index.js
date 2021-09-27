@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"songlibrary"},{"l":"songlibrary.controller"},{"l":"songlibrary.models"},{"l":"songlibrary.test"},{"l":"songlibrary.util"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"songlibrary"},{"l":"songlibrary.controller"},{"l":"songlibrary.models"},{"l":"songlibrary.util"}];updateSearchResults();

@@ -22,7 +22,7 @@ public class CollectionManager {
         Scanner sc = new Scanner(System.in);
         boolean running = true;
 
-        System.out.println("Collection Manager starts running");
+        System.out.println("Collection Manager starts running.");
 
         while (running) {
 
