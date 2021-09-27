@@ -79,6 +79,14 @@ public class CollectionManager {
         }
     }
 
+    /**
+     * Adds an album to the collection and outputs the result to the command line.
+     * Checks to ensure album doesn't already exist and that the input date is valid.
+     *
+     * @param input The string to parse for the album.
+     * @param cmdIndex The index of the command in the input string.
+     * @param collection The collection to attempt to add the new album to.
+     */
     private void addAlbum(String input, int cmdIndex, Collection collection) {
         Album album = new Album(input.substring(cmdIndex + 1));
 
@@ -91,6 +99,13 @@ public class CollectionManager {
         }
     }
 
+    /**
+     * Removes an album from the collection and outputs the result to the command line.
+     *
+     * @param input The string to parse for the album.
+     * @param cmdIndex The index of the command in the input string.
+     * @param collection The collection to attempt to remove the album from.
+     */
     private void removeAlbum(String input, int cmdIndex, Collection collection) {
         Album album = new Album(input.substring(cmdIndex + 1));
 
@@ -101,6 +116,13 @@ public class CollectionManager {
         }
     }
 
+    /**
+     * Attempts to lend out an album and outputs the result to the command line.
+     *
+     * @param input The string to parse for the album.
+     * @param cmdIndex The index of the command in the input string.
+     * @param collection The collection to attempt to find the album in.
+     */
     private void lendOutAlbum(String input, int cmdIndex, Collection collection) {
         Album album = new Album(input.substring(cmdIndex + 1));
         if (collection.lendingOut(album)) {
@@ -110,6 +132,13 @@ public class CollectionManager {
         }
     }
 
+    /**
+     * Attempts to return an album and outputs the result to the command line.
+     *
+     * @param input The string to parse for the album.
+     * @param cmdIndex The index of the command in the input string.
+     * @param collection The collection to attempt to find the album in.
+     */
     private void returnAlbum(String input, int cmdIndex, Collection collection) {
         Album album = new Album(input.substring(cmdIndex + 1));
         if (collection.returnAlbum(album)) {
