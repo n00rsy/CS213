@@ -5,7 +5,7 @@ import songlibrary.controller.CollectionManager;
 /**
  * A driver class to run the project.
  *
- * @author Umar
+ * @author Umar, Noor
  */
 public class RunProject1 {
 

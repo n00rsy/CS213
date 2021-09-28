@@ -5,7 +5,7 @@ import java.util.Comparator;
 /**
  * A class containing helper methods for array operations.
  *
- * @author Noor
+ * @author Noor, Umar
  */
 public class ArrayUtil {
 

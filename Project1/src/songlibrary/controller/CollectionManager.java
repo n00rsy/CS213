@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  * The user interface class that manages the collection.
  *
- * @author Umar
+ * @author Umar, Noor
  */
 public class CollectionManager {
 

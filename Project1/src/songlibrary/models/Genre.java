@@ -5,7 +5,7 @@ import songlibrary.util.Constants;
 /**
  * An enum containing the different Generes that an album can be.
  *
- * @author Umar
+ * @author Umar, Noor
  */
 public enum Genre {
     Classical,

@@ -8,7 +8,7 @@ import java.util.Calendar;
  * A class implementing date.
  * Stores year, month, and day.
  *
- * @author Noor
+ * @author Noor, Umar
  */
 public class Date implements Comparable<Date> {
     private int year;

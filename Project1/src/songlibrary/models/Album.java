@@ -5,7 +5,7 @@ import songlibrary.util.Constants;
 /**
  * A model class containing information about Albums.
  *
- * @author Noor
+ * @author Noor, Umar
  */
 public class Album {
     private String title;
