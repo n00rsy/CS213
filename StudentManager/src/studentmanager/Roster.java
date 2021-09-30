@@ -1,8 +1,15 @@
 package studentmanager;
 
+import studentmanager.student.Student;
+
 public class Roster {
     private Student[] roster;
     private int size; //keep track of the number of students in the roster
+
+    public Roster() {
+        roster = new Student[Constants.ROSTER_INITIAL_SIZE];
+        size = 0;
+    }
 
     private int find(Student student) {
         for (int i = 0; i < size; i++) {
