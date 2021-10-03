@@ -1,5 +1,8 @@
 package studentmanager;
 
+import studentmanager.student.International;
+import studentmanager.student.Student;
+
 public class TuitionManager {
 
     public void run() {
