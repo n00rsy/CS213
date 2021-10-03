@@ -1,8 +1,11 @@
 package studentmanager;
 
+import studentmanager.config.Constants;
 import studentmanager.student.Student;
+import studentmanager.util.ArrayUtil;
 
 public class Roster {
+
     private Student[] roster;
     private int size; //keep track of the number of students in the roster
 
@@ -55,5 +58,56 @@ public class Roster {
 
         size--;
         return true;
+    }
+
+    public void print() {
+        if (size == 0) {
+            System.out.println(Constants.EMPTY_ROSTER_MESSAGE);
+        } else {
+            System.out.println("* list of students in the roster **");
+            ArrayUtil.print(roster, 0, size);
+            System.out.println(Constants.END_ROSTER_MESSAGE);
+        }
+    }
+
+    public void printByStudentName() {
+        if (size == 0) {
+            System.out.println(Constants.EMPTY_ROSTER_MESSAGE);
+        } else {
+            System.out.println("* list of students ordered by name **");
+            Object[] trimmedRoster = ArrayUtil.copy(roster, 0, size);
+            ArrayUtil.insertionSort(trimmedRoster, (o1, o2) -> {
+                Student s1 = (Student) o1;
+                Student s2 = (Student) o2;
+                return s1.getProfile().getName().compareTo(s2.getProfile().getName());
+            });
+            ArrayUtil.print(trimmedRoster, 0, size);
+            System.out.println(Constants.END_ROSTER_MESSAGE);
+        }
+    }
+
+    public void printPaymentStudentsByPaymentDate() {
+        if (size == 0) {
+            System.out.println(Constants.EMPTY_ROSTER_MESSAGE);
+        } else {
+            System.out.println("* list of students made payments ordered by payment date **");
+            Object[] trimmedRoster = ArrayUtil.copy(roster, 0, size);
+
+            for (Object o : trimmedRoster) {
+                Student s = (Student) o;
+                if (s.getLastPaymentDate() == null) {
+                    o = null;
+                }
+            }
+            Object[] payingStudents = ArrayUtil.filterNullValues(trimmedRoster);
+
+            ArrayUtil.insertionSort(payingStudents, (o1, o2) -> {
+                Student s1 = (Student) o1;
+                Student s2 = (Student) o2;
+                return s1.getProfile().getName().compareTo(s2.getProfile().getName());
+            });
+            ArrayUtil.print(payingStudents, 0, size);
+            System.out.println(Constants.END_ROSTER_MESSAGE);
+        }
     }
 }

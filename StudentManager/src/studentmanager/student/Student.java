@@ -1,5 +1,6 @@
 package studentmanager.student;
 
+import studentmanager.Date;
 import studentmanager.Profile;
 
 public abstract class Student {
@@ -15,6 +16,16 @@ public abstract class Student {
     private int isPartTime;
 
     private int numCredits;
+
+    public Date getLastPaymentDate() {
+        return lastPaymentDate;
+    }
+
+    public void setLastPaymentDate(Date lastPaymentDate) {
+        this.lastPaymentDate = lastPaymentDate;
+    }
+
+    private Date lastPaymentDate;
 
     public void tuitionDue() {
 
