@@ -19,19 +19,29 @@ public class Resident extends Student {
     private int financialAid;
 
     public Resident(String name, Major major, int numCredits) {
-        setTuition(TuitionConfig.RESIDENT_TUITION);
-        setTuitionPerCreditHour(TuitionConfig.RESIDENT_TUITION_PER_CREDIT);
-        setFinancialAid(TuitionConfig.DEFAULT_FIN_AID_AMOUNT);
-        setTuitionCredit(0);
+        setTuition(TuitionConfig.RES_TUITION);
+        setTuitionPerCreditHour(TuitionConfig.RES_TUITION_PER_CREDIT);
+        setUniversityFee(TuitionConfig.RES_UNI_FEE);
+        setTuitionCredit(TuitionConfig.RES_DEFAULT_FIN_AID_AMOUNT);
         setNumCredits(numCredits);
         setProfile(new Profile(name, major));
     }
 
     public void tutionDue() {
-
+        int totalTuition = getTuitionDueAmount();
     }
 
     private int getTuitionDueAmount() {
-        return 200;
+        int totalTuition = getTuition() + getUniversityFee();
+        if (isPartTime()) {
+            totalTuition += getNumCredits() * getTuitionPerCreditHour();
+        }
+        else {
+            totalTuition += getTuition();
+            if (getNumCredits() > TuitionConfig.MAX_FULL_TIME_CREDITS) {
+                totalTuition += (getNumCredits() - TuitionConfig.MAX_FULL_TIME_CREDITS) * getTuitionPerCreditHour();
+            }
+        }
+        return totalTuition - getTuitionCredit();
     }
 }

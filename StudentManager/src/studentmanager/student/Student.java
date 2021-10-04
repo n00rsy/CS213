@@ -2,21 +2,20 @@ package studentmanager.student;
 
 import studentmanager.Date;
 import studentmanager.Profile;
+import studentmanager.config.Constants;
+import studentmanager.config.TuitionConfig;
 
 public abstract class Student {
 
     private Profile profile;
 
-    private final int minCredits = 3;
-    private final int maxCredits = 24;
-
     private int tuition;
     private int tuitionPerCreditHour;
     private int tuitionCredit;
     private int universityFee;
-    private int isPartTime;
     private int numCredits;
     private Date lastPaymentDate;
+    private int lastPaymentAmount;
 
     public int getTuitionCredit() {
         return tuitionCredit;
@@ -51,14 +50,6 @@ public abstract class Student {
         this.universityFee = universityFee;
     }
 
-    public int getIsPartTime() {
-        return isPartTime;
-    }
-
-    public void setIsPartTime(int isPartTime) {
-        this.isPartTime = isPartTime;
-    }
-
     public int getNumCredits() {
         return numCredits;
     }
@@ -75,6 +66,14 @@ public abstract class Student {
         this.lastPaymentDate = lastPaymentDate;
     }
 
+    public int getLastPaymentAmount() {
+        return lastPaymentAmount;
+    }
+
+    public void setLastPaymentAmount(int lastPaymentAmount) {
+        this.lastPaymentAmount = lastPaymentAmount;
+    }
+
     public Profile getProfile() {
         return profile;
     }
@@ -86,6 +85,10 @@ public abstract class Student {
 
     public void tuitionDue() {
 
+    }
+
+    public boolean isPartTime() {
+        return numCredits < TuitionConfig.MIN_FULL_TIME_CREDITS;
     }
 
     private int getTuitionDueAmount() {
@@ -100,6 +103,12 @@ public abstract class Student {
 
     @Override
     public String toString() {
-        return "";
+        return getProfile().getName() + Constants.OUTPUT_SEPARATOR +
+                getProfile().getMajor() + Constants.OUTPUT_SEPARATOR +
+                getNumCredits() + " credit hours" + Constants.OUTPUT_SEPARATOR +
+                "tuition due:" + getTuitionDueAmount() + Constants.OUTPUT_SEPARATOR +
+                "last payment:" + getLastPaymentAmount() + Constants.OUTPUT_SEPARATOR +
+                "payment date: " + getLastPaymentDate().toString()
+                ;
     }
 }
