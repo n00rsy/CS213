@@ -37,7 +37,6 @@ public class Date implements Comparable<Date> {
         year = today.get(Calendar.YEAR);
         month = today.get(Calendar.MONTH);
         day = today.get(Calendar.DAY_OF_MONTH);
-
     }
 
     /**
@@ -157,6 +156,9 @@ public class Date implements Comparable<Date> {
      */
     @Override
     public String toString() {
+        if (month + day + year == 0) {
+            return "--/--/--";
+        }
         return month + "/" + day + "/" + year;
     }
 }

@@ -5,6 +5,7 @@ import studentmanager.config.TuitionConfig;
 import studentmanager.student.International;
 import studentmanager.student.Resident;
 import studentmanager.student.Student;
+import studentmanager.util.ParseUtil;
 
 import java.util.Scanner;
 
@@ -20,15 +21,15 @@ public class TuitionManager {
 
         while (running) {
             String input = scanner.nextLine();
-            String[] tokens = input.split(Constants.INPUT_SEPARATOR);
-            String command = tokens[0];
+            String[] args = input.split(Constants.INPUT_SEPARATOR);
+            String command = args[0];
 
             switch (command) {
+                case "AT":
+                case "AI":
+                case "AN":
                 case "AR":
-                    Student student = parseStudent(tokens);
-                    if (student != null) {
-                        roster.add(student);
-                    }
+                    addStudent(args, roster);
                     break;
 
                 case "":
@@ -40,73 +41,21 @@ public class TuitionManager {
                     System.out.println("Tuition Manager terminated.");
                     break;
                 default:
-                    System.out.println("Command '" + command + "' not supported!");
+                    System.out.println("Command '" + args[0] + "' not supported!");
                     break;
             }
         }
     }
 
-    private Student parseStudent(String[] args) {
-
-        // TODO: fix parsing to incorporate InputMismatchException, NoSuchElementException,
-
-        if (args.length == 4) {
-
-            try {
-                String name = args[1];
-                Major major = parseMajor(args[2]);
-                int numCredits = parseNumCredits(args[3]);
-                System.out.println(new Resident(name, major, numCredits));
-                return new Resident(name, major, numCredits);
-            } catch (Exception e) {
-                System.out.println(e.getLocalizedMessage());
-                return null;
+    private void addStudent(String[] args, Roster roster) {
+        Student student = ParseUtil.parseStudent(args);
+        if (student != null) {
+            if (roster.add(student)) {
+                System.out.println("Student added.");
+            }
+            else {
+                System.out.println("Student is already in the roster.");
             }
         }
-        else if (args.length == 3) {
-           System.out.println("Credit hours missing.");
-        }
-        else {
-            System.out.println("Missing data in command line.");
-        }
-        return null;
-    }
-
-    private Major parseMajor(String arg) {
-        switch (arg) {
-            case "CS":
-                return Major.CS;
-            case "IT":
-                return Major.IT;
-            case "BA":
-                return Major.BA;
-            case "EE":
-                return Major.EE;
-            case "ME":
-                return Major.ME;
-            default:
-                throw new IllegalArgumentException("'" + arg + "' is not a valid major.");
-        }
-    }
-
-    private int parseNumCredits(String arg) {
-        try {
-            int numCredits = Integer.parseInt(arg);
-
-            if (numCredits > TuitionConfig.MAX_CREDITS) {
-                throw new IllegalArgumentException("Credit hours exceed the maximum 24.");
-            }
-            if (numCredits < 0) {
-                throw new IllegalArgumentException("Credit hours cannot be negative.");
-            }
-            if (numCredits < TuitionConfig.MIN_CREDITS) {
-                throw new IllegalArgumentException("Minimum credit hours is 3.");
-            }
-            return numCredits;
-        }
-        catch (Exception e) {
-            throw new NumberFormatException("Invalid credit hours.");
-        }
-
     }
 }

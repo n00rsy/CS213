@@ -11,4 +11,6 @@ public class Constants {
     public static final String OUTPUT_SEPARATOR = ":";
     public static final String INPUT_SEPARATOR = ",";
 
+    public static final String DEFAULT_DATE = "00/00/0000";
+
 }

@@ -12,10 +12,11 @@ public abstract class Student {
     private int tuition;
     private int tuitionPerCreditHour;
     private int tuitionCredit;
+    private int tuitionPayment;
+    private int tuitionDueAmount;
     private int universityFee;
     private int numCredits;
     private Date lastPaymentDate;
-    private int lastPaymentAmount;
 
     public int getTuitionCredit() {
         return tuitionCredit;
@@ -66,14 +67,6 @@ public abstract class Student {
         this.lastPaymentDate = lastPaymentDate;
     }
 
-    public int getLastPaymentAmount() {
-        return lastPaymentAmount;
-    }
-
-    public void setLastPaymentAmount(int lastPaymentAmount) {
-        this.lastPaymentAmount = lastPaymentAmount;
-    }
-
     public Profile getProfile() {
         return profile;
     }
@@ -82,6 +75,21 @@ public abstract class Student {
         this.profile = profile;
     }
 
+    public int getTuitionPayment() {
+        return tuitionPayment;
+    }
+
+    public void setTuitionPayment(int tuitionPayment) {
+        this.tuitionPayment = tuitionPayment;
+    }
+
+    public int getTuitionDueAmount() {
+        return tuitionDueAmount;
+    }
+
+    public void setTuitionDueAmount(int tuitionDueAmount) {
+        this.tuitionDueAmount = tuitionDueAmount;
+    }
 
     public void tuitionDue() {
 
@@ -91,14 +99,21 @@ public abstract class Student {
         return numCredits < TuitionConfig.MIN_FULL_TIME_CREDITS;
     }
 
-    private int getTuitionDueAmount() {
-        return 100;
-    }
 
     public void payTuition(int amount, Date date) {
+
         if (amount > 0 && amount <= getTuitionDueAmount() && date.isValid()) {
             tuitionCredit += amount;
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Student)) {
+            return  false;
+        }
+        Student other = (Student) o;
+        return profile.equals(other.getProfile());
     }
 
     @Override
@@ -107,7 +122,7 @@ public abstract class Student {
                 getProfile().getMajor() + Constants.OUTPUT_SEPARATOR +
                 getNumCredits() + " credit hours" + Constants.OUTPUT_SEPARATOR +
                 "tuition due:" + getTuitionDueAmount() + Constants.OUTPUT_SEPARATOR +
-                "last payment:" + getLastPaymentAmount() + Constants.OUTPUT_SEPARATOR +
+                "total payment:" + getTuitionPayment() + Constants.OUTPUT_SEPARATOR +
                 "payment date: " + getLastPaymentDate().toString()
                 ;
     }

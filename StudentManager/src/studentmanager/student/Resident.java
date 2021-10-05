@@ -1,7 +1,9 @@
 package studentmanager.student;
 
+import studentmanager.Date;
 import studentmanager.Major;
 import studentmanager.Profile;
+import studentmanager.config.Constants;
 import studentmanager.config.TuitionConfig;
 
 public class Resident extends Student {
@@ -25,13 +27,12 @@ public class Resident extends Student {
         setTuitionCredit(TuitionConfig.RES_DEFAULT_FIN_AID_AMOUNT);
         setNumCredits(numCredits);
         setProfile(new Profile(name, major));
+        setLastPaymentDate(new Date(Constants.DEFAULT_DATE));
     }
 
-    public void tutionDue() {
-        int totalTuition = getTuitionDueAmount();
-    }
+    @Override
+    public void tuitionDue() {
 
-    private int getTuitionDueAmount() {
         int totalTuition = getTuition() + getUniversityFee();
         if (isPartTime()) {
             totalTuition += getNumCredits() * getTuitionPerCreditHour();
@@ -42,6 +43,12 @@ public class Resident extends Student {
                 totalTuition += (getNumCredits() - TuitionConfig.MAX_FULL_TIME_CREDITS) * getTuitionPerCreditHour();
             }
         }
-        return totalTuition - getTuitionCredit();
+        setTuitionDueAmount(totalTuition - getTuitionCredit());
+
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + Constants.OUTPUT_SEPARATOR + "resident";
     }
 }
