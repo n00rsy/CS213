@@ -11,9 +11,9 @@ import java.util.Calendar;
  * @author Noor, Umar
  */
 public class Date implements Comparable<Date> {
-    private int year;
-    private int month;
-    private int day;
+    private final int year;
+    private final int month;
+    private final int day;
 
     /**
      * Constructor that parses a string date in the form "mm/dd/yyyy" and creates a Date object.
@@ -78,10 +78,7 @@ public class Date implements Comparable<Date> {
             }
         }
 
-        if ((year == currentYear && month == currentMonth && day > currentDay)) {
-            return false;
-        }
-        return true;
+        return year != currentYear || month != currentMonth || day <= currentDay;
     }
 
     /**
@@ -123,10 +120,7 @@ public class Date implements Comparable<Date> {
     private boolean isLeapYear(int year) {
         if (year % DateConfig.QUADRENNIAL == 0) {
             if (year % DateConfig.CENTENNIAL == 0) {
-                if (year % DateConfig.QUARTERCENTENNIAL == 0) {
-                    return true;
-                }
-                return false;
+                return year % DateConfig.QUARTERCENTENNIAL == 0;
             }
             return true;
         }

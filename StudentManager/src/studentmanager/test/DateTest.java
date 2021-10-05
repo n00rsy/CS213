@@ -11,7 +11,7 @@ public class DateTest {
      *
      * @param args
      */
-    public static void main (String args[]) {
+    public static void main(String[] args) {
 
         Calendar today = Calendar.getInstance();
         int year = today.get(Calendar.YEAR);
@@ -22,19 +22,17 @@ public class DateTest {
         boolean result = date.isValid();
         if (result == expectedResult) {
             System.out.println("Test case 1 passed");
-        }
-        else {
+        } else {
             System.out.println("Test case 1 failed.");
         }
 
         // Test case 2
-        date = new Date("11/21/" + String.valueOf(year + 1));
+        date = new Date("11/21/" + (year + 1));
         expectedResult = false;
         result = date.isValid();
         if (result == expectedResult) {
             System.out.println("Test case 2 passed");
-        }
-        else {
+        } else {
             System.out.println("Test case 2 failed.");
         }
 
@@ -44,8 +42,7 @@ public class DateTest {
         result = date.isValid();
         if (result == expectedResult) {
             System.out.println("Test case 3 passed");
-        }
-        else {
+        } else {
             System.out.println("Test case 3 failed.");
         }
 
@@ -55,8 +52,7 @@ public class DateTest {
         result = date.isValid();
         if (result == expectedResult) {
             System.out.println("Test case 4 passed");
-        }
-        else {
+        } else {
             System.out.println("Test case 4 failed.");
         }
 
@@ -66,8 +62,7 @@ public class DateTest {
         result = date.isValid();
         if (result == expectedResult) {
             System.out.println("Test case 5 passed");
-        }
-        else {
+        } else {
             System.out.println("Test case 5 failed.");
         }
 
@@ -77,8 +72,7 @@ public class DateTest {
         result = date.isValid();
         if (result == expectedResult) {
             System.out.println("Test case 6 passed");
-        }
-        else {
+        } else {
             System.out.println("Test case 6 failed.");
         }
 
@@ -88,13 +82,12 @@ public class DateTest {
         result = date.isValid();
         if (result == expectedResult) {
             System.out.println("Test case 7 passed");
-        }
-        else {
+        } else {
             System.out.println("Test case 7 failed.");
         }
 
         // Test case 8
-        int [] longMonths = new int[] {1,3,5,7,8,10,12};
+        int[] longMonths = new int[]{1, 3, 5, 7, 8, 10, 12};
         boolean passed = true;
         for (int longMonth : longMonths) {
             date = new Date(longMonth + "/32/2020");
@@ -106,13 +99,12 @@ public class DateTest {
         }
         if (passed) {
             System.out.println("Test case 8 passed");
-        }
-        else {
+        } else {
             System.out.println("Test case 8 failed.");
         }
 
         // Test case 9
-        int [] shortMonths = new int[] {4,6,9,11};
+        int[] shortMonths = new int[]{4, 6, 9, 11};
         passed = true;
         for (int shortMonth : shortMonths) {
             date = new Date(shortMonth + "/32/2020");
@@ -124,8 +116,7 @@ public class DateTest {
         }
         if (passed) {
             System.out.println("Test case 9 passed");
-        }
-        else {
+        } else {
             System.out.println("Test case 9 failed.");
         }
 
@@ -135,8 +126,7 @@ public class DateTest {
         result = date.isValid();
         if (result == expectedResult) {
             System.out.println("Test case 10 passed");
-        }
-        else {
+        } else {
             System.out.println("Test case 10 failed.");
         }
     }

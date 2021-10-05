@@ -1,9 +1,6 @@
 package studentmanager;
 
 import studentmanager.config.Constants;
-import studentmanager.config.TuitionConfig;
-import studentmanager.student.International;
-import studentmanager.student.Resident;
 import studentmanager.student.Student;
 import studentmanager.util.ParseUtil;
 
@@ -48,12 +45,16 @@ public class TuitionManager {
     }
 
     private void addStudent(String[] args, Roster roster) {
-        Student student = ParseUtil.parseStudent(args);
+        Student student = null;
+        try {
+            student = ParseUtil.parseStudent(args);
+        } catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+        }
         if (student != null) {
             if (roster.add(student)) {
                 System.out.println("Student added.");
-            }
-            else {
+            } else {
                 System.out.println("Student is already in the roster.");
             }
         }

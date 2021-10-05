@@ -51,10 +51,10 @@ public class Roster {
             return false;
         }
 
-        for (int i = studentIndex; i < roster.length-1; i++) {
+        for (int i = studentIndex; i < roster.length - 1; i++) {
             roster[i] = roster[i + 1];
         }
-        roster[roster.length-1] = null;
+        roster[roster.length - 1] = null;
 
         size--;
         return true;

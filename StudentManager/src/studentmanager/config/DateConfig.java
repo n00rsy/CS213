@@ -24,8 +24,8 @@ public class DateConfig {
     public static final int NOVEMBER = 11;
     public static final int DECEMBER = 12;
 
-    public static final int[] LONG_MONTHS = new int[] { JANUARY, MARCH, MAY, JULY, AUGUST, OCTOBER, DECEMBER };
-    public static final int[] SHORT_MONTHS = new int[] {APRIL, JUNE, SEPTEMBER, NOVEMBER};
+    public static final int[] LONG_MONTHS = new int[]{JANUARY, MARCH, MAY, JULY, AUGUST, OCTOBER, DECEMBER};
+    public static final int[] SHORT_MONTHS = new int[]{APRIL, JUNE, SEPTEMBER, NOVEMBER};
 
     public static final int LONG_MONTHS_LENGTH = 31;
     public static final int SHORT_MONTHS_LENGTH = 30;

@@ -60,7 +60,7 @@ public class ArrayUtil {
     public static Object[] filterNullValues(Object[] array) {
         int count = 0;
         for (Object o : array) {
-            if (o == null) count ++;
+            if (o == null) count++;
         }
 
         Object[] newArray = new Object[count];

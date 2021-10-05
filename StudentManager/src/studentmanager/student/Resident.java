@@ -9,15 +9,6 @@ import studentmanager.config.TuitionConfig;
 public class Resident extends Student {
 
     private final int maxFinancialAid = 10000;
-
-    public int getFinancialAid() {
-        return financialAid;
-    }
-
-    public void setFinancialAid(int financialAid) {
-        this.financialAid = financialAid;
-    }
-
     private int financialAid;
 
     public Resident(String name, Major major, int numCredits) {
@@ -30,14 +21,21 @@ public class Resident extends Student {
         setLastPaymentDate(new Date(Constants.DEFAULT_DATE));
     }
 
+    public int getFinancialAid() {
+        return financialAid;
+    }
+
+    public void setFinancialAid(int financialAid) {
+        this.financialAid = financialAid;
+    }
+
     @Override
     public void tuitionDue() {
 
-        int totalTuition = getTuition() + getUniversityFee();
+        double totalTuition = getTuition() + getUniversityFee();
         if (isPartTime()) {
             totalTuition += getNumCredits() * getTuitionPerCreditHour();
-        }
-        else {
+        } else {
             totalTuition += getTuition();
             if (getNumCredits() > TuitionConfig.MAX_FULL_TIME_CREDITS) {
                 totalTuition += (getNumCredits() - TuitionConfig.MAX_FULL_TIME_CREDITS) * getTuitionPerCreditHour();

@@ -28,7 +28,7 @@ public class Profile {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Profile)) {
-            return  false;
+            return false;
         }
         Profile other = (Profile) o;
         return other.getName().equals(name) && other.getMajor().equals(major);

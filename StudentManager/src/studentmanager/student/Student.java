@@ -7,47 +7,69 @@ import studentmanager.config.TuitionConfig;
 
 public abstract class Student {
 
-    private Profile profile;
-
-    private int tuition;
-    private int tuitionPerCreditHour;
-    private int tuitionCredit;
-    private int tuitionPayment;
-    private int tuitionDueAmount;
-    private int universityFee;
+    private double tuition;
+    private double tuitionPerCreditHour;
+    private double tuitionCredit;
+    private double tuitionPayment;
+    private double tuitionDueAmount;
+    private double universityFee;
     private int numCredits;
     private Date lastPaymentDate;
+    private Profile profile;
 
-    public int getTuitionCredit() {
-        return tuitionCredit;
+    public Profile getProfile() {
+        return profile;
     }
 
-    public void setTuitionCredit(int tuitionCredit) {
-        this.tuitionCredit = tuitionCredit;
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 
-
-    public int getTuition() {
+    public double getTuition() {
         return tuition;
     }
 
-    public void setTuition(int tuition) {
+    public void setTuition(double tuition) {
         this.tuition = tuition;
     }
 
-    public int getTuitionPerCreditHour() {
+    public double getTuitionPerCreditHour() {
         return tuitionPerCreditHour;
     }
 
-    public void setTuitionPerCreditHour(int tuitionPerCreditHour) {
+    public void setTuitionPerCreditHour(double tuitionPerCreditHour) {
         this.tuitionPerCreditHour = tuitionPerCreditHour;
     }
 
-    public int getUniversityFee() {
+    public double getTuitionCredit() {
+        return tuitionCredit;
+    }
+
+    public void setTuitionCredit(double tuitionCredit) {
+        this.tuitionCredit = tuitionCredit;
+    }
+
+    public double getTuitionPayment() {
+        return tuitionPayment;
+    }
+
+    public void setTuitionPayment(double tuitionPayment) {
+        this.tuitionPayment = tuitionPayment;
+    }
+
+    public double getTuitionDueAmount() {
+        return tuitionDueAmount;
+    }
+
+    public void setTuitionDueAmount(double tuitionDueAmount) {
+        this.tuitionDueAmount = tuitionDueAmount;
+    }
+
+    public double getUniversityFee() {
         return universityFee;
     }
 
-    public void setUniversityFee(int universityFee) {
+    public void setUniversityFee(double universityFee) {
         this.universityFee = universityFee;
     }
 
@@ -65,30 +87,6 @@ public abstract class Student {
 
     public void setLastPaymentDate(Date lastPaymentDate) {
         this.lastPaymentDate = lastPaymentDate;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-    }
-
-    public int getTuitionPayment() {
-        return tuitionPayment;
-    }
-
-    public void setTuitionPayment(int tuitionPayment) {
-        this.tuitionPayment = tuitionPayment;
-    }
-
-    public int getTuitionDueAmount() {
-        return tuitionDueAmount;
-    }
-
-    public void setTuitionDueAmount(int tuitionDueAmount) {
-        this.tuitionDueAmount = tuitionDueAmount;
     }
 
     public void tuitionDue() {
@@ -110,7 +108,7 @@ public abstract class Student {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Student)) {
-            return  false;
+            return false;
         }
         Student other = (Student) o;
         return profile.equals(other.getProfile());
@@ -121,9 +119,9 @@ public abstract class Student {
         return getProfile().getName() + Constants.OUTPUT_SEPARATOR +
                 getProfile().getMajor() + Constants.OUTPUT_SEPARATOR +
                 getNumCredits() + " credit hours" + Constants.OUTPUT_SEPARATOR +
-                "tuition due:" + getTuitionDueAmount() + Constants.OUTPUT_SEPARATOR +
-                "total payment:" + getTuitionPayment() + Constants.OUTPUT_SEPARATOR +
-                "payment date: " + getLastPaymentDate().toString()
+                "tuition due:" + String.format("%.2f", getTuitionDueAmount()) + Constants.OUTPUT_SEPARATOR +
+                "total payment:" + String.format("%.2f",getTuitionPayment()) + Constants.OUTPUT_SEPARATOR +
+                "payment date: " + String.format("%.2f",getLastPaymentDate().toString())
                 ;
     }
 }

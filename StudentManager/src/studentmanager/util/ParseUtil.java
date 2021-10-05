@@ -5,7 +5,7 @@ import studentmanager.config.TuitionConfig;
 import studentmanager.student.Resident;
 import studentmanager.student.Student;
 
-import java.util.Locale;
+import java.util.InputMismatchException;
 
 public class ParseUtil {
 
@@ -14,30 +14,22 @@ public class ParseUtil {
 
         if (args.length == 4) {
 
-            try {
-                String type = args[0];
-                String name = args[1];
-                Major major = parseMajor(args[2]);
-                int numCredits = parseNumCredits(args[3]);
+            String type = args[0];
+            String name = args[1];
+            Major major = parseMajor(args[2]);
+            int numCredits = parseNumCredits(args[3]);
 
-                switch (type) {
-                    case "AR":
-                        return new Resident(name, major, numCredits);
-                    default:
-                        System.out.println("Command '" + type + "' not supported!");
-                        return null;
-                }
-
-            } catch (Exception e) {
-                System.out.println(e.getLocalizedMessage());
-                return null;
+            switch (type) {
+                case "AR":
+                    return new Resident(name, major, numCredits);
+                default:
+                    throw new IllegalArgumentException("Command '" + type + "' not supported!");
             }
         } else if (args.length == 3) {
-            System.out.println("Credit hours missing.");
+            throw new InputMismatchException("Credit hours missing.");
         } else {
-            System.out.println("Missing data in command line.");
+            throw new InputMismatchException("Missing data in command line.");
         }
-        return null;
     }
 
     public static Major parseMajor(String arg) {
