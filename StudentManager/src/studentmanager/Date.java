@@ -11,9 +11,9 @@ import java.util.Calendar;
  * @author Noor, Umar
  */
 public class Date implements Comparable<Date> {
-    private final int year;
-    private final int month;
-    private final int day;
+    private int year;
+    private int month;
+    private int day;
 
     /**
      * Constructor that parses a string date in the form "mm/dd/yyyy" and creates a Date object.

@@ -60,6 +60,12 @@ public class Roster {
         return true;
     }
 
+    public void calculateTuition() {
+        for (Student s : roster) {
+            s.tuitionDue();
+        }
+    }
+
     public void print() {
         if (size == 0) {
             System.out.println(Constants.EMPTY_ROSTER_MESSAGE);

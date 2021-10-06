@@ -1,11 +1,17 @@
 package studentmanager.student;
 
 import studentmanager.Date;
+import studentmanager.Major;
 import studentmanager.Profile;
 import studentmanager.config.Constants;
 import studentmanager.config.TuitionConfig;
 
 public abstract class Student {
+
+    public Student(String name, Major major, int numCredits) {
+        setNumCredits(numCredits);
+        setProfile(new Profile(name, major));
+    }
 
     private double tuition;
     private double tuitionPerCreditHour;
