@@ -60,6 +60,14 @@ public class Roster {
         return true;
     }
 
+    public boolean payTuition(Student student, double amount) {
+        return true;
+    }
+
+    public boolean setStudyAbroad(Student student, boolean status) {
+        return true;
+    }
+
     public void calculateTuition() {
         for (Student s : roster) {
             s.tuitionDue();

@@ -115,11 +115,67 @@ public class TuitionManager {
     }
 
     private void payTuition(String[] args, Roster roster) {
-
+        Student student = null;
+        try {
+            student = ParseUtil.parseStudent(args);
+        } catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+            return;
+        }
+        if (args.length == 3) {
+            System.out.println("Missing the amount.");
+        }
+        if (args.length == 4) {
+            System.out.println("Missing data in command line.");
+        }
+        else {
+            double amount = 0;
+            Date date = new Date(args[4]);
+            try {
+                amount = Double.parseDouble(args[3]);
+            }
+            catch (Exception e) {
+                System.out.println("Invalid amount.");
+                return;
+            }
+            if (amount <= 0) {
+                System.out.println("Invalid amount.");
+            }
+            else if (amount > student.getTuitionDueAmount()) {
+                System.out.println("Amount is greater than amount due.");
+            }
+            else if (date != null && !date.isValid() && date.compareTo(new Date()) > 0 && date.compareTo(new Date("01/01/2021")) < 0) {
+                System.out.println("Payment date invalid.");
+            }
+            else if (student.isPartTime()) {
+                System.out.println("Parttime student doesn't qualify for the award.");
+            }
+            else if (roster.payTuition(student, amount)) {
+                System.out.println("Payment applied.");
+            }
+            else {
+                System.out.println("Student not in the roster.");
+            }
+        }
     }
 
     private void setStudyAbroad(String[] args, Roster roster) {
+        Student student = null;
+        boolean status = false;
+        try {
+            student = ParseUtil.parseStudent(args);
+        } catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+            return;
+        }
 
+        try {
+            status = ParseUtil.parseBoolean(args[3]);
+        } catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+            return;
+        }
+        roster.setStudyAbroad(student, status);
     }
 
     private void setFinancialAid (String[] args, Roster roster) {

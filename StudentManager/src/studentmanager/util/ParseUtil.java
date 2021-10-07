@@ -9,6 +9,7 @@ import studentmanager.student.Student;
 import studentmanager.student.TriState;
 
 import java.util.InputMismatchException;
+import java.util.Locale;
 
 public class ParseUtil {
 
@@ -103,4 +104,14 @@ public class ParseUtil {
         }
     }
 
+    public static boolean parseBoolean(String arg) {
+        switch (arg.toUpperCase()) {
+            case "TRUE":
+                return true;
+            case "FALSE":
+                return false;
+            default:
+                throw new IllegalArgumentException("Invalid boolean.");
+        }
+    }
 }
