@@ -1,25 +1,53 @@
 package studentmanager.student;
 
+import studentmanager.Location;
 import studentmanager.Major;
 import studentmanager.config.Constants;
+import studentmanager.config.TuitionConfig;
 
 public class TriState extends NonResident {
 
-    private String state;
+    private Location location;
+    private double triStateDiscount;
 
-    private int TriStateDiscount;
-
-    public TriState(String name, Major major, int numCredits) {
+    public TriState(String name, Major major, int numCredits, Location location) {
         super(name, major, numCredits);
+        setLocation(location);
+        switch (location) {
+            case NY:
+                triStateDiscount = TuitionConfig.NY_DISCOUNT;
+                break;
+            case CT:
+                triStateDiscount = TuitionConfig.CT_DISCOUNT;
+                break;
+        }
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public double getTriStateDiscount() {
+        return triStateDiscount;
+    }
+
+    public void setTriStateDiscount(double triStateDiscount) {
+        triStateDiscount = triStateDiscount;
     }
 
     @Override
     public void tuitionDue() {
+        super.tuitionDue();
+        setTuitionDueAmount(getTuitionDueAmount() - getTriStateDiscount());
 
     }
 
     @Override
     public String toString() {
-        return super.toString() + " (tri-state)"; // TODO: figure out ny/ ct stuff
+        return super.toString() + " (tri-state) " + Constants.OUTPUT_SEPARATOR + location.toString();
     }
 }

@@ -32,7 +32,7 @@ public class Resident extends Student {
         double totalTuition = 0;
         if (isPartTime()) {
             totalTuition += getNumCredits() * getTuitionPerCreditHour();
-            totalTuition += getUniversityFee() * TuitionConfig.PART_TIME_RESIDENT_UNI_FEE_MULTIPLIER;
+            totalTuition += getUniversityFee() * TuitionConfig.PART_TIME_UNI_FEE_MULTIPLIER;
         }
         else {
             totalTuition += getTuition() + getUniversityFee();

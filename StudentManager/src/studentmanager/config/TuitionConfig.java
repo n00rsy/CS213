@@ -11,8 +11,14 @@ public class TuitionConfig {
     public static final double RES_TUITION_PER_CREDIT = 404;
     public static final double RES_DEFAULT_FIN_AID_AMOUNT = 0;
     public static final double UNI_FEE = 3268;
-    public static final double PART_TIME_RESIDENT_UNI_FEE_MULTIPLIER = 0.8;
+    public static final double PART_TIME_UNI_FEE_MULTIPLIER = 0.8;
 
     public static final double NONRES_TUITION = 29737;
     public static final double NONRES_TUITION_PER_CREDIT = 966;
+
+
+    public static final double NY_DISCOUNT = 4000;
+    public static final double CT_DISCOUNT = 5000;
+
+    
 }

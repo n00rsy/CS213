@@ -17,7 +17,18 @@ public class NonResident extends Student {
 
     @Override
     public void tuitionDue() {
-
+        double totalTuition = 0;
+        if (isPartTime()) {
+            totalTuition += getNumCredits() * getTuitionPerCreditHour();
+            totalTuition += getUniversityFee() * TuitionConfig.PART_TIME_UNI_FEE_MULTIPLIER;
+        }
+        else {
+            totalTuition += getTuition() + getUniversityFee();
+            if (getNumCredits() > TuitionConfig.MAX_FULL_TIME_CREDITS) {
+                totalTuition += (getNumCredits() - TuitionConfig.MAX_FULL_TIME_CREDITS) * getTuitionPerCreditHour();
+            }
+        }
+        setTuitionDueAmount(totalTuition - getTuitionCredit());
     }
 
     @Override

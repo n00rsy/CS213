@@ -6,7 +6,11 @@ import studentmanager.Profile;
 import studentmanager.config.Constants;
 import studentmanager.config.TuitionConfig;
 
-public abstract class Student {
+public class Student {
+
+    public Student(String name, Major major) {
+        setProfile(new Profile(name, major));
+    }
 
     public Student(String name, Major major, int numCredits) {
         setNumCredits(numCredits);
@@ -127,7 +131,7 @@ public abstract class Student {
                 getNumCredits() + " credit hours" + Constants.OUTPUT_SEPARATOR +
                 "tuition due:" + String.format("%.2f", getTuitionDueAmount()) + Constants.OUTPUT_SEPARATOR +
                 "total payment:" + String.format("%.2f",getTuitionPayment()) + Constants.OUTPUT_SEPARATOR +
-                "payment date: " + String.format("%.2f",getLastPaymentDate().toString())
+                "last payment date: " + getLastPaymentDate().toString()
                 ;
     }
 }
