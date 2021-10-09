@@ -87,8 +87,7 @@ public class Roster {
             internationalStudent = (International) roster[studentIndex];
             internationalStudent.setStudyAbroad(status);
             return true;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
     }

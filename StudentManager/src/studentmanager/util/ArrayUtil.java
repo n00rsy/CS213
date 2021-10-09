@@ -64,7 +64,6 @@ public class ArrayUtil {
         }
 
 
-
         Object[] newArray = new Object[count];
 
         int i = 0;

@@ -20,5 +20,5 @@ public class TuitionConfig {
     public static final double NY_DISCOUNT = 4000;
     public static final double CT_DISCOUNT = 5000;
 
-    
+
 }

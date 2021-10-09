@@ -8,15 +8,6 @@ import studentmanager.config.TuitionConfig;
 
 public class Student {
 
-    public Student(String name, Major major) {
-        setProfile(new Profile(name, major));
-    }
-
-    public Student(String name, Major major, int numCredits) {
-        setNumCredits(numCredits);
-        setProfile(new Profile(name, major));
-    }
-
     private double tuition;
     private double tuitionPerCreditHour;
     private double tuitionCredit;
@@ -26,6 +17,13 @@ public class Student {
     private int numCredits;
     private Date lastPaymentDate;
     private Profile profile;
+    public Student(String name, Major major) {
+        setProfile(new Profile(name, major));
+    }
+    public Student(String name, Major major, int numCredits) {
+        setNumCredits(numCredits);
+        setProfile(new Profile(name, major));
+    }
 
     public Profile getProfile() {
         return profile;
@@ -130,7 +128,7 @@ public class Student {
                 getProfile().getMajor() + Constants.OUTPUT_SEPARATOR +
                 getNumCredits() + " credit hours" + Constants.OUTPUT_SEPARATOR +
                 "tuition due:" + String.format("%.2f", getTuitionDueAmount()) + Constants.OUTPUT_SEPARATOR +
-                "total payment:" + String.format("%.2f",getTuitionPayment()) + Constants.OUTPUT_SEPARATOR +
+                "total payment:" + String.format("%.2f", getTuitionPayment()) + Constants.OUTPUT_SEPARATOR +
                 "last payment date: " + getLastPaymentDate().toString()
                 ;
     }

@@ -30,15 +30,13 @@ public class International extends NonResident {
     @Override
     public void tuitionDue() {
         double totalTuition = 0;
-        if (studyAbroad){ //true
-            if(getNumCredits() > 12){ //max study abroad credits is 12
+        if (studyAbroad) { //true
+            if (getNumCredits() > 12) { //max study abroad credits is 12
                 //totalTuition +=
-            }
-            else{
+            } else {
                 totalTuition += getUniversityFee() + additionalFees;
             }
-        }
-        else{ //false
+        } else { //false
             totalTuition += getTuition() + getUniversityFee() + additionalFees;
             if (getNumCredits() > TuitionConfig.MAX_FULL_TIME_CREDITS) {
                 //totalTuition +=

@@ -6,7 +6,6 @@ import studentmanager.config.TuitionConfig;
 import studentmanager.student.*;
 
 import java.util.InputMismatchException;
-import java.util.Locale;
 
 public class ParseUtil {
 

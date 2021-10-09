@@ -125,8 +125,7 @@ public class TuitionManager {
         if (args.length == 3) {
             System.out.println("Missing the amount.");
 
-        }
-        else if (args.length == 4) {
+        } else if (args.length == 4) {
             System.out.println("Missing data in command line.");
         } else {
             double amount = 0;
