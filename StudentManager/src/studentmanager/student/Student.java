@@ -108,7 +108,7 @@ public class Student {
     }
 
 
-    public void payTuition(int amount, Date date) {
+    public void payTuition(double amount, Date date) {
 
         if (amount > 0 && amount <= getTuitionDueAmount() && date.isValid()) {
             tuitionCredit += amount;

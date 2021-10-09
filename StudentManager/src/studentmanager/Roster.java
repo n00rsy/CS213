@@ -1,6 +1,7 @@
 package studentmanager;
 
 import studentmanager.config.Constants;
+import studentmanager.student.International;
 import studentmanager.student.Student;
 import studentmanager.util.ArrayUtil;
 
@@ -60,17 +61,41 @@ public class Roster {
         return true;
     }
 
-    public boolean payTuition(Student student, double amount) {
+    public boolean payTuition(Student student, double amount, Date date) {
+        int studentIndex = find(student);
+        if (studentIndex < 0) {
+            return false;
+        }
+
+        if (roster[studentIndex].isPartTime()) {
+            throw new IllegalStateException("Parttime student doesn't qualify for the award.");
+        }
+        if (amount > roster[studentIndex].getTuitionDueAmount()) {
+            throw new IllegalArgumentException("Amount is greater than amount due.");
+        }
+        roster[studentIndex].payTuition(amount, date);
         return true;
     }
 
     public boolean setStudyAbroad(Student student, boolean status) {
-        return true;
+        int studentIndex = find(student);
+        if (studentIndex < 0) {
+            return false;
+        }
+        International internationalStudent;
+        try {
+            internationalStudent = (International) roster[studentIndex];
+            internationalStudent.setStudyAbroad(status);
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
     }
 
     public void calculateTuition() {
-        for (Student s : roster) {
-            s.tuitionDue();
+        for (int i = 0; i < size; i++) {
+            roster[i].tuitionDue();
         }
     }
 

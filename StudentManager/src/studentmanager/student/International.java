@@ -10,12 +10,21 @@ public class International extends NonResident {
     private final int additionalFees = 2650;
     private boolean studyAbroad;
 
-    public International(String name, Major major, int numCredits) {
+    public International(String name, Major major, int numCredits, boolean studyAbroad) {
 
         super(name, major, numCredits);
         setTuition(TuitionConfig.RES_TUITION);
         setUniversityFee(TuitionConfig.UNI_FEE);
         setLastPaymentDate(new Date(Constants.DEFAULT_DATE));
+        setStudyAbroad(studyAbroad);
+    }
+
+    public boolean isStudyAbroad() {
+        return studyAbroad;
+    }
+
+    public void setStudyAbroad(boolean studyAbroad) {
+        this.studyAbroad = studyAbroad;
     }
 
     @Override
@@ -40,6 +49,6 @@ public class International extends NonResident {
 
     @Override
     public String toString() {
-        return super.toString() + Constants.OUTPUT_SEPARATOR + "international";
+        return super.toString() + Constants.OUTPUT_SEPARATOR + "international" + ((studyAbroad) ? (Constants.OUTPUT_SEPARATOR + "study abroad") : "");
     }
 }

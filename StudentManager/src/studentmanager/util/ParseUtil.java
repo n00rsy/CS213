@@ -3,10 +3,7 @@ package studentmanager.util;
 import studentmanager.Location;
 import studentmanager.Major;
 import studentmanager.config.TuitionConfig;
-import studentmanager.student.NonResident;
-import studentmanager.student.Resident;
-import studentmanager.student.Student;
-import studentmanager.student.TriState;
+import studentmanager.student.*;
 
 import java.util.InputMismatchException;
 import java.util.Locale;
@@ -45,8 +42,14 @@ public class ParseUtil {
                                     Location location = parseLocation(args[4]);
                                     return new TriState(name, major, numCredits, location);
                                 case 'I':
-                                    // TODO: parse international
-                                    break;
+                                    if (args.length != 5) {
+                                        throw new IllegalArgumentException("Missing data in command line.");
+                                    }
+                                    if (numCredits < 12) {
+                                        throw new IllegalArgumentException("International students must enroll at least 12 credits.");
+                                    }
+                                    boolean studyAbroad = parseBoolean(args[4]);
+                                    return new International(name, major, numCredits, studyAbroad);
                             }
                         }
                         throw new IllegalArgumentException("Command '" + command + "' not supported!");
