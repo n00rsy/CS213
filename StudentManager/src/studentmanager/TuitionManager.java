@@ -1,6 +1,7 @@
 package studentmanager;
 
 import studentmanager.config.Constants;
+import studentmanager.config.TuitionConfig;
 import studentmanager.student.Student;
 import studentmanager.util.ParseUtil;
 
@@ -67,7 +68,7 @@ public class TuitionManager {
 
                 case "Q":
                     running = false;
-                    System.out.println("Tuition Manager terminated.");
+                    System.out.println("\nTuition Manager terminated.");
                     break;
 
                 default:
@@ -133,11 +134,11 @@ public class TuitionManager {
             try {
                 amount = Double.parseDouble(args[3]);
             } catch (Exception e) {
-                System.out.println("Invalid amount.");
+                System.out.println(Constants.INVALID_AMOUNT_MESSAGE);
                 return;
             }
             if (amount <= 0) {
-                System.out.println("Invalid amount.");
+                System.out.println(Constants.INVALID_AMOUNT_MESSAGE);
             } else if (date == null || !date.isValid() || date.compareTo(new Date()) > 0 && date.compareTo(new Date("01/01/2021")) < 0) {
                 System.out.println("Payment date invalid.");
             } else {
@@ -171,6 +172,36 @@ public class TuitionManager {
     }
 
     private void setFinancialAid(String[] args, Roster roster) {
-        System.out.println("didnt implement this yet");
+        Student student = null;
+        try {
+            student = ParseUtil.parseStudent(args);
+        } catch (Exception e) {
+            System.out.println(e.getLocalizedMessage());
+            return;
+        }
+        if (args.length == 3) {
+            System.out.println("Missing the amount.");
+        } else {
+            double amount = 0;
+            try {
+                amount = Double.parseDouble(args[3]);
+            } catch (Exception e) {
+                System.out.println(Constants.INVALID_AMOUNT_MESSAGE);
+                return;
+            }
+            if (amount <= 0 || amount > TuitionConfig.MAX_FIN_AID) {
+                System.out.println(Constants.INVALID_AMOUNT_MESSAGE);
+            } else {
+                try {
+                    if (roster.setFinancialAid(student, amount)) {
+                        System.out.println("Tuition updated.");
+                    } else {
+                        System.out.println("Student not in the roster.");
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getLocalizedMessage());
+                }
+            }
+        }
     }
 }

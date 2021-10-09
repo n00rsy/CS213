@@ -2,6 +2,7 @@ package studentmanager;
 
 import studentmanager.config.Constants;
 import studentmanager.student.International;
+import studentmanager.student.Resident;
 import studentmanager.student.Student;
 import studentmanager.util.ArrayUtil;
 
@@ -79,14 +80,35 @@ public class Roster {
         if (studentIndex < 0) {
             return false;
         }
-        International internationalStudent;
         try {
-            internationalStudent = (International) roster[studentIndex];
+            International internationalStudent = (International) roster[studentIndex];
             internationalStudent.setStudyAbroad(status);
             return true;
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public boolean setFinancialAid(Student student, double amount) {
+        int studentIndex = find(student);
+        if (studentIndex < 0) {
+            return false;
+        }
+        Resident resident;
+        try {
+            resident = (Resident) roster[studentIndex];
+
+        } catch (Exception e) {
+            throw new IllegalStateException("Not a resident student.");
+        }
+        if (resident.isPartTime()) {
+            throw new IllegalStateException("Parttime student doesn't qualify for the award.");
+        }
+        if (resident.getFinancialAid() > 0) {
+            throw new IllegalStateException("Awarded once already.");
+        }
+        resident.setFinancialAid(amount);
+        return true;
     }
 
     public void calculateTuition() {
@@ -128,10 +150,10 @@ public class Roster {
             System.out.println("* list of students made payments ordered by payment date **");
             Object[] trimmedRoster = ArrayUtil.copy(roster, 0, size);
 
-            for (Object o : trimmedRoster) {
-                Student s = (Student) o;
-                if (s.getLastPaymentDate() == null) {
-                    o = null;
+            for (int i = 0; i < trimmedRoster.length; i++) {
+                Student s = (Student) trimmedRoster[i];
+                if (s.getLastPaymentDate().compareTo(new Date(Constants.DEFAULT_DATE)) == 0) {
+                    trimmedRoster[i] = null;
                 }
             }
             Object[] payingStudents = ArrayUtil.filterNullValues(trimmedRoster);
@@ -139,9 +161,9 @@ public class Roster {
             ArrayUtil.insertionSort(payingStudents, (o1, o2) -> {
                 Student s1 = (Student) o1;
                 Student s2 = (Student) o2;
-                return s1.getProfile().getName().compareTo(s2.getProfile().getName());
+                return s1.getLastPaymentDate().compareTo(s2.getLastPaymentDate());
             });
-            ArrayUtil.print(payingStudents, 0, size);
+            ArrayUtil.print(payingStudents, 0, payingStudents.length);
             System.out.println(Constants.END_ROSTER_MESSAGE);
         }
     }

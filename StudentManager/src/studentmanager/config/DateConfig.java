@@ -1,5 +1,10 @@
 package studentmanager.config;
 
+/**
+ * A class containing constants for use with the Date class.
+ * Can be used to configure custom values for different calendars.
+ * @author Noor, Umar
+ */
 public class DateConfig {
 
     public static final int MONTH_INDEX = 0;
@@ -31,5 +36,4 @@ public class DateConfig {
     public static final int SHORT_MONTHS_LENGTH = 30;
     public static final int FEB_NORMAL_LENGTH = 28;
     public static final int FEB_LEAP_LENGTH = 29;
-
 }

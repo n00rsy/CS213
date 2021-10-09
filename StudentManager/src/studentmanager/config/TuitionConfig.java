@@ -1,5 +1,10 @@
 package studentmanager.config;
 
+/**
+ * A class containing constants relating to tuition values.
+ * Allows for easy reconfiguration for changes to university tuition.
+ * @author Noor, Umar
+ */
 public class TuitionConfig {
 
     public static final int MIN_CREDITS = 3;
@@ -19,10 +24,8 @@ public class TuitionConfig {
     public static final double INTERNAT_TUITION = 29737;
     public static final double INTERNAT_ADD_FEE = 2650;
 
-
-
     public static final double NY_DISCOUNT = 4000;
     public static final double CT_DISCOUNT = 5000;
 
-
+    public static final double MAX_FIN_AID = 10000;
 }
