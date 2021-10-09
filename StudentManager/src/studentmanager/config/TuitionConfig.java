@@ -16,6 +16,10 @@ public class TuitionConfig {
     public static final double NONRES_TUITION = 29737;
     public static final double NONRES_TUITION_PER_CREDIT = 966;
 
+    public static final double INTERNAT_TUITION = 29737;
+    public static final double INTERNAT_ADD_FEE = 2650;
+
+
 
     public static final double NY_DISCOUNT = 4000;
     public static final double CT_DISCOUNT = 5000;

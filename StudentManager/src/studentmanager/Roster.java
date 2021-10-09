@@ -67,9 +67,6 @@ public class Roster {
             return false;
         }
 
-        if (roster[studentIndex].isPartTime()) {
-            throw new IllegalStateException("Parttime student doesn't qualify for the award.");
-        }
         if (amount > roster[studentIndex].getTuitionDueAmount()) {
             throw new IllegalArgumentException("Amount is greater than amount due.");
         }

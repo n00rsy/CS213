@@ -6,6 +6,8 @@ import studentmanager.Profile;
 import studentmanager.config.Constants;
 import studentmanager.config.TuitionConfig;
 
+import java.text.DecimalFormat;
+
 public class Student {
 
     private double tuition;
@@ -107,10 +109,8 @@ public class Student {
 
 
     public void payTuition(double amount, Date date) {
-
-        if (amount > 0 && amount <= getTuitionDueAmount() && date.isValid()) {
-            tuitionCredit += amount;
-        }
+        tuitionPayment += amount;
+        setLastPaymentDate(date);
     }
 
     @Override
@@ -122,13 +122,17 @@ public class Student {
         return profile.equals(other.getProfile());
     }
 
+    private String priceFormat(double  d) {
+        return String.format("%,.2f", d);
+    }
+
     @Override
     public String toString() {
         return getProfile().getName() + Constants.OUTPUT_SEPARATOR +
                 getProfile().getMajor() + Constants.OUTPUT_SEPARATOR +
                 getNumCredits() + " credit hours" + Constants.OUTPUT_SEPARATOR +
-                "tuition due:" + String.format("%.2f", getTuitionDueAmount()) + Constants.OUTPUT_SEPARATOR +
-                "total payment:" + String.format("%.2f", getTuitionPayment()) + Constants.OUTPUT_SEPARATOR +
+                "tuition due:" + priceFormat(getTuitionDueAmount()) + Constants.OUTPUT_SEPARATOR +
+                "total payment:" + priceFormat(getTuitionPayment()) + Constants.OUTPUT_SEPARATOR +
                 "last payment date: " + getLastPaymentDate().toString()
                 ;
     }

@@ -15,10 +15,10 @@ public class TriState extends NonResident {
         setLocation(location);
         switch (location) {
             case NY:
-                triStateDiscount = TuitionConfig.NY_DISCOUNT;
+                setTriStateDiscount(TuitionConfig.NY_DISCOUNT);
                 break;
             case CT:
-                triStateDiscount = TuitionConfig.CT_DISCOUNT;
+                setTriStateDiscount(TuitionConfig.CT_DISCOUNT);
                 break;
         }
     }
@@ -36,18 +36,17 @@ public class TriState extends NonResident {
     }
 
     public void setTriStateDiscount(double triStateDiscount) {
-        triStateDiscount = triStateDiscount;
+        this.triStateDiscount = triStateDiscount;
     }
 
     @Override
     public void tuitionDue() {
         super.tuitionDue();
         setTuitionDueAmount(getTuitionDueAmount() - getTriStateDiscount());
-
     }
 
     @Override
     public String toString() {
-        return super.toString() + " (tri-state) " + Constants.OUTPUT_SEPARATOR + location.toString();
+        return super.toString() + "(tri-state)" + Constants.OUTPUT_SEPARATOR + location.toString();
     }
 }

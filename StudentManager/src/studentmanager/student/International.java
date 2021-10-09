@@ -13,10 +13,11 @@ public class International extends NonResident {
     public International(String name, Major major, int numCredits, boolean studyAbroad) {
 
         super(name, major, numCredits);
-        setTuition(TuitionConfig.RES_TUITION);
+        setTuition(TuitionConfig.INTERNAT_TUITION);
         setUniversityFee(TuitionConfig.UNI_FEE);
         setLastPaymentDate(new Date(Constants.DEFAULT_DATE));
         setStudyAbroad(studyAbroad);
+        setTuitionPerCreditHour(TuitionConfig.NONRES_TUITION_PER_CREDIT);
     }
 
     public boolean isStudyAbroad() {
@@ -30,19 +31,21 @@ public class International extends NonResident {
     @Override
     public void tuitionDue() {
         double totalTuition = 0;
-        if (studyAbroad) { //true
-            if (getNumCredits() > 12) { //max study abroad credits is 12
-                //totalTuition +=
-            } else {
-                totalTuition += getUniversityFee() + additionalFees;
-            }
-        } else { //false
-            totalTuition += getTuition() + getUniversityFee() + additionalFees;
-            if (getNumCredits() > TuitionConfig.MAX_FULL_TIME_CREDITS) {
-                //totalTuition +=
+        if (isPartTime()) {
+            if (!isStudyAbroad())
+                totalTuition += getNumCredits() * getTuitionPerCreditHour();
+            totalTuition += getUniversityFee() * TuitionConfig.PART_TIME_UNI_FEE_MULTIPLIER;
+        }
+        else {
+            totalTuition += getUniversityFee();
+            if (!isStudyAbroad()) {
+                totalTuition += getTuition();
+                if (getNumCredits() > TuitionConfig.MAX_FULL_TIME_CREDITS) {
+                    totalTuition += (getNumCredits() - TuitionConfig.MAX_FULL_TIME_CREDITS) * getTuitionPerCreditHour();
+                }
             }
         }
-        setTuitionDueAmount(totalTuition);
+        setTuitionDueAmount(totalTuition - getTuitionCredit() - getTuitionPayment());
     }
 
     @Override

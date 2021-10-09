@@ -123,7 +123,7 @@ public class TuitionManager {
             return;
         }
         if (args.length == 3) {
-            System.out.println("Missing the amount.");
+            System.out.println("Payment amount missing.");
 
         } else if (args.length == 4) {
             System.out.println("Missing data in command line.");
@@ -138,7 +138,7 @@ public class TuitionManager {
             }
             if (amount <= 0) {
                 System.out.println("Invalid amount.");
-            } else if (date != null && !date.isValid() && date.compareTo(new Date()) > 0 && date.compareTo(new Date("01/01/2021")) < 0) {
+            } else if (date == null || !date.isValid() || date.compareTo(new Date()) > 0 && date.compareTo(new Date("01/01/2021")) < 0) {
                 System.out.println("Payment date invalid.");
             } else {
                 try {

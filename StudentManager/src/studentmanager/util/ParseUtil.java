@@ -44,10 +44,12 @@ public class ParseUtil {
                                     if (args.length != 5) {
                                         throw new IllegalArgumentException("Missing data in command line.");
                                     }
+                                    boolean studyAbroad = parseBoolean(args[4]);
+
                                     if (numCredits < 12) {
                                         throw new IllegalArgumentException("International students must enroll at least 12 credits.");
                                     }
-                                    boolean studyAbroad = parseBoolean(args[4]);
+
                                     return new International(name, major, numCredits, studyAbroad);
                             }
                         }

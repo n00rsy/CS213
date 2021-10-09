@@ -62,8 +62,7 @@ public class ArrayUtil {
         for (Object o : array) {
             if (o != null) count++;
         }
-
-
+        
         Object[] newArray = new Object[count];
 
         int i = 0;

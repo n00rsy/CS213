@@ -39,7 +39,7 @@ public class Resident extends Student {
                 totalTuition += (getNumCredits() - TuitionConfig.MAX_FULL_TIME_CREDITS) * getTuitionPerCreditHour();
             }
         }
-        setTuitionDueAmount(totalTuition - getTuitionCredit());
+        setTuitionDueAmount(totalTuition - getTuitionCredit() - getTuitionPayment());
     }
 
     @Override
