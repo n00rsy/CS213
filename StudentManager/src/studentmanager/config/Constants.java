@@ -2,6 +2,7 @@ package studentmanager.config;
 
 /**
  * A class containing constants for use throughout the solution.
+ *
  * @author Noor, Umar
  */
 public class Constants {

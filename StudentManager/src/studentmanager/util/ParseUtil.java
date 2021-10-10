@@ -7,8 +7,18 @@ import studentmanager.student.*;
 
 import java.util.InputMismatchException;
 
+/**
+ * A utility class to parse arguments from the command line.
+ *
+ * @author Noor, Umar
+ */
 public class ParseUtil {
 
+    /**
+     * Parses a student from an inputted array of strings
+     * @param args array of strings to parse
+     * @return new student object
+     */
     public static Student parseStudent(String[] args) {
 
         if (args.length >= 3) {
@@ -61,6 +71,11 @@ public class ParseUtil {
         throw new IllegalArgumentException("Missing data in command line.");
     }
 
+    /**
+     * Parses a Major from a string
+     * @param arg input string
+     * @return Major corresponding to input
+     */
     public static Major parseMajor(String arg) {
         switch (arg.toUpperCase()) {
             case "CS":
@@ -78,6 +93,11 @@ public class ParseUtil {
         }
     }
 
+    /**
+     * Parses the number of credits from a string and checks to ensure its value is valid
+     * @param arg string to parse
+     * @return int numCredits
+     */
     public static int parseNumCredits(String arg) {
         int numCredits;
         try {
@@ -97,6 +117,11 @@ public class ParseUtil {
         return numCredits;
     }
 
+    /**
+     * Parses a Location object from a string
+     * @param arg string to parse
+     * @return new Location object
+     */
     public static Location parseLocation(String arg) {
         switch (arg.toUpperCase()) {
             case "NY":
@@ -108,6 +133,11 @@ public class ParseUtil {
         }
     }
 
+    /**
+     * Parses a boolean from a string containing 'true' or 'false'
+     * @param arg string to parse
+     * @return parsed boolean
+     */
     public static boolean parseBoolean(String arg) {
         switch (arg.toUpperCase()) {
             case "TRUE":

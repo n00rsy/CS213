@@ -7,6 +7,7 @@ import studentmanager.config.TuitionConfig;
 
 /**
  * A model class representing a TriState student.
+ *
  * @author Noor, Umar
  */
 public class TriState extends NonResident {
@@ -16,6 +17,7 @@ public class TriState extends NonResident {
 
     /**
      * TriState constructor
+     *
      * @param name
      * @param major
      * @param numCredits
@@ -36,6 +38,7 @@ public class TriState extends NonResident {
 
     /**
      * Location accessor
+     *
      * @return this TriState's location
      */
     public Location getLocation() {
@@ -44,6 +47,7 @@ public class TriState extends NonResident {
 
     /**
      * Location mutator
+     *
      * @param location new TriState location
      */
     public void setLocation(Location location) {
@@ -52,6 +56,7 @@ public class TriState extends NonResident {
 
     /**
      * TriState discount accessor
+     *
      * @return
      */
     public double getTriStateDiscount() {
@@ -65,11 +70,13 @@ public class TriState extends NonResident {
     @Override
     public void tuitionDue() {
         super.tuitionDue();
-        setTuitionDueAmount(getTuitionDueAmount() - getTriStateDiscount());
+        if (!isPartTime())
+            setTuitionDueAmount(getTuitionDueAmount() - getTriStateDiscount());
     }
 
     /**
      * Converts this NonResident object to string using the superclass toString method
+     *
      * @return string representation of this TriState object
      */
     @Override

@@ -8,12 +8,14 @@ import studentmanager.config.TuitionConfig;
 /**
  * A model class representing a NonResident student.
  * International, TriState both derive from this class.
+ *
  * @author Noor, Umar
  */
 public class NonResident extends Student {
 
     /**
      * NonResident Student constructor
+     *
      * @param name
      * @param major
      * @param numCredits number of credits the student is taking
@@ -45,6 +47,7 @@ public class NonResident extends Student {
 
     /**
      * Converts this NonResident object to string using the superclass toString method
+     *
      * @return string representation of this NonResident object
      */
     @Override

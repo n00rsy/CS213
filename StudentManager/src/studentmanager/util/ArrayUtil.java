@@ -57,6 +57,11 @@ public class ArrayUtil {
         }
     }
 
+    /**
+     * Filters out the null values in an array
+     *
+     * @param array the array to filter
+     */
     public static Object[] filterNullValues(Object[] array) {
         int count = 0;
         for (Object o : array) {

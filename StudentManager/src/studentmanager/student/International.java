@@ -7,6 +7,7 @@ import studentmanager.config.TuitionConfig;
 
 /**
  * A model class representing an International student
+ *
  * @author Noor, Umar
  */
 public class International extends NonResident {
@@ -15,9 +16,10 @@ public class International extends NonResident {
 
     /**
      * International Student constructor
+     *
      * @param name
      * @param major
-     * @param numCredits number of credits the student is taking
+     * @param numCredits  number of credits the student is taking
      * @param studyAbroad true if the student is studying abroad, false otherwise
      */
     public International(String name, Major major, int numCredits, boolean studyAbroad) {
@@ -62,6 +64,7 @@ public class International extends NonResident {
 
     /**
      * Converts this International object to string using the superclass toString method
+     *
      * @return string representation of this International object
      */
     @Override

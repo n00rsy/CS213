@@ -5,9 +5,11 @@ import studentmanager.Major;
 import studentmanager.Profile;
 import studentmanager.config.Constants;
 import studentmanager.config.TuitionConfig;
+
 /**
  * A model class representing a student.
  * All other student classes derive from this class.
+ *
  * @author Noor, Umar
  */
 public class Student {
@@ -22,6 +24,7 @@ public class Student {
 
     /**
      * Student Constructor
+     *
      * @param name
      * @param major
      */
@@ -31,6 +34,7 @@ public class Student {
 
     /**
      * Student Constructor
+     *
      * @param name
      * @param major
      * @param numCredits
@@ -42,6 +46,7 @@ public class Student {
 
     /**
      * Student profile accessor
+     *
      * @return this student's profile
      */
     public Profile getProfile() {
@@ -50,6 +55,7 @@ public class Student {
 
     /**
      * Student profile mutator
+     *
      * @param profile new profile
      */
     public void setProfile(Profile profile) {
@@ -58,6 +64,7 @@ public class Student {
 
     /**
      * Student profile accessor
+     *
      * @return this student's profile
      */
     public double getTuition() {
@@ -66,6 +73,7 @@ public class Student {
 
     /**
      * Student tuition mutator
+     *
      * @param tuition new tuition
      */
     public void setTuition(double tuition) {
@@ -74,6 +82,7 @@ public class Student {
 
     /**
      * Student profile accessor
+     *
      * @return this student's profile
      */
     public double getTuitionPerCreditHour() {
@@ -82,6 +91,7 @@ public class Student {
 
     /**
      * Student tuition per credit hour mutator
+     *
      * @param tuitionPerCreditHour new tuition per credit hour
      */
     public void setTuitionPerCreditHour(double tuitionPerCreditHour) {
@@ -90,6 +100,7 @@ public class Student {
 
     /**
      * Total tuition payment accessor
+     *
      * @return this student's total tuition payment
      */
     public double getTuitionPayment() {
@@ -98,6 +109,7 @@ public class Student {
 
     /**
      * Tuition due amount accessor
+     *
      * @return this student's tuition due
      */
     public double getTuitionDueAmount() {
@@ -106,6 +118,7 @@ public class Student {
 
     /**
      * Student tuition due amount mutator
+     *
      * @param tuitionDueAmount new tuition due amount
      */
     public void setTuitionDueAmount(double tuitionDueAmount) {
@@ -114,6 +127,7 @@ public class Student {
 
     /**
      * Accessor for number of credit hours
+     *
      * @return this student's credit hours
      */
     public int getNumCredits() {
@@ -122,6 +136,7 @@ public class Student {
 
     /**
      * number of credit hours mutator
+     *
      * @param numCredits new number of credit hours
      */
     public void setNumCredits(int numCredits) {
@@ -130,6 +145,7 @@ public class Student {
 
     /**
      * Student last payment date accessor
+     *
      * @return this student's last payment date
      */
     public Date getLastPaymentDate() {
@@ -138,6 +154,7 @@ public class Student {
 
     /**
      * Last payment date mutator
+     *
      * @param lastPaymentDate new last payment date
      */
     public void setLastPaymentDate(Date lastPaymentDate) {
@@ -153,6 +170,7 @@ public class Student {
 
     /**
      * Checks if the student is part time
+     *
      * @return true if part time, false otherwise
      */
     public boolean isPartTime() {
@@ -161,16 +179,19 @@ public class Student {
 
     /**
      * Increases tuitionPayment by the amount passed in and sets new lastPaymentDate
+     *
      * @param amount payment to process
-     * @param date date of payment
+     * @param date   date of payment
      */
     public void payTuition(double amount, Date date) {
         tuitionPayment += amount;
+        tuitionDueAmount -= amount;
         setLastPaymentDate(date);
     }
 
     /**
      * Checks if this student is equal to another object by checking the equality of their profiles.
+     *
      * @param o the object to check against
      * @return true if the student profiles are the same, false otherwise
      */
@@ -185,6 +206,7 @@ public class Student {
 
     /**
      * Converts this NonResident object to string using the superclass toString method
+     *
      * @return string representation of this Student object
      */
     @Override

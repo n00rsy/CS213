@@ -3,6 +3,7 @@ package studentmanager.config;
 /**
  * A class containing constants for use with the Date class.
  * Can be used to configure custom values for different calendars.
+ *
  * @author Noor, Umar
  */
 public class DateConfig {

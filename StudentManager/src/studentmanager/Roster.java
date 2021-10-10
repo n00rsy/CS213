@@ -6,16 +6,30 @@ import studentmanager.student.Resident;
 import studentmanager.student.Student;
 import studentmanager.util.ArrayUtil;
 
+/**
+ * A class that defines a mutable, dynamically resizable list of Students that can be interacted with.
+ *
+ * @author Noor, Umar
+ */
 public class Roster {
 
     private Student[] roster;
     private int size; //keep track of the number of students in the roster
 
+    /**
+     * Initializes a new roster.
+     */
     public Roster() {
         roster = new Student[Constants.ROSTER_INITIAL_SIZE];
         size = 0;
     }
 
+    /**
+     * Iterates through this roster to find the index of the student, or returns NOT_FOUND.
+     *
+     * @param student the student to search for
+     * @return index of the student, or NOT_FOUND if it is not found
+     */
     private int find(Student student) {
         for (int i = 0; i < size; i++) {
             if (student.equals(roster[i])) {
@@ -25,6 +39,9 @@ public class Roster {
         return Constants.NOT_FOUND;
     }
 
+    /**
+     * Increase the capacity of the inner array by 4.
+     */
     private void grow() {
         Student[] newRoster = new Student[roster.length + Constants.ROSTER_GROWTH_AMOUNT];
 
@@ -34,6 +51,12 @@ public class Roster {
         roster = newRoster;
     }
 
+    /**
+     * Attempts to add the student to the list.
+     *
+     * @param student the student to add
+     * @return True if added, false otherwise.
+     */
     public boolean add(Student student) {
         if (find(student) >= 0) {
             return false;
@@ -47,6 +70,12 @@ public class Roster {
         return true;
     }
 
+    /**
+     * Removes the student from the list.
+     *
+     * @param student the student to remove.
+     * @return True if removed, false otherwise.
+     */
     public boolean remove(Student student) {
         int studentIndex = find(student);
         if (studentIndex < 0) {
@@ -62,6 +91,13 @@ public class Roster {
         return true;
     }
 
+    /**
+     * Finds the student in the roster array, then pays the inputted tuition amount and updates lastPaymentDate
+     * @param student the student to update
+     * @param amount the amount of tuition to pay
+     * @param date the date of the payment
+     * @return true if success, false otherwise.
+     */
     public boolean payTuition(Student student, double amount, Date date) {
         int studentIndex = find(student);
         if (studentIndex < 0) {
@@ -75,6 +111,12 @@ public class Roster {
         return true;
     }
 
+    /**
+     * Finds the student in the roster array, then sets the study abroad status to the inputted value
+     * @param student the student to find
+     * @param status the new status
+     * @return true if success, false otherwise.
+     */
     public boolean setStudyAbroad(Student student, boolean status) {
         int studentIndex = find(student);
         if (studentIndex < 0) {
@@ -89,6 +131,12 @@ public class Roster {
         }
     }
 
+    /**
+     * Finds the student in the roster array, then sets the financial aid to inputted amount
+     * @param student the student to find
+     * @param amount the amount of financial aid
+     * @return true if success, false otherwise.
+     */
     public boolean setFinancialAid(Student student, double amount) {
         int studentIndex = find(student);
         if (studentIndex < 0) {
@@ -111,12 +159,18 @@ public class Roster {
         return true;
     }
 
+    /**
+     * Iterates through the entire roster and calculates tuition due for each student.
+     */
     public void calculateTuition() {
         for (int i = 0; i < size; i++) {
             roster[i].tuitionDue();
         }
     }
 
+    /**
+     * Displays all students to the output stream without specifying the order.
+     */
     public void print() {
         if (size == 0) {
             System.out.println(Constants.EMPTY_ROSTER_MESSAGE);
@@ -127,6 +181,9 @@ public class Roster {
         }
     }
 
+    /**
+     * Displays all students to the output stream, sorted by name in ascending order
+     */
     public void printByStudentName() {
         if (size == 0) {
             System.out.println(Constants.EMPTY_ROSTER_MESSAGE);
@@ -143,6 +200,9 @@ public class Roster {
         }
     }
 
+    /**
+     * Displays students who have made a tuition payment to the output stream, sorted by last payment date in descending order
+     */
     public void printPaymentStudentsByPaymentDate() {
         if (size == 0) {
             System.out.println(Constants.EMPTY_ROSTER_MESSAGE);

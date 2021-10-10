@@ -3,6 +3,7 @@ package studentmanager.config;
 /**
  * A class containing constants relating to tuition values.
  * Allows for easy reconfiguration for changes to university tuition.
+ *
  * @author Noor, Umar
  */
 public class TuitionConfig {

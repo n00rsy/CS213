@@ -7,6 +7,7 @@ import studentmanager.config.TuitionConfig;
 
 /**
  * A model class representing a Resident student
+ *
  * @author Noor, Umar
  */
 public class Resident extends Student {
@@ -15,6 +16,7 @@ public class Resident extends Student {
 
     /**
      * Resident Student constructor
+     *
      * @param name
      * @param major
      * @param numCredits number of credits the student is taking
@@ -28,6 +30,7 @@ public class Resident extends Student {
 
     /**
      * Financial aid accessor
+     *
      * @return this student's financial aid amount
      */
     public double getFinancialAid() {
@@ -37,7 +40,7 @@ public class Resident extends Student {
     /**
      * Student financial aid mutator
      *
-     * @param  financialAid studyAbroad value
+     * @param financialAid studyAbroad value
      */
     public void setFinancialAid(double financialAid) {
         this.financialAid = financialAid;
@@ -63,6 +66,7 @@ public class Resident extends Student {
 
     /**
      * Converts this Resident object to string using the superclass toString method
+     *
      * @return string representation of this Resident object
      */
     @Override
