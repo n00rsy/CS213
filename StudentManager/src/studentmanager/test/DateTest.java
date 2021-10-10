@@ -1,133 +1,105 @@
 package studentmanager.test;
 
+import org.junit.Assert;
+import org.junit.Test;
 import studentmanager.Date;
 
 import java.util.Calendar;
 
+/**
+ * JUnit test class for Date.isValid method
+ *
+ * @author Noor, Umar
+ */
 public class DateTest {
-    /**
-     * Test-bed main for unit testing isValid method
-     * TODO: convert to junit
-     *
-     * @param args
-     */
-    public static void main(String[] args) {
 
+    @Test
+    public void smallInvalidYearsTest() {
+        Assert.assertFalse("smallInvalidYearTest failed", new Date("11/21/800").isValid());
+        Assert.assertFalse("smallInvalidYearTest failed", new Date("01/01/2020").isValid());
+        Assert.assertFalse("small date test failed", new Date("01/01/-2020").isValid());
+
+        System.out.println("smallInvalidYearTest passed.");
+    }
+
+    @Test
+    public void largeInvalidYearsTest() {
         Calendar today = Calendar.getInstance();
         int year = today.get(Calendar.YEAR);
+        Assert.assertFalse("largeInvalidYearTest failed", new Date("11/21/" + String.valueOf(year + 1)).isValid());
+        System.out.println("largeInvalidYearTest passed.");
+    }
 
-        // Test case 1
-        Date date = new Date("11/21/800");
-        boolean expectedResult = false;
-        boolean result = date.isValid();
-        if (result == expectedResult) {
-            System.out.println("Test case 1 passed");
-        } else {
-            System.out.println("Test case 1 failed.");
-        }
+    @Test
+    public void validYearTest() {
+        Assert.assertTrue("validYearsTest failed", new Date("01/01/2021").isValid());
+        Assert.assertTrue("validYearsTest failed", new Date("05/20/2021").isValid());
 
-        // Test case 2
-        date = new Date("11/21/" + (year + 1));
-        expectedResult = false;
-        result = date.isValid();
-        if (result == expectedResult) {
-            System.out.println("Test case 2 passed");
-        } else {
-            System.out.println("Test case 2 failed.");
-        }
+        System.out.println("validYearsTest passed.");
+    }
 
-        // Test case 3
-        date = new Date("13/21/1981");
-        expectedResult = false;
-        result = date.isValid();
-        if (result == expectedResult) {
-            System.out.println("Test case 3 passed");
-        } else {
-            System.out.println("Test case 3 failed.");
-        }
+    @Test
+    public void invalidMonthsTest() {
+        Assert.assertFalse("invalidMonthsTest failed", new Date("13/21/1981").isValid());
+        Assert.assertFalse("invalidMonthsTest failed", new Date("-1/21/1981").isValid());
 
-        // Test case 4
-        date = new Date("-1/21/1981");
-        expectedResult = false;
-        result = date.isValid();
-        if (result == expectedResult) {
-            System.out.println("Test case 4 passed");
-        } else {
-            System.out.println("Test case 4 failed.");
-        }
+        System.out.println("invalidMonthsTest passed.");
+    }
 
-        // Test case 5
-        date = new Date("2/29/2018");
-        expectedResult = false;
-        result = date.isValid();
-        if (result == expectedResult) {
-            System.out.println("Test case 5 passed");
-        } else {
-            System.out.println("Test case 5 failed.");
-        }
+    @Test
+    public void leapYearFebTest() {
+        Assert.assertFalse("leapYearFebTest failed", new Date("2/30/2020").isValid());
+        Assert.assertFalse("leapYearFebTest failed", new Date("2/29/2018").isValid());
 
-        // Test case 6
-        date = new Date("2/30/2020");
-        expectedResult = false;
-        result = date.isValid();
-        if (result == expectedResult) {
-            System.out.println("Test case 6 passed");
-        } else {
-            System.out.println("Test case 6 failed.");
-        }
+        System.out.println("leapYearFebTest passed.");
+    }
 
-        // Test case 7
-        date = new Date("11/0/1980");
-        expectedResult = false;
-        result = date.isValid();
-        if (result == expectedResult) {
-            System.out.println("Test case 7 passed");
-        } else {
-            System.out.println("Test case 7 failed.");
-        }
+    @Test
+    public void smallInvalidDayTest() {
+        Assert.assertFalse("smallInvalidDayTest failed", new Date("11/0/2021").isValid());
+        Assert.assertFalse("smallInvalidDayTest failed", new Date("11/-5/2021").isValid());
+        Assert.assertFalse("smallInvalidDayTest failed", new Date("11/32/2021").isValid());
 
-        // Test case 8
-        int[] longMonths = new int[]{1, 3, 5, 7, 8, 10, 12};
-        boolean passed = true;
-        for (int longMonth : longMonths) {
-            date = new Date(longMonth + "/32/2020");
-            expectedResult = false;
-            result = date.isValid();
-            if (result != expectedResult) {
-                passed = false;
-            }
-        }
-        if (passed) {
-            System.out.println("Test case 8 passed");
-        } else {
-            System.out.println("Test case 8 failed.");
-        }
+        System.out.println("smallInvalidDayTest passed.");
+    }
 
-        // Test case 9
-        int[] shortMonths = new int[]{4, 6, 9, 11};
-        passed = true;
-        for (int shortMonth : shortMonths) {
-            date = new Date(shortMonth + "/32/2020");
-            expectedResult = false;
-            result = date.isValid();
-            if (result != expectedResult) {
-                passed = false;
-            }
-        }
-        if (passed) {
-            System.out.println("Test case 9 passed");
-        } else {
-            System.out.println("Test case 9 failed.");
-        }
+    @Test
+    public void invalidOddMonthsDayTest() {
 
-        // test case 10
-        date = new Date("6/5/2000");
-        expectedResult = true;
-        result = date.isValid();
-        if (result == expectedResult) {
-            System.out.println("Test case 10 passed");
-        } else {
-            System.out.println("Test case 10 failed.");
-        }
+        Assert.assertFalse("InvalidOddMonthsDayTest failed", new Date("1/32/2021").isValid());
+        Assert.assertFalse("InvalidOddMonthsDayTest failed", new Date("3/32/2021").isValid());
+        Assert.assertFalse("InvalidOddMonthsDayTest failed", new Date("5/32/2021").isValid());
+        Assert.assertFalse("InvalidOddMonthsDayTest failed", new Date("7/32/2021").isValid());
+        Assert.assertFalse("InvalidOddMonthsDayTest failed", new Date("8/32/2021").isValid());
+
+        System.out.println("InvalidOddMonthsDayTest passed.");
+    }
+
+    @Test
+    public void validOddMonthsDayTest() {
+        Assert.assertTrue("validOddMonthsDayTest failed", new Date("1/31/2021").isValid());
+        Assert.assertTrue("validOddMonthsDayTest failed", new Date("3/31/2021").isValid());
+        Assert.assertTrue("validOddMonthsDayTest failed", new Date("5/31/2021").isValid());
+        Assert.assertTrue("validOddMonthsDayTest failed", new Date("7/31/2021").isValid());
+        Assert.assertTrue("validOddMonthsDayTest failed", new Date("8/31/2021").isValid());
+
+        System.out.println("validOddMonthsDayTest passed.");
+    }
+
+    @Test
+    public void inValidEvenMonthsDayTest() {
+        Assert.assertFalse("inValidEvenMonthsDayTest failed", new Date("4/31/2021").isValid());
+        Assert.assertFalse("inValidEvenMonthsDayTest failed", new Date("6/31/2021").isValid());
+        Assert.assertFalse("inValidEvenMonthsDayTest failed", new Date("9/31/2021").isValid());
+
+        System.out.println("inValidEvenMonthsDayTest passed.");
+    }
+
+    @Test
+    public void validEvenMonthsDayTest() {
+        Assert.assertTrue("validEvenMonthsDayTest failed", new Date("4/30/2021").isValid());
+        Assert.assertTrue("validEvenMonthsDayTest failed", new Date("6/30/2021").isValid());
+
+        System.out.println("validEvenMonthsDayTest passed.");
     }
 }

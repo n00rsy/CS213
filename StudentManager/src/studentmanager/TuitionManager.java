@@ -90,7 +90,7 @@ public class TuitionManager {
      * Adds a student to the collection and outputs the result to the command line.
      * Checks to ensure student doesn't already exist and that the input date is valid.
      *
-     * @param args the cmd arguments to parse from the user
+     * @param args   the cmd arguments to parse from the user
      * @param roster the roster to update
      */
     private void addStudent(String[] args, Roster roster) {
@@ -113,7 +113,7 @@ public class TuitionManager {
      * Removes a student from the collection and outputs the result to the command line.
      * Checks to ensure that the input date is valid.
      *
-     * @param args the cmd arguments to parse from the user
+     * @param args   the cmd arguments to parse from the user
      * @param roster the roster to update
      */
     private void removeStudent(String[] args, Roster roster) {
@@ -135,6 +135,7 @@ public class TuitionManager {
     /**
      * Calculates tuition for every student in the roster.
      * Outputs to command line when complete.
+     *
      * @param roster the roster to calculate tuition for
      */
     private void calculateTuition(Roster roster) {
@@ -146,7 +147,7 @@ public class TuitionManager {
      * Attempts to pay tuition for a student and outputs results to cmd.
      * Checks to ensure that the input date is valid.
      *
-     * @param args the cmd arguments to parse from the user
+     * @param args   the cmd arguments to parse from the user
      * @param roster the roster to update
      */
     private void payTuition(String[] args, Roster roster) {
@@ -193,7 +194,7 @@ public class TuitionManager {
      * Attempts to set study abroad status for a student and outputs results to cmd.
      * Checks to ensure that the input date is valid.
      *
-     * @param args the cmd arguments to parse from the user
+     * @param args   the cmd arguments to parse from the user
      * @param roster the roster to update
      */
     private void setStudyAbroad(String[] args, Roster roster) {
@@ -216,7 +217,7 @@ public class TuitionManager {
      * Attempts to set financial aid amount for a resident student and outputs results to cmd.
      * Checks to ensure that the input date is valid.
      *
-     * @param args the cmd arguments to parse from the user
+     * @param args   the cmd arguments to parse from the user
      * @param roster the roster to update
      */
     private void setFinancialAid(String[] args, Roster roster) {

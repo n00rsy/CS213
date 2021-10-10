@@ -16,6 +16,7 @@ public class ParseUtil {
 
     /**
      * Parses a student from an inputted array of strings
+     *
      * @param args array of strings to parse
      * @return new student object
      */
@@ -73,6 +74,7 @@ public class ParseUtil {
 
     /**
      * Parses a Major from a string
+     *
      * @param arg input string
      * @return Major corresponding to input
      */
@@ -95,6 +97,7 @@ public class ParseUtil {
 
     /**
      * Parses the number of credits from a string and checks to ensure its value is valid
+     *
      * @param arg string to parse
      * @return int numCredits
      */
@@ -119,6 +122,7 @@ public class ParseUtil {
 
     /**
      * Parses a Location object from a string
+     *
      * @param arg string to parse
      * @return new Location object
      */
@@ -135,6 +139,7 @@ public class ParseUtil {
 
     /**
      * Parses a boolean from a string containing 'true' or 'false'
+     *
      * @param arg string to parse
      * @return parsed boolean
      */

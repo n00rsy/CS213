@@ -108,6 +108,15 @@ public class Student {
     }
 
     /**
+     * Student tuition payment mutator
+     *
+     * @param tuitionPayment new tuition payment
+     */
+    public void setTuitionPayment(double tuitionPayment) {
+        this.tuitionPayment = tuitionPayment;
+    }
+
+    /**
      * Tuition due amount accessor
      *
      * @return this student's tuition due

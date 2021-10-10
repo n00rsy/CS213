@@ -93,9 +93,10 @@ public class Roster {
 
     /**
      * Finds the student in the roster array, then pays the inputted tuition amount and updates lastPaymentDate
+     *
      * @param student the student to update
-     * @param amount the amount of tuition to pay
-     * @param date the date of the payment
+     * @param amount  the amount of tuition to pay
+     * @param date    the date of the payment
      * @return true if success, false otherwise.
      */
     public boolean payTuition(Student student, double amount, Date date) {
@@ -113,8 +114,9 @@ public class Roster {
 
     /**
      * Finds the student in the roster array, then sets the study abroad status to the inputted value
+     *
      * @param student the student to find
-     * @param status the new status
+     * @param status  the new status
      * @return true if success, false otherwise.
      */
     public boolean setStudyAbroad(Student student, boolean status) {
@@ -125,6 +127,12 @@ public class Roster {
         try {
             International internationalStudent = (International) roster[studentIndex];
             internationalStudent.setStudyAbroad(status);
+            if (status) {
+                if (internationalStudent.getNumCredits() > 12) internationalStudent.setNumCredits(12);
+                internationalStudent.tuitionDue();
+                internationalStudent.setTuitionPayment(0);
+                internationalStudent.setLastPaymentDate(new Date(Constants.DEFAULT_DATE));
+            }
             return true;
         } catch (Exception e) {
             return false;
@@ -133,8 +141,9 @@ public class Roster {
 
     /**
      * Finds the student in the roster array, then sets the financial aid to inputted amount
+     *
      * @param student the student to find
-     * @param amount the amount of financial aid
+     * @param amount  the amount of financial aid
      * @return true if success, false otherwise.
      */
     public boolean setFinancialAid(Student student, double amount) {

@@ -23,6 +23,7 @@ public class Profile {
 
     /**
      * Profile name accessor
+     *
      * @return this Profile's name
      */
     public String getName() {
@@ -31,6 +32,7 @@ public class Profile {
 
     /**
      * Profile major accessor
+     *
      * @return this Profile's major
      */
     public Major getMajor() {
@@ -39,6 +41,7 @@ public class Profile {
 
     /**
      * Checks if this Profile is equal to another object.
+     *
      * @param o other
      * @return true if equal, false otherwise.
      */
@@ -53,6 +56,7 @@ public class Profile {
 
     /**
      * Converts this Profile to String representation.
+     *
      * @return the string representation of this Profile.
      */
     @Override
