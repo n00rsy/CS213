@@ -12,4 +12,9 @@ import java.util.Calendar;
  * @author Noor, Umar
  */
 public class RosterTest {
+    @Test
+    public void removeFromEmptyRosterTest() {
+        Roster roster = new Roster();
+        Assert.assertFalse(roster.remove(new Student("Umar Khattak", Major.CS)));
+    }
 }
