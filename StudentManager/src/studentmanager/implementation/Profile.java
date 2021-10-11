@@ -1,4 +1,6 @@
-package studentmanager;
+package studentmanager.implementation;
+
+import studentmanager.enums.Major;
 
 /**
  * A model class representing a student profile.

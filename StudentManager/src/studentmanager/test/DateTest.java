@@ -2,7 +2,7 @@ package studentmanager.test;
 
 import org.junit.Assert;
 import org.junit.Test;
-import studentmanager.Date;
+import studentmanager.implementation.Date;
 
 import java.util.Calendar;
 

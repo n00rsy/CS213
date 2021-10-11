@@ -75,7 +75,7 @@ loadScripts(document, 'script');</script>
 <h1 title="Class Roster" class="title">Class Roster</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance">studentmanager.Roster</div>
+<div class="inheritance">studentmanager.implementation.Roster</div>
 </div>
 <section class="description">
 <hr>
@@ -98,7 +98,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Field</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color"><code>private <a href="student/Student.html" title="class in studentmanager.student">Student</a>[]</code></div>
+<div class="col-first even-row-color"><code>private <a href="student/Student.html" title="class in studentmanager.implementation.student">Student</a>[]</code></div>
 <div class="col-second even-row-color"><code><span class="member-name-link"><a href="#roster">roster</a></span></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><code>private int</code></div>
@@ -134,7 +134,7 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#add(studentmanager.student.Student)">add</a></span>&#8203;(<a href="student/Student.html" title="class in studentmanager.student">Student</a>&nbsp;student)</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#add(studentmanager.implementation.student.Student)">add</a></span>&#8203;(<a href="student/Student.html" title="class in studentmanager.implementation.student">Student</a>&nbsp;student)</code></div>
 <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
 <div class="block">Attempts to add the student to the list.</div>
 </div>
@@ -144,7 +144,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Iterates through the entire roster and calculates tuition due for each student.</div>
 </div>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>private int</code></div>
-<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#find(studentmanager.student.Student)">find</a></span>&#8203;(<a href="student/Student.html" title="class in studentmanager.student">Student</a>&nbsp;student)</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#find(studentmanager.implementation.student.Student)">find</a></span>&#8203;(<a href="student/Student.html" title="class in studentmanager.implementation.student">Student</a>&nbsp;student)</code></div>
 <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
 <div class="block">Iterates through this roster to find the index of the student, or returns NOT_FOUND.</div>
 </div>
@@ -154,7 +154,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Increase the capacity of the inner array by 4.</div>
 </div>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#payTuition(studentmanager.student.Student,double,studentmanager.Date)">payTuition</a></span>&#8203;(<a href="student/Student.html" title="class in studentmanager.student">Student</a>&nbsp;student,
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#payTuition(studentmanager.implementation.student.Student,double,studentmanager.Date)">payTuition</a></span>&#8203;(<a href="student/Student.html" title="class in studentmanager.implementation.student">Student</a>&nbsp;student,
  double&nbsp;amount,
  <a href="Date.html" title="class in studentmanager">Date</a>&nbsp;date)</code></div>
 <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
@@ -176,18 +176,18 @@ loadScripts(document, 'script');</script>
 <div class="block">Displays students who have made a tuition payment to the output stream, sorted by last payment date in descending order</div>
 </div>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#remove(studentmanager.student.Student)">remove</a></span>&#8203;(<a href="student/Student.html" title="class in studentmanager.student">Student</a>&nbsp;student)</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#remove(studentmanager.implementation.student.Student)">remove</a></span>&#8203;(<a href="student/Student.html" title="class in studentmanager.implementation.student">Student</a>&nbsp;student)</code></div>
 <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
 <div class="block">Removes the student from the list.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setFinancialAid(studentmanager.student.Student,double)">setFinancialAid</a></span>&#8203;(<a href="student/Student.html" title="class in studentmanager.student">Student</a>&nbsp;student,
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setFinancialAid(studentmanager.implementation.student.Student,double)">setFinancialAid</a></span>&#8203;(<a href="student/Student.html" title="class in studentmanager.implementation.student">Student</a>&nbsp;student,
  double&nbsp;amount)</code></div>
 <div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
 <div class="block">Finds the student in the roster array, then sets the financial aid to inputted amount</div>
 </div>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setStudyAbroad(studentmanager.student.Student,boolean)">setStudyAbroad</a></span>&#8203;(<a href="student/Student.html" title="class in studentmanager.student">Student</a>&nbsp;student,
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#setStudyAbroad(studentmanager.implementation.student.Student,boolean)">setStudyAbroad</a></span>&#8203;(<a href="student/Student.html" title="class in studentmanager.implementation.student">Student</a>&nbsp;student,
  boolean&nbsp;status)</code></div>
 <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">
 <div class="block">Finds the student in the roster array, then sets the study abroad status to the inputted value</div>
@@ -212,7 +212,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="roster">
 <h3>roster</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="student/Student.html" title="class in studentmanager.student">Student</a>[]</span>&nbsp;<span class="element-name">roster</span></div>
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="student/Student.html" title="class in studentmanager.implementation.student">Student</a>[]</span>&nbsp;<span class="element-name">roster</span></div>
 </section>
 </li>
 <li>
@@ -245,9 +245,9 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="find(studentmanager.student.Student)">
+<section class="detail" id="find(studentmanager.implementation.student.Student)">
 <h3>find</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">find</span>&#8203;<span class="parameters">(<a href="student/Student.html" title="class in studentmanager.student">Student</a>&nbsp;student)</span></div>
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">find</span>&#8203;<span class="parameters">(<a href="student/Student.html" title="class in studentmanager.implementation.student">Student</a>&nbsp;student)</span></div>
 <div class="block">Iterates through this roster to find the index of the student, or returns NOT_FOUND.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -265,9 +265,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="add(studentmanager.student.Student)">
+<section class="detail" id="add(studentmanager.implementation.student.Student)">
 <h3>add</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">add</span>&#8203;<span class="parameters">(<a href="student/Student.html" title="class in studentmanager.student">Student</a>&nbsp;student)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">add</span>&#8203;<span class="parameters">(<a href="student/Student.html" title="class in studentmanager.implementation.student">Student</a>&nbsp;student)</span></div>
 <div class="block">Attempts to add the student to the list.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -278,9 +278,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="remove(studentmanager.student.Student)">
+<section class="detail" id="remove(studentmanager.implementation.student.Student)">
 <h3>remove</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">remove</span>&#8203;<span class="parameters">(<a href="student/Student.html" title="class in studentmanager.student">Student</a>&nbsp;student)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">remove</span>&#8203;<span class="parameters">(<a href="student/Student.html" title="class in studentmanager.implementation.student">Student</a>&nbsp;student)</span></div>
 <div class="block">Removes the student from the list.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -291,9 +291,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="payTuition(studentmanager.student.Student,double,studentmanager.Date)">
+<section class="detail" id="payTuition(studentmanager.implementation.student.Student,double,studentmanager.Date)">
 <h3>payTuition</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">payTuition</span>&#8203;<span class="parameters">(<a href="student/Student.html" title="class in studentmanager.student">Student</a>&nbsp;student,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">payTuition</span>&#8203;<span class="parameters">(<a href="student/Student.html" title="class in studentmanager.implementation.student">Student</a>&nbsp;student,
  double&nbsp;amount,
  <a href="Date.html" title="class in studentmanager">Date</a>&nbsp;date)</span></div>
 <div class="block">Finds the student in the roster array, then pays the inputted tuition amount and updates lastPaymentDate</div>
@@ -308,9 +308,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="setStudyAbroad(studentmanager.student.Student,boolean)">
+<section class="detail" id="setStudyAbroad(studentmanager.implementation.student.Student,boolean)">
 <h3>setStudyAbroad</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">setStudyAbroad</span>&#8203;<span class="parameters">(<a href="student/Student.html" title="class in studentmanager.student">Student</a>&nbsp;student,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">setStudyAbroad</span>&#8203;<span class="parameters">(<a href="student/Student.html" title="class in studentmanager.implementation.student">Student</a>&nbsp;student,
  boolean&nbsp;status)</span></div>
 <div class="block">Finds the student in the roster array, then sets the study abroad status to the inputted value</div>
 <dl class="notes">
@@ -323,9 +323,9 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="setFinancialAid(studentmanager.student.Student,double)">
+<section class="detail" id="setFinancialAid(studentmanager.implementation.student.Student,double)">
 <h3>setFinancialAid</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">setFinancialAid</span>&#8203;<span class="parameters">(<a href="student/Student.html" title="class in studentmanager.student">Student</a>&nbsp;student,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">setFinancialAid</span>&#8203;<span class="parameters">(<a href="student/Student.html" title="class in studentmanager.implementation.student">Student</a>&nbsp;student,
  double&nbsp;amount)</span></div>
 <div class="block">Finds the student in the roster array, then sets the financial aid to inputted amount</div>
 <dl class="notes">

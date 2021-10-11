@@ -1,7 +1,7 @@
-package studentmanager.student;
+package studentmanager.implementation.student;
 
-import studentmanager.Location;
-import studentmanager.Major;
+import studentmanager.enums.Location;
+import studentmanager.enums.Major;
 import studentmanager.config.Constants;
 import studentmanager.config.TuitionConfig;
 

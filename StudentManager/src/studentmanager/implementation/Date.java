@@ -1,4 +1,4 @@
-package studentmanager;
+package studentmanager.implementation;
 
 import studentmanager.config.DateConfig;
 

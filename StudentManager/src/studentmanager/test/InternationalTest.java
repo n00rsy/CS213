@@ -2,10 +2,8 @@ package studentmanager.test;
 
 import org.junit.Assert;
 import org.junit.Test;
-import studentmanager.Major;
-import studentmanager.student.International;
-
-import java.util.Calendar;
+import studentmanager.enums.Major;
+import studentmanager.implementation.student.International;
 
 /**
  * JUnit test class for International.tuitionDue method

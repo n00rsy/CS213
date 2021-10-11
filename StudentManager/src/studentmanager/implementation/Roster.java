@@ -1,9 +1,9 @@
-package studentmanager;
+package studentmanager.implementation;
 
 import studentmanager.config.Constants;
-import studentmanager.student.International;
-import studentmanager.student.Resident;
-import studentmanager.student.Student;
+import studentmanager.implementation.student.International;
+import studentmanager.implementation.student.Resident;
+import studentmanager.implementation.student.Student;
 import studentmanager.util.ArrayUtil;
 
 /**

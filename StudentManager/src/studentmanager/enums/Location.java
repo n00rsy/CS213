@@ -1,4 +1,4 @@
-package studentmanager;
+package studentmanager.enums;
 
 /**
  * An enum containing the locations a student can come from.

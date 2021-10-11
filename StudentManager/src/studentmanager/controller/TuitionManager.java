@@ -1,8 +1,10 @@
-package studentmanager;
+package studentmanager.controller;
 
+import studentmanager.implementation.Date;
+import studentmanager.implementation.Roster;
 import studentmanager.config.Constants;
 import studentmanager.config.TuitionConfig;
-import studentmanager.student.Student;
+import studentmanager.implementation.student.Student;
 import studentmanager.util.ParseUtil;
 
 import java.util.Scanner;

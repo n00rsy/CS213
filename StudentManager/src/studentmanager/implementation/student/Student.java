@@ -1,8 +1,8 @@
-package studentmanager.student;
+package studentmanager.implementation.student;
 
-import studentmanager.Date;
-import studentmanager.Major;
-import studentmanager.Profile;
+import studentmanager.implementation.Date;
+import studentmanager.enums.Major;
+import studentmanager.implementation.Profile;
 import studentmanager.config.Constants;
 import studentmanager.config.TuitionConfig;
 

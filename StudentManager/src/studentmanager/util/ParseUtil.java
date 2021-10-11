@@ -1,9 +1,9 @@
 package studentmanager.util;
 
-import studentmanager.Location;
-import studentmanager.Major;
+import studentmanager.enums.Location;
+import studentmanager.enums.Major;
 import studentmanager.config.TuitionConfig;
-import studentmanager.student.*;
+import studentmanager.implementation.student.*;
 
 import java.util.InputMismatchException;
 

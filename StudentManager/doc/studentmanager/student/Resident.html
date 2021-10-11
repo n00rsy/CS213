@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="dc.created" content="2021-10-11">
-<meta name="description" content="declaration: package: studentmanager.student, class: Resident">
+<meta name="description" content="declaration: package: studentmanager.implementation.student, class: Resident">
 <meta name="generator" content="javadoc/ClassWriterImpl">
 <link rel="stylesheet" type="text/css" href="../../stylesheet.css" title="Style">
 <link rel="stylesheet" type="text/css" href="../../script-dir/jquery-ui.min.css" title="Style">
@@ -71,18 +71,18 @@ loadScripts(document, 'script');</script>
 <main role="main">
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">studentmanager.student</a></div>
+<div class="sub-title"><span class="package-label-in-type">Package</span>&nbsp;<a href="package-summary.html">studentmanager.implementation.student</a></div>
 <h1 title="Class Resident" class="title">Class Resident</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
-<div class="inheritance"><a href="Student.html" title="class in studentmanager.student">studentmanager.student.Student</a>
-<div class="inheritance">studentmanager.student.Resident</div>
+<div class="inheritance"><a href="Student.html" title="class in studentmanager.implementation.student">studentmanager.implementation.student.Student</a>
+<div class="inheritance">studentmanager.implementation.student.Resident</div>
 </div>
 </div>
 <section class="description">
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Resident</span>
-<span class="extends-implements">extends <a href="Student.html" title="class in studentmanager.student">Student</a></span></div>
+<span class="extends-implements">extends <a href="Student.html" title="class in studentmanager.implementation.student">Student</a></span></div>
 <div class="block">A model class representing a Resident student</div>
 <dl class="notes">
 <dt>Author:</dt>
@@ -114,7 +114,7 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><span class="member-name-link"><a href="#%3Cinit%3E(java.lang.String,studentmanager.Major,int)">Resident</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
+<div class="col-constructor-name even-row-color"><code><span class="member-name-link"><a href="#%3Cinit%3E(java.lang.String,studentmanager.enums.Major,int)">Resident</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  <a href="../Major.html" title="enum class in studentmanager">Major</a>&nbsp;major,
  int&nbsp;numCredits)</code></div>
 <div class="col-last even-row-color">
@@ -158,7 +158,7 @@ loadScripts(document, 'script');</script>
 </div>
 </div>
 <div class="inherited-list">
-<h3 id="methods.inherited.from.class.studentmanager.student.Student">Methods inherited from class&nbsp;studentmanager.student.<a href="Student.html" title="class in studentmanager.student">Student</a></h3>
+<h3 id="methods.inherited.from.class.studentmanager.implementation.student.Student">Methods inherited from class&nbsp;studentmanager.implementation.student.<a href="Student.html" title="class in studentmanager.implementation.student">Student</a></h3>
 <code><a href="Student.html#equals(java.lang.Object)">equals</a>, <a href="Student.html#getLastPaymentDate()">getLastPaymentDate</a>, <a href="Student.html#getNumCredits()">getNumCredits</a>, <a href="Student.html#getProfile()">getProfile</a>, <a href="Student.html#getTuition()">getTuition</a>, <a href="Student.html#getTuitionDueAmount()">getTuitionDueAmount</a>, <a href="Student.html#getTuitionPayment()">getTuitionPayment</a>, <a href="Student.html#getTuitionPerCreditHour()">getTuitionPerCreditHour</a>, <a href="Student.html#isPartTime()">isPartTime</a>, <a href="Student.html#payTuition(double,studentmanager.Date)">payTuition</a>, <a href="Student.html#setLastPaymentDate(studentmanager.Date)">setLastPaymentDate</a>, <a href="Student.html#setNumCredits(int)">setNumCredits</a>, <a href="Student.html#setProfile(studentmanager.Profile)">setProfile</a>, <a href="Student.html#setTuition(double)">setTuition</a>, <a href="Student.html#setTuitionDueAmount(double)">setTuitionDueAmount</a>, <a href="Student.html#setTuitionPayment(double)">setTuitionPayment</a>, <a href="Student.html#setTuitionPerCreditHour(double)">setTuitionPerCreditHour</a></code></div>
 <div class="inherited-list">
 <h3 id="methods.inherited.from.class.java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
@@ -189,7 +189,7 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(java.lang.String,studentmanager.Major,int)">
+<section class="detail" id="&lt;init&gt;(java.lang.String,studentmanager.enums.Major,int)">
 <h3>Resident</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Resident</span>&#8203;<span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;name,
  <a href="../Major.html" title="enum class in studentmanager">Major</a>&nbsp;major,
@@ -240,7 +240,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Calculates the tuition due for this student and stores the value in tuitionDueAmount</div>
 <dl class="notes">
 <dt>Overrides:</dt>
-<dd><code><a href="Student.html#tuitionDue()">tuitionDue</a></code>&nbsp;in class&nbsp;<code><a href="Student.html" title="class in studentmanager.student">Student</a></code></dd>
+<dd><code><a href="Student.html#tuitionDue()">tuitionDue</a></code>&nbsp;in class&nbsp;<code><a href="Student.html" title="class in studentmanager.implementation.student">Student</a></code></dd>
 </dl>
 </section>
 </li>
@@ -251,7 +251,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Converts this Resident object to string using the superclass toString method</div>
 <dl class="notes">
 <dt>Overrides:</dt>
-<dd><code><a href="Student.html#toString()">toString</a></code>&nbsp;in class&nbsp;<code><a href="Student.html" title="class in studentmanager.student">Student</a></code></dd>
+<dd><code><a href="Student.html#toString()">toString</a></code>&nbsp;in class&nbsp;<code><a href="Student.html" title="class in studentmanager.implementation.student">Student</a></code></dd>
 <dt>Returns:</dt>
 <dd>string representation of this Resident object</dd>
 </dl>

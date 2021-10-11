@@ -1,5 +1,8 @@
 studentmanager
 studentmanager.config
-studentmanager.student
+studentmanager.controller
+studentmanager.enums
+studentmanager.implementation
+studentmanager.implementation.student
 studentmanager.test
 studentmanager.util

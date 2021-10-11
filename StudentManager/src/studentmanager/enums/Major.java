@@ -1,4 +1,4 @@
-package studentmanager;
+package studentmanager.enums;
 
 /**
  * An enum class for Majors that a student can have.

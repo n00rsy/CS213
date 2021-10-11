@@ -2,9 +2,10 @@ package studentmanager.test;
 
 import org.junit.Assert;
 import org.junit.Test;
-import studentmanager.Major;
-import studentmanager.Roster;
-import studentmanager.student.Student;
+import studentmanager.enums.Location;
+import studentmanager.enums.Major;
+import studentmanager.implementation.Roster;
+import studentmanager.implementation.student.*;
 
 /**
  * JUnit test class for Roster.add and Roster.remove method
@@ -44,40 +45,37 @@ public class RosterTest {
     }
     //tests for adding duplicates
     @Test
-    public void addDuplicateStudentFromRosterTest() {
+    public void addDuplicateStudentToRosterTest() {
         Roster roster = new Roster();
         Assert.assertTrue(roster.add(new Student("Umar Khattak", Major.CS, 12)));
         Assert.assertFalse(roster.add(new Student("Umar Khattak", Major.CS, 12)));
     }
 
     @Test
-    public void addDuplicateInternationalFromRosterTest() {
+    public void addDuplicateInternationalToRosterTest() {
         Roster roster = new Roster();
         Assert.assertTrue(roster.add(new International("Umar Khattak", Major.CS, 12, false)));
         Assert.assertFalse(roster.add(new International("Umar Khattak", Major.CS, 12, false)));
     }
 
     @Test
-    public void addDuplicateResidentFromRosterTest() {
+    public void addDuplicateResidentToRosterTest() {
         Roster roster = new Roster();
         Assert.assertTrue(roster.add(new Resident("Umar Khattak", Major.CS, 12)));
         Assert.assertFalse(roster.add(new Resident("Umar Khattak", Major.CS, 12)));
     }
 
     @Test
-    public void addDuplicateNonResidentFromRosterTest() {
+    public void addDuplicateNonResidentToRosterTest() {
         Roster roster = new Roster();
         Assert.assertTrue(roster.add(new NonResident("Umar Khattak", Major.CS, 12)));
         Assert.assertFalse(roster.add(new NonResident("Umar Khattak", Major.CS, 12)));
     }
 
     @Test
-    public void addDuplicateTriStateFromRosterTest() {
+    public void addDuplicateTriStateToRosterTest() {
         Roster roster = new Roster();
         Assert.assertTrue(roster.add(new TriState("Umar Khattak", Major.CS, 12, Location.NY)));
         Assert.assertFalse(roster.add(new TriState("Umar Khattak", Major.CS, 12, Location.NY)));
     }
-
-    //tests for
-
 }

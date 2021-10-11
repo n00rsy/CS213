@@ -1,5 +1,7 @@
 package studentmanager;
 
+import studentmanager.controller.TuitionManager;
+
 /**
  * A driver class to run the project.
  *
