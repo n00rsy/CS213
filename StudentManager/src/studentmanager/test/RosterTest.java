@@ -2,9 +2,9 @@ package studentmanager.test;
 
 import org.junit.Assert;
 import org.junit.Test;
+import studentmanager.Major;
 import studentmanager.Roster;
-
-import java.util.Calendar;
+import studentmanager.student.Student;
 
 /**
  * JUnit test class for Roster.add and Roster.remove method

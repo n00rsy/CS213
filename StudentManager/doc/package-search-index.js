@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"studentmanager"},{"l":"studentmanager.config"},{"l":"studentmanager.student"},{"l":"studentmanager.test"},{"l":"studentmanager.util"}];updateSearchResults();
