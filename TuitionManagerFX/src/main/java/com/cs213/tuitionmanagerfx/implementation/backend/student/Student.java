@@ -29,7 +29,7 @@ public class Student {
      * @param major
      */
     public Student(String name, Major major) {
-        setProfile(new Profile(name, major));
+        this(name, major, 0);
     }
 
     /**
@@ -42,6 +42,7 @@ public class Student {
     public Student(String name, Major major, int numCredits) {
         setNumCredits(numCredits);
         setProfile(new Profile(name, major));
+        setLastPaymentDate(new Date(Constants.DEFAULT_DATE));
     }
 
     /**

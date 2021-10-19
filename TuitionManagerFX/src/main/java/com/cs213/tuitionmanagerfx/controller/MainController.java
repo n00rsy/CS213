@@ -6,6 +6,7 @@ import com.cs213.tuitionmanagerfx.implementation.backend.student.Student;
 import com.cs213.tuitionmanagerfx.implementation.config.Constants;
 import com.cs213.tuitionmanagerfx.implementation.config.TuitionConfig;
 import com.cs213.tuitionmanagerfx.implementation.util.ParseUtil;
+import com.cs213.tuitionmanagerfx.util.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,19 +23,10 @@ public class MainController {
 
     @FXML
     private void handleAddButtonClick(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(MainController.class.getResource("/add-student.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            Scene scene = new Scene(root, 1110, 750);
-            stage.setScene(scene);
-            AddStudentController adc = loader.getController();
-            stage.show();
-        }
-        catch (Exception e) {
-            System.out.println(e);
-            output.setText(e.toString());
-        }
+        SceneManager.switchScene("/add-student.fxml",
+                MainController.class,
+                (Stage) ((Node)event.getSource()).getScene().getWindow(),
+                output);
     }
     /**
      * Adds a student to the collection and outputs the result to the command line.
