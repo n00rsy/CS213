@@ -16,6 +16,14 @@ import java.util.Scanner;
  */
 public class TuitionManager {
 
+
+    private int t;
+    public static void main(String[] args) {
+        int x;
+        System.out.println(t);
+    }
+
+
     /**
      * Contains the main logic loop that takes user input and interacts with the roster.
      */

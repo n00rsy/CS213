@@ -21,6 +21,12 @@ public class MainController {
     @FXML
     TextArea output;
 
+    Roster roster;
+
+    public void initialize() {
+        roster = new Roster();
+    }
+
     @FXML
     private void handleAddButtonClick(ActionEvent event) {
         SceneManager.switchScene("/add-student.fxml",
@@ -32,21 +38,14 @@ public class MainController {
      * Adds a student to the collection and outputs the result to the command line.
      * Checks to ensure student doesn't already exist and that the input date is valid.
      *
-     * @param args   the cmd arguments to parse from the user
-     * @param roster the roster to update
+     * @param student   the student to add
      */
-    private void addStudent(String[] args, Roster roster) {
-        Student student = null;
-        try {
-            student = ParseUtil.parseStudent(args);
-        } catch (Exception e) {
-            System.out.println(e.getLocalizedMessage());
-        }
+    public void addStudent(Student student) {
         if (student != null) {
             if (roster.add(student)) {
-                System.out.println("Student added.");
+                output.setText("Student added.");
             } else {
-                System.out.println("Student is already in the roster.");
+                output.setText("Student is already in the roster.");
             }
         }
     }
@@ -55,21 +54,14 @@ public class MainController {
      * Removes a student from the collection and outputs the result to the command line.
      * Checks to ensure that the input date is valid.
      *
-     * @param args   the cmd arguments to parse from the user
-     * @param roster the roster to update
+     * @param student   the student to remove
      */
-    private void removeStudent(String[] args, Roster roster) {
-        Student student = null;
-        try {
-            student = ParseUtil.parseStudent(args);
-        } catch (Exception e) {
-            System.out.println(e.getLocalizedMessage());
-        }
+    public void removeStudent(Student student) {
         if (student != null) {
             if (roster.remove(student)) {
-                System.out.println("Student removed from the roster.");
+                output.setText("Student removed from the roster.");
             } else {
-                System.out.println("Student is not in the roster.");
+                output.setText("Student is not in the roster.");
             }
         }
     }
@@ -82,7 +74,7 @@ public class MainController {
      */
     private void calculateTuition(Roster roster) {
         roster.calculateTuition();
-        System.out.println("Calculation completed.");
+        output.setText("Calculation completed.");
     }
 
     /**
@@ -97,36 +89,36 @@ public class MainController {
         try {
             student = ParseUtil.parseStudent(args);
         } catch (Exception e) {
-            System.out.println(e.getLocalizedMessage());
+            output.setText(e.getLocalizedMessage());
             return;
         }
         if (args.length == 3) {
-            System.out.println("Payment amount missing.");
+            output.setText("Payment amount missing.");
 
         } else if (args.length == 4) {
-            System.out.println("Missing data in command line.");
+            output.setText("Missing data in command line.");
         } else {
             double amount = 0;
             Date date = new Date(args[4]);
             try {
                 amount = Double.parseDouble(args[3]);
             } catch (Exception e) {
-                System.out.println(Constants.INVALID_AMOUNT_MESSAGE);
+                output.setText(Constants.INVALID_AMOUNT_MESSAGE);
                 return;
             }
             if (amount <= 0) {
-                System.out.println(Constants.INVALID_AMOUNT_MESSAGE);
+                output.setText(Constants.INVALID_AMOUNT_MESSAGE);
             } else if (date == null || !date.isValid() || date.compareTo(new Date()) > 0 && date.compareTo(new Date("01/01/2021")) < 0) {
-                System.out.println("Payment date invalid.");
+                output.setText("Payment date invalid.");
             } else {
                 try {
                     if (roster.payTuition(student, amount, date)) {
-                        System.out.println("Payment applied.");
+                        output.setText("Payment applied.");
                     } else {
-                        System.out.println("Student not in the roster.");
+                        output.setText("Student not in the roster.");
                     }
                 } catch (Exception e) {
-                    System.out.println(e.getLocalizedMessage());
+                    output.setText(e.getLocalizedMessage());
                 }
             }
         }
@@ -146,12 +138,12 @@ public class MainController {
             student = ParseUtil.parseStudent(args);
             status = ParseUtil.parseBoolean(args[3]);
             if (roster.setStudyAbroad(student, status)) {
-                System.out.println("Tuition updated.");
+                output.setText("Tuition updated.");
             } else {
-                System.out.println("Couldn't find the international student.");
+                output.setText("Couldn't find the international student.");
             }
         } catch (Exception e) {
-            System.out.println(e.getLocalizedMessage());
+            output.setText(e.getLocalizedMessage());
         }
     }
 
@@ -167,30 +159,30 @@ public class MainController {
         try {
             student = ParseUtil.parseStudent(args);
         } catch (Exception e) {
-            System.out.println(e.getLocalizedMessage());
+            output.setText(e.getLocalizedMessage());
             return;
         }
         if (args.length == 3) {
-            System.out.println("Missing the amount.");
+            output.setText("Missing the amount.");
         } else {
             double amount = 0;
             try {
                 amount = Double.parseDouble(args[3]);
             } catch (Exception e) {
-                System.out.println(Constants.INVALID_AMOUNT_MESSAGE);
+                output.setText(Constants.INVALID_AMOUNT_MESSAGE);
                 return;
             }
             if (amount <= 0 || amount > TuitionConfig.MAX_FIN_AID) {
-                System.out.println(Constants.INVALID_AMOUNT_MESSAGE);
+                output.setText(Constants.INVALID_AMOUNT_MESSAGE);
             } else {
                 try {
                     if (roster.setFinancialAid(student, amount)) {
-                        System.out.println("Tuition updated.");
+                        output.setText("Tuition updated.");
                     } else {
-                        System.out.println("Student not in the roster.");
+                        output.setText("Student not in the roster.");
                     }
                 } catch (Exception e) {
-                    System.out.println(e.getLocalizedMessage());
+                    output.setText(e.getLocalizedMessage());
                 }
             }
         }

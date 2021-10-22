@@ -9,7 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
@@ -42,7 +41,7 @@ public class AddStudentController {
     HBox locationContainer;
 
     @FXML
-    ToggleGroup location;
+    ToggleGroup locationGroup;
 
     @FXML
     private void handleBackButtonClick(ActionEvent event) {
@@ -54,9 +53,9 @@ public class AddStudentController {
 
     @FXML
     private void handleSubmitButtonClick(ActionEvent event) {
-        Student student;
         try {
-            String inputName = name.getText();
+            Student student;
+            String inputName = ParseUtil.parseName(name.getText());
             String inputType = ((RadioButton) studentType.getSelectedToggle()).getText();
             Major inputMajor = ParseUtil.parseMajor(((RadioButton) major.getSelectedToggle()).getText());
             int inputNumCredits = ParseUtil.parseNumCredits(numCredits.getText());
@@ -78,13 +77,22 @@ public class AddStudentController {
                     break;
 
                 case "Tri-State":
-                    Location inputLocation = ParseUtil.parseLocation(((RadioButton) location.getSelectedToggle()).getText());
+                    Location inputLocation = ParseUtil.parseLocation(((RadioButton) locationGroup.getSelectedToggle()).getText());
                     student = new TriState(inputName, inputMajor, inputNumCredits, inputLocation);
                     break;
                 default:
-                    student = new Student("test", Major.CS);
+                    throw new IllegalArgumentException("Please select a student type.");
             }
-            System.out.println(student.toString());
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/com/cs213/tuitionmanagerfx/main-view.fxml"
+                    )
+            );
+            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(loader.load()));
+            MainController mainController = loader.getController();
+            mainController.addStudent(student);
+            stage.show();
         }
         catch (Exception e) {
             output.setText(e.toString());
@@ -107,7 +115,7 @@ public class AddStudentController {
         }
         else {
             locationContainer.setDisable(true);
-            location.selectToggle(null);
+            locationGroup.selectToggle(null);
         }
     }
 

@@ -52,9 +52,9 @@
         <Label>Location: </Label>
         <RadioButton fx:id="locationNY" text="NY">
             <toggleGroup>
-                <ToggleGroup fx:id="location" />
+                <ToggleGroup fx:id="locationGroup" />
             </toggleGroup></RadioButton>
-        <RadioButton fx:id="locationCT" text="CT" toggleGroup="$location" />
+        <RadioButton fx:id="locationCT" text="CT" toggleGroup="$locationGroup" />
 
     </HBox>
 

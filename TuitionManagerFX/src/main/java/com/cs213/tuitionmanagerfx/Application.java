@@ -10,11 +10,8 @@ import java.io.IOException;
 
 public class Application extends javafx.application.Application {
 
-    public Roster roster;
-
     @Override
     public void start(Stage stage) throws IOException {
-        roster = new Roster();
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("main-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), SceneManager.WIDTH, SceneManager.HEIGHT);
         stage.setTitle("Tuition Manager");

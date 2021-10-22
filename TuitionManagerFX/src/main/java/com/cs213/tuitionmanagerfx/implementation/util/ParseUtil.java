@@ -6,6 +6,7 @@ import com.cs213.tuitionmanagerfx.implementation.enums.Location;
 import com.cs213.tuitionmanagerfx.implementation.enums.Major;
 
 import java.util.InputMismatchException;
+import java.util.Locale;
 
 /**
  * A utility class to parse arguments from the command line.
@@ -24,7 +25,7 @@ public class ParseUtil {
 
         if (args.length >= 3) {
             String command = args[0];
-            String name = args[1];
+            String name = parseName(args[1]);
             Major major = parseMajor(args[2]);
 
             if (command.length() > 0) {
@@ -70,6 +71,14 @@ public class ParseUtil {
             throw new IllegalArgumentException("Command '" + command + "' not supported!");
         }
         throw new IllegalArgumentException("Missing data in command line.");
+    }
+
+    public static String parseName(String arg) {
+        arg = arg.trim();
+        if (arg.length() == 0) {
+            throw new IllegalArgumentException("Name cannot be empty.");
+        }
+        return arg;
     }
 
     /**
