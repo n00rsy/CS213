@@ -1,9 +1,6 @@
 package com.cs213.tuitionmanagerfx.util;
 
-import com.cs213.tuitionmanagerfx.controller.AddStudentController;
-import com.cs213.tuitionmanagerfx.controller.MainController;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
@@ -21,11 +18,14 @@ public class SceneManager {
             Scene scene = new Scene(root, WIDTH, HEIGHT);
             stage.setScene(scene);
             stage.show();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             error.setText(e.toString());
             return;
         }
+    }
+
+    public static void switchToMainScene(TextArea error) {
+
     }
 
 }

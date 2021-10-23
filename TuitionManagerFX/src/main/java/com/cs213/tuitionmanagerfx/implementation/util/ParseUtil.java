@@ -6,7 +6,6 @@ import com.cs213.tuitionmanagerfx.implementation.enums.Location;
 import com.cs213.tuitionmanagerfx.implementation.enums.Major;
 
 import java.util.InputMismatchException;
-import java.util.Locale;
 
 /**
  * A utility class to parse arguments from the command line.

@@ -4,6 +4,7 @@ import com.cs213.tuitionmanagerfx.implementation.backend.student.International;
 import com.cs213.tuitionmanagerfx.implementation.enums.Major;
 import org.junit.Assert;
 import org.junit.Test;
+
 /**
  * JUnit test class for International.tuitionDue method
  *

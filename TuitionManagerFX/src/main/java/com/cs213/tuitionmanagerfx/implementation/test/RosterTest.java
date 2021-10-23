@@ -6,6 +6,7 @@ import com.cs213.tuitionmanagerfx.implementation.enums.Location;
 import com.cs213.tuitionmanagerfx.implementation.enums.Major;
 import org.junit.Assert;
 import org.junit.Test;
+
 /**
  * JUnit test class for Roster.add and Roster.remove method
  *
@@ -42,6 +43,7 @@ public class RosterTest {
         Roster roster = new Roster();
         Assert.assertFalse(roster.remove(new TriState("Umar Khattak", Major.CS, 12, Location.NY)));
     }
+
     //tests for adding duplicates
     @Test
     public void addDuplicateStudentToRosterTest() {

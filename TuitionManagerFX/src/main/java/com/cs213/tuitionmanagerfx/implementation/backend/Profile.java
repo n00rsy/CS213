@@ -9,8 +9,8 @@ import com.cs213.tuitionmanagerfx.implementation.enums.Major;
  * @author Noor, Umar
  */
 public class Profile {
-    private String name;
-    private Major major; //5 majors and 2-charater each: CS, IT, BA, EE, ME
+    private final String name;
+    private final Major major; //5 majors and 2-charater each: CS, IT, BA, EE, ME
 
     /**
      * Profile constructor

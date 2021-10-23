@@ -1,6 +1,5 @@
 package com.cs213.tuitionmanagerfx;
 
-import com.cs213.tuitionmanagerfx.implementation.backend.Roster;
 import com.cs213.tuitionmanagerfx.util.SceneManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,6 +9,10 @@ import java.io.IOException;
 
 public class Application extends javafx.application.Application {
 
+    public static void main(String[] args) {
+        launch();
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("main-view.fxml"));
@@ -17,9 +20,5 @@ public class Application extends javafx.application.Application {
         stage.setTitle("Tuition Manager");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }

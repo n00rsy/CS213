@@ -11,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
@@ -31,14 +30,31 @@ public class MainController {
     private void handleAddButtonClick(ActionEvent event) {
         SceneManager.switchScene("/add-student.fxml",
                 MainController.class,
-                (Stage) ((Node)event.getSource()).getScene().getWindow(),
+                (Stage) ((Node) event.getSource()).getScene().getWindow(),
                 output);
     }
+
+    @FXML
+    private void handleRemoveButtonClick(ActionEvent event) {
+        SceneManager.switchScene("/remove-student.fxml",
+                MainController.class,
+                (Stage) ((Node) event.getSource()).getScene().getWindow(),
+                output);
+    }
+
+    @FXML
+    private void handlePrintButtonClick(ActionEvent event) {
+        SceneManager.switchScene("/print-students-options.fxml",
+                MainController.class,
+                (Stage) ((Node) event.getSource()).getScene().getWindow(),
+                output);
+    }
+
     /**
      * Adds a student to the collection and outputs the result to the command line.
      * Checks to ensure student doesn't already exist and that the input date is valid.
      *
-     * @param student   the student to add
+     * @param student the student to add
      */
     public void addStudent(Student student) {
         if (student != null) {
@@ -48,13 +64,42 @@ public class MainController {
                 output.setText("Student is already in the roster.");
             }
         }
+        System.out.println("ROSTER: ");
+        roster.print();
+    }
+
+    public void showRosterUnordered(Stage stage) {
+        try {
+            Student[] students = roster.getRoster();
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/print-students-result.fxml"
+                    )
+            );
+            PrintStudentsResultController printStudentsResultController = loader.getController();
+            printStudentsResultController.setStudents(students);
+
+            stage.setScene(new Scene(loader.load()));
+            stage.show();
+        }
+        catch (Exception e) {
+            output.setText(e.toString());
+        }
+    }
+
+    public void printRosterByStudentName() {
+        roster.printByStudentName();
+    }
+
+    public void printRosterByPaymentDate() {
+        roster.printPaymentStudentsByPaymentDate();
     }
 
     /**
      * Removes a student from the collection and outputs the result to the command line.
      * Checks to ensure that the input date is valid.
      *
-     * @param student   the student to remove
+     * @param student the student to remove
      */
     public void removeStudent(Student student) {
         if (student != null) {

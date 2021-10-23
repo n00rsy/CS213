@@ -10,7 +10,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -47,7 +50,7 @@ public class AddStudentController {
     private void handleBackButtonClick(ActionEvent event) {
         SceneManager.switchScene("/com/cs213/tuitionmanagerfx/main-view.fxml",
                 AddStudentController.class,
-                (Stage) ((Node)event.getSource()).getScene().getWindow(),
+                (Stage) ((Node) event.getSource()).getScene().getWindow(),
                 output);
     }
 
@@ -88,32 +91,29 @@ public class AddStudentController {
                             "/com/cs213/tuitionmanagerfx/main-view.fxml"
                     )
             );
-            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(loader.load()));
             MainController mainController = loader.getController();
             mainController.addStudent(student);
             stage.show();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             output.setText(e.toString());
         }
     }
 
     @FXML
     private void handleStudentTypeChange(ActionEvent event) {
-        RadioButton radioButton = (RadioButton)event.getSource();
+        RadioButton radioButton = (RadioButton) event.getSource();
         if (radioButton.getText().equals("International")) {
             studyAbroadContainer.setDisable(false);
-        }
-        else {
+        } else {
             studyAbroadContainer.setDisable(true);
             studyAbroad.selectToggle(null);
         }
 
         if (radioButton.getText().equals("Tri-State")) {
             locationContainer.setDisable(false);
-        }
-        else {
+        } else {
             locationContainer.setDisable(true);
             locationGroup.selectToggle(null);
         }

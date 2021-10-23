@@ -6,6 +6,8 @@ import com.cs213.tuitionmanagerfx.implementation.backend.student.Student;
 import com.cs213.tuitionmanagerfx.implementation.config.Constants;
 import com.cs213.tuitionmanagerfx.implementation.util.ArrayUtil;
 
+import java.lang.reflect.Array;
+
 /**
  * A class that defines a mutable, dynamically resizable list of Students that can be interacted with.
  *
@@ -180,14 +182,20 @@ public class Roster {
     /**
      * Displays all students to the output stream without specifying the order.
      */
-    public void print() {
+    public Student[] getRoster() {
         if (size == 0) {
-            System.out.println(Constants.EMPTY_ROSTER_MESSAGE);
+            throw new IllegalStateException(Constants.EMPTY_ROSTER_MESSAGE);
         } else {
-            System.out.println("* list of students in the roster **");
-            ArrayUtil.print(roster, 0, size);
-            System.out.println(Constants.END_ROSTER_MESSAGE);
+            Student[] newArray = new Student[size];
+            for (int i = 0; i < size; i++) {
+                newArray[i] = roster[i];
+            }
+            return newArray;
         }
+    }
+
+    public void print() {
+        ArrayUtil.print(roster, 0, size);
     }
 
     /**
@@ -195,9 +203,8 @@ public class Roster {
      */
     public void printByStudentName() {
         if (size == 0) {
-            System.out.println(Constants.EMPTY_ROSTER_MESSAGE);
+            throw new IllegalStateException(Constants.EMPTY_ROSTER_MESSAGE);
         } else {
-            System.out.println("* list of students ordered by name **");
             Object[] trimmedRoster = ArrayUtil.copy(roster, 0, size);
             ArrayUtil.insertionSort(trimmedRoster, (o1, o2) -> {
                 Student s1 = (Student) o1;
@@ -205,7 +212,6 @@ public class Roster {
                 return s1.getProfile().getName().compareTo(s2.getProfile().getName());
             });
             ArrayUtil.print(trimmedRoster, 0, size);
-            System.out.println(Constants.END_ROSTER_MESSAGE);
         }
     }
 
@@ -214,7 +220,7 @@ public class Roster {
      */
     public void printPaymentStudentsByPaymentDate() {
         if (size == 0) {
-            System.out.println(Constants.EMPTY_ROSTER_MESSAGE);
+            throw new IllegalStateException(Constants.EMPTY_ROSTER_MESSAGE);
         } else {
             System.out.println("* list of students made payments ordered by payment date **");
             Object[] trimmedRoster = ArrayUtil.copy(roster, 0, size);
@@ -233,7 +239,6 @@ public class Roster {
                 return s1.getLastPaymentDate().compareTo(s2.getLastPaymentDate());
             });
             ArrayUtil.print(payingStudents, 0, payingStudents.length);
-            System.out.println(Constants.END_ROSTER_MESSAGE);
         }
     }
 }

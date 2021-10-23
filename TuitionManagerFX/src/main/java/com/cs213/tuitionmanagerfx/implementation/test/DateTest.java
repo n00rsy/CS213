@@ -26,7 +26,7 @@ public class DateTest {
     public void largeInvalidYearsTest() {
         Calendar today = Calendar.getInstance();
         int year = today.get(Calendar.YEAR);
-        Assert.assertFalse("largeInvalidYearTest failed", new Date("11/21/" + String.valueOf(year + 1)).isValid());
+        Assert.assertFalse("largeInvalidYearTest failed", new Date("11/21/" + (year + 1)).isValid());
         System.out.println("largeInvalidYearTest passed.");
     }
 

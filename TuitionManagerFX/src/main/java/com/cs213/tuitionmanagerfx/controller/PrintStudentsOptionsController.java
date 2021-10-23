@@ -1,8 +1,6 @@
 package com.cs213.tuitionmanagerfx.controller;
 
 import com.cs213.tuitionmanagerfx.implementation.backend.student.Student;
-import com.cs213.tuitionmanagerfx.implementation.enums.Major;
-import com.cs213.tuitionmanagerfx.implementation.util.ParseUtil;
 import com.cs213.tuitionmanagerfx.util.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,25 +9,21 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
-public class RemoveStudentController {
+public class PrintStudentsOptionsController {
 
     @FXML
     TextArea output;
 
     @FXML
-    TextField name;
-
-    @FXML
-    ToggleGroup major;
+    ToggleGroup printType;
 
     @FXML
     private void handleBackButtonClick(ActionEvent event) {
         SceneManager.switchScene("/com/cs213/tuitionmanagerfx/main-view.fxml",
-                AddStudentController.class,
+                PrintStudentsOptionsController.class,
                 (Stage) ((Node) event.getSource()).getScene().getWindow(),
                 output);
     }
@@ -37,19 +31,30 @@ public class RemoveStudentController {
     @FXML
     private void handleSubmitButtonClick(ActionEvent event) {
         try {
-            String inputName = ParseUtil.parseName(name.getText());
-            Major inputMajor = ParseUtil.parseMajor(((RadioButton) major.getSelectedToggle()).getText());
-            Student student = new Student(inputName, inputMajor);
+            String currentPrintType = ((RadioButton) printType.getSelectedToggle()).getId();
+
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource(
                             "/com/cs213/tuitionmanagerfx/main-view.fxml"
                     )
             );
+
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(loader.load()));
+
             MainController mainController = loader.getController();
-            mainController.removeStudent(student);
-            stage.show();
+            switch (currentPrintType) {
+                case "unordered":
+                    mainController.showRosterUnordered(stage);
+                    break;
+                case "name":
+                    mainController.printRosterByStudentName();
+                    break;
+                case "payment":
+                    mainController.printRosterByPaymentDate();
+                    break;
+            }
+
         } catch (Exception e) {
             output.setText(e.toString());
         }
