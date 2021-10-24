@@ -20,19 +20,16 @@ public class PrintStudentsResultController {
 
     @FXML
     private void handleBackButtonClick(ActionEvent event) {
-        SceneManager.switchScene("/com/cs213/tuitionmanagerfx/main-view.fxml",
-                PrintStudentsResultController.class,
-                (Stage) ((Node) event.getSource()).getScene().getWindow(),
-                output);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(SceneManager.getMainScene());
+        stage.show();
     }
 
     public void setStudents(Student[] students) {
-        System.out.println("print students result controller wiriking");
-        String[] yert = new String[students.length];
+        String[] studentStrings = new String[students.length];
         for (int i = 0; i < students.length; i++) {
-            yert[i] = students[i].toString();
+            studentStrings[i] = students[i].toString();
         }
-        studentView.setItems(FXCollections.observableArrayList(yert));
+        studentView.setItems(FXCollections.observableArrayList(studentStrings));
     }
-
 }

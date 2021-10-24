@@ -1,5 +1,6 @@
 package com.cs213.tuitionmanagerfx.controller;
 
+import com.cs213.tuitionmanagerfx.Application;
 import com.cs213.tuitionmanagerfx.implementation.backend.student.*;
 import com.cs213.tuitionmanagerfx.implementation.enums.Location;
 import com.cs213.tuitionmanagerfx.implementation.enums.Major;
@@ -48,10 +49,9 @@ public class AddStudentController {
 
     @FXML
     private void handleBackButtonClick(ActionEvent event) {
-        SceneManager.switchScene("/com/cs213/tuitionmanagerfx/main-view.fxml",
-                AddStudentController.class,
-                (Stage) ((Node) event.getSource()).getScene().getWindow(),
-                output);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(SceneManager.getMainScene());
+        stage.show();
     }
 
     @FXML
@@ -86,14 +86,10 @@ public class AddStudentController {
                 default:
                     throw new IllegalArgumentException("Please select a student type.");
             }
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource(
-                            "/com/cs213/tuitionmanagerfx/main-view.fxml"
-                    )
-            );
+
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(loader.load()));
-            MainController mainController = loader.getController();
+            stage.setScene(SceneManager.getMainScene());
+            MainController mainController = SceneManager.getMainLoader().getController();
             mainController.addStudent(student);
             stage.show();
         } catch (Exception e) {

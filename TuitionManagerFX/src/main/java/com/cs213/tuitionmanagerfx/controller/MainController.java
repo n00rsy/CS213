@@ -64,35 +64,50 @@ public class MainController {
                 output.setText("Student is already in the roster.");
             }
         }
-        System.out.println("ROSTER: ");
-        roster.print();
     }
 
-    public void showRosterUnordered(Stage stage) {
+    private void showRoster(Stage stage, Student[] students) {
         try {
-            Student[] students = roster.getRoster();
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource(
                             "/print-students-result.fxml"
                     )
             );
+            stage.setScene(new Scene(loader.load()));
             PrintStudentsResultController printStudentsResultController = loader.getController();
             printStudentsResultController.setStudents(students);
 
-            stage.setScene(new Scene(loader.load()));
             stage.show();
+        }catch (Exception e) {
+            output.setText(e.toString());
+        }
+    }
+
+    public void showRosterUnordered(Stage stage) {
+        try {
+            showRoster(stage, roster.getRoster());
         }
         catch (Exception e) {
             output.setText(e.toString());
         }
     }
 
-    public void printRosterByStudentName() {
-        roster.printByStudentName();
+    public void showRosterByStudentName(Stage stage) {
+        try {
+            showRoster(stage, roster.getRosterByStudentName());
+        }
+        catch (Exception e) {
+            output.setText(e.toString());
+        }
     }
 
-    public void printRosterByPaymentDate() {
-        roster.printPaymentStudentsByPaymentDate();
+    public void showRosterByPaymentDate(Stage stage) {
+        try {
+            showRoster(stage, roster.getPaymentStudentsByPaymentDate());
+        }
+        catch (Exception e) {
+            output.setText(e.toString());
+        }
     }
 
     /**

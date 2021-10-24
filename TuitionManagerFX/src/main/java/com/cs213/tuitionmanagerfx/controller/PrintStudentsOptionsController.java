@@ -1,5 +1,6 @@
 package com.cs213.tuitionmanagerfx.controller;
 
+import com.cs213.tuitionmanagerfx.Application;
 import com.cs213.tuitionmanagerfx.implementation.backend.student.Student;
 import com.cs213.tuitionmanagerfx.util.SceneManager;
 import javafx.event.ActionEvent;
@@ -22,10 +23,9 @@ public class PrintStudentsOptionsController {
 
     @FXML
     private void handleBackButtonClick(ActionEvent event) {
-        SceneManager.switchScene("/com/cs213/tuitionmanagerfx/main-view.fxml",
-                PrintStudentsOptionsController.class,
-                (Stage) ((Node) event.getSource()).getScene().getWindow(),
-                output);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(SceneManager.getMainScene());
+        stage.show();
     }
 
     @FXML
@@ -33,28 +33,21 @@ public class PrintStudentsOptionsController {
         try {
             String currentPrintType = ((RadioButton) printType.getSelectedToggle()).getId();
 
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource(
-                            "/com/cs213/tuitionmanagerfx/main-view.fxml"
-                    )
-            );
-
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(loader.load()));
+            stage.setScene(SceneManager.getMainScene());
+            MainController mainController = SceneManager.getMainLoader().getController();
 
-            MainController mainController = loader.getController();
             switch (currentPrintType) {
                 case "unordered":
                     mainController.showRosterUnordered(stage);
                     break;
                 case "name":
-                    mainController.printRosterByStudentName();
+                    mainController.showRosterByStudentName(stage);
                     break;
                 case "payment":
-                    mainController.printRosterByPaymentDate();
+                    mainController.showRosterByPaymentDate(stage);
                     break;
             }
-
         } catch (Exception e) {
             output.setText(e.toString());
         }

@@ -201,7 +201,7 @@ public class Roster {
     /**
      * Displays all students to the output stream, sorted by name in ascending order
      */
-    public void printByStudentName() {
+    public Student[] getRosterByStudentName() {
         if (size == 0) {
             throw new IllegalStateException(Constants.EMPTY_ROSTER_MESSAGE);
         } else {
@@ -211,14 +211,18 @@ public class Roster {
                 Student s2 = (Student) o2;
                 return s1.getProfile().getName().compareTo(s2.getProfile().getName());
             });
-            ArrayUtil.print(trimmedRoster, 0, size);
+            Student[] students = new Student[trimmedRoster.length];
+            for (int i = 0; i < trimmedRoster.length; i++) {
+                students[i] = (Student)trimmedRoster[i];
+            }
+            return students;
         }
     }
 
     /**
      * Displays students who have made a tuition payment to the output stream, sorted by last payment date in descending order
      */
-    public void printPaymentStudentsByPaymentDate() {
+    public Student[] getPaymentStudentsByPaymentDate() {
         if (size == 0) {
             throw new IllegalStateException(Constants.EMPTY_ROSTER_MESSAGE);
         } else {
@@ -238,7 +242,11 @@ public class Roster {
                 Student s2 = (Student) o2;
                 return s1.getLastPaymentDate().compareTo(s2.getLastPaymentDate());
             });
-            ArrayUtil.print(payingStudents, 0, payingStudents.length);
+            Student[] students = new Student[payingStudents.length];
+            for (int i = 0; i < payingStudents.length; i++) {
+                students[i] = (Student)payingStudents[i];
+            }
+            return students;
         }
     }
 }

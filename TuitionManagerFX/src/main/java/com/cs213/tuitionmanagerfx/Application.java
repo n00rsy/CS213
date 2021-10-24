@@ -15,10 +15,10 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), SceneManager.WIDTH, SceneManager.HEIGHT);
+        SceneManager.setMainLoader(new FXMLLoader(Application.class.getResource("main-view.fxml")));
+        SceneManager.setMainScene(new Scene(SceneManager.getMainLoader().load(), SceneManager.WIDTH, SceneManager.HEIGHT));
         stage.setTitle("Tuition Manager");
-        stage.setScene(scene);
+        stage.setScene(SceneManager.getMainScene());
         stage.show();
     }
 }
