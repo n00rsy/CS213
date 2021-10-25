@@ -15,6 +15,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
+/** A controller class managing remove-student.fxml
+ * @author Noor, Umar
+ */
 public class RemoveStudentController {
 
     @FXML
@@ -26,6 +29,10 @@ public class RemoveStudentController {
     @FXML
     ToggleGroup major;
 
+    /**
+     * Handles the back button click event and returns to the main menu.
+     * @param event
+     */
     @FXML
     private void handleBackButtonClick(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -33,6 +40,10 @@ public class RemoveStudentController {
         stage.show();
     }
 
+    /**
+     * Handles the submit button click event and attempts to remove a student.
+     * @param event
+     */
     @FXML
     private void handleSubmitButtonClick(ActionEvent event) {
         try {

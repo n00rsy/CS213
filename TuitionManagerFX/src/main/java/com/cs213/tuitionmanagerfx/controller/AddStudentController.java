@@ -18,6 +18,10 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+/**
+ * A controller class managing add-student.fxml
+ * @author Noor, Umar
+ */
 public class AddStudentController {
 
     @FXML
@@ -47,6 +51,10 @@ public class AddStudentController {
     @FXML
     ToggleGroup locationGroup;
 
+    /**
+     * Handles the back button click event and returns to the main menu.
+     * @param event
+     */
     @FXML
     private void handleBackButtonClick(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -54,6 +62,10 @@ public class AddStudentController {
         stage.show();
     }
 
+    /**
+     * Handles the back button click event and attempts to add a student to the roster. If successful, returns to the main menu.
+     * @param event
+     */
     @FXML
     private void handleSubmitButtonClick(ActionEvent event) {
         try {

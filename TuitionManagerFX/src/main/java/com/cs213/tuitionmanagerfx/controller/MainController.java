@@ -15,6 +15,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
+/**
+ * The main controller for the project containing the roster instance and links to navigate the rest of the program.
+ * @author Noor, Umar
+ */
 public class MainController {
 
     @FXML
@@ -22,10 +26,17 @@ public class MainController {
 
     Roster roster;
 
+    /**
+     * Runs on load and initializes the roster.
+     */
     public void initialize() {
         roster = new Roster();
     }
 
+    /**
+     * Handles the add student button click by switching to the add student scene.
+     * @param event
+     */
     @FXML
     private void handleAddButtonClick(ActionEvent event) {
         SceneManager.switchScene("/add-student.fxml",
@@ -34,6 +45,10 @@ public class MainController {
                 output);
     }
 
+    /**
+     * Handles the remove student button click by switching to the remove student scene.
+     * @param event
+     */
     @FXML
     private void handleRemoveButtonClick(ActionEvent event) {
         SceneManager.switchScene("/remove-student.fxml",
@@ -42,6 +57,10 @@ public class MainController {
                 output);
     }
 
+    /**
+     * Handles the print roster button click by switching to the print roster scene.
+     * @param event
+     */
     @FXML
     private void handlePrintButtonClick(ActionEvent event) {
         SceneManager.switchScene("/print-students-options.fxml",
@@ -51,8 +70,7 @@ public class MainController {
     }
 
     /**
-     * Adds a student to the collection and outputs the result to the command line.
-     * Checks to ensure student doesn't already exist and that the input date is valid.
+     * Adds a student to the collection and outputs the result to the output TextArea.
      *
      * @param student the student to add
      */
@@ -66,53 +84,8 @@ public class MainController {
         }
     }
 
-    private void showRoster(Stage stage, Student[] students) {
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource(
-                            "/print-students-result.fxml"
-                    )
-            );
-            stage.setScene(new Scene(loader.load()));
-            PrintStudentsResultController printStudentsResultController = loader.getController();
-            printStudentsResultController.setStudents(students);
-
-            stage.show();
-        }catch (Exception e) {
-            output.setText(e.toString());
-        }
-    }
-
-    public void showRosterUnordered(Stage stage) {
-        try {
-            showRoster(stage, roster.getRoster());
-        }
-        catch (Exception e) {
-            output.setText(e.toString());
-        }
-    }
-
-    public void showRosterByStudentName(Stage stage) {
-        try {
-            showRoster(stage, roster.getRosterByStudentName());
-        }
-        catch (Exception e) {
-            output.setText(e.toString());
-        }
-    }
-
-    public void showRosterByPaymentDate(Stage stage) {
-        try {
-            showRoster(stage, roster.getPaymentStudentsByPaymentDate());
-        }
-        catch (Exception e) {
-            output.setText(e.toString());
-        }
-    }
-
     /**
-     * Removes a student from the collection and outputs the result to the command line.
-     * Checks to ensure that the input date is valid.
+     * Removes a student from the collection and outputs the result to the output TextArea.
      *
      * @param student the student to remove
      */
@@ -128,7 +101,7 @@ public class MainController {
 
     /**
      * Calculates tuition for every student in the roster.
-     * Outputs to command line when complete.
+     * Outputs to output TextArea when complete.
      *
      * @param roster the roster to calculate tuition for
      */
@@ -156,7 +129,7 @@ public class MainController {
             output.setText("Payment amount missing.");
 
         } else if (args.length == 4) {
-            output.setText("Missing data in command line.");
+            output.setText("Missing data in output TextArea.");
         } else {
             double amount = 0;
             Date date = new Date(args[4]);
@@ -245,6 +218,67 @@ public class MainController {
                     output.setText(e.getLocalizedMessage());
                 }
             }
+        }
+    }
+
+    /**
+     * Switches to the print student results scene and shows students in the input array.
+     * @param stage the current stage
+     * @param students an array of students to display
+     */
+    private void showRoster(Stage stage, Student[] students) {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource(
+                            "/print-students-result.fxml"
+                    )
+            );
+            stage.setScene(new Scene(loader.load()));
+            PrintStudentsResultController printStudentsResultController = loader.getController();
+            printStudentsResultController.setStudents(students);
+
+            stage.show();
+        }catch (Exception e) {
+            output.setText(e.toString());
+        }
+    }
+
+    /**
+     * Gets an unordered array of students from the roster and displays them.
+     * @param stage the current stage.
+     */
+    public void showRosterUnordered(Stage stage) {
+        try {
+            showRoster(stage, roster.getRoster());
+        }
+        catch (Exception e) {
+            output.setText(e.toString());
+        }
+    }
+
+    /**
+     * Gets an array of students ordered by name from the roster and displays them.
+     * @param stage the current stage.
+     */
+    public void showRosterByStudentName(Stage stage) {
+        try {
+            showRoster(stage, roster.getRosterByStudentName());
+        }
+        catch (Exception e) {
+            output.setText(e.toString());
+        }
+    }
+
+    /**
+     * Gets an array of students ordered by payment date from the roster and displays them.
+     * @param stage the current stage.
+     */
+    public void showRosterByPaymentDate(Stage stage) {
+        try {
+            showRoster(stage, roster.getPaymentStudentsByPaymentDate());
+        }
+        catch (Exception e) {
+            output.setText(e.toString());
         }
     }
 }

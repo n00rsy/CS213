@@ -13,6 +13,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
+/**
+ * A controller class managing print-students-options.fxml
+ * @author Noor, Umar
+ */
 public class PrintStudentsOptionsController {
 
     @FXML
@@ -21,6 +25,10 @@ public class PrintStudentsOptionsController {
     @FXML
     ToggleGroup printType;
 
+    /**
+     * Handles the back button click event and returns to the main menu.
+     * @param event
+     */
     @FXML
     private void handleBackButtonClick(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -28,6 +36,10 @@ public class PrintStudentsOptionsController {
         stage.show();
     }
 
+    /**
+     * Handles the submit button click event and attempts to display roster based on input.
+     * @param event
+     */
     @FXML
     private void handleSubmitButtonClick(ActionEvent event) {
         try {

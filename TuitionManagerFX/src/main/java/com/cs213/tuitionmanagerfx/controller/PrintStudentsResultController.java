@@ -10,6 +10,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
+ /** A controller class managing print-students-result.fxml
+  * @author Noor, Umar
+  */
 public class PrintStudentsResultController {
 
     @FXML
@@ -18,6 +21,10 @@ public class PrintStudentsResultController {
     @FXML
     ListView studentView;
 
+    /**
+     * Handles the back button click event and returns to the main menu.
+     * @param event
+     */
     @FXML
     private void handleBackButtonClick(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -25,6 +32,10 @@ public class PrintStudentsResultController {
         stage.show();
     }
 
+     /**
+      * Displays the students passed in using the studentView listView.
+      * @param students Student[] of students to display
+      */
     public void setStudents(Student[] students) {
         String[] studentStrings = new String[students.length];
         for (int i = 0; i < students.length; i++) {
