@@ -1,13 +1,13 @@
 package com.cs213.tuitionmanagerfx.util;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 /**
  * A helper class for use in switching between scenes.
+ *
  * @author Noor, Umar
  */
 public class SceneManager {
@@ -20,6 +20,7 @@ public class SceneManager {
 
     /**
      * Main loader accessor method
+     *
      * @return FXMLLoader mainLoader
      */
     public static FXMLLoader getMainLoader() {
@@ -28,6 +29,7 @@ public class SceneManager {
 
     /**
      * Main loader mutator method
+     *
      * @param mainLoader the new mainLoader
      */
     public static void setMainLoader(FXMLLoader mainLoader) {
@@ -36,6 +38,7 @@ public class SceneManager {
 
     /**
      * Main scene accessor method
+     *
      * @return Scene mainScene
      */
     public static Scene getMainScene() {
@@ -44,6 +47,7 @@ public class SceneManager {
 
     /**
      * Main scene mutator method
+     *
      * @param mainScene the new MainScene
      */
     public static void setMainScene(Scene mainScene) {
@@ -52,10 +56,11 @@ public class SceneManager {
 
     /**
      * Switch from the current scene to the new one passed in using new FXMLLoader
-     * @param path the path to the new scene .fxml file
+     *
+     * @param path       the path to the new scene .fxml file
      * @param controller the current controller
-     * @param stage the current stage
-     * @param error the area to output error messages for the user.
+     * @param stage      the current stage
+     * @param error      the area to output error messages for the user.
      */
     public static void switchScene(String path, Class controller, Stage stage, TextArea error) {
         try {
@@ -64,7 +69,7 @@ public class SceneManager {
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
-            error.setText(e.toString());
+            error.setText(e.getLocalizedMessage());
         }
     }
 }

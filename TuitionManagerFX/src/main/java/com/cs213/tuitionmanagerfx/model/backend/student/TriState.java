@@ -1,9 +1,9 @@
-package com.cs213.tuitionmanagerfx.implementation.backend.student;
+package com.cs213.tuitionmanagerfx.model.backend.student;
 
-import com.cs213.tuitionmanagerfx.implementation.config.Constants;
-import com.cs213.tuitionmanagerfx.implementation.config.TuitionConfig;
-import com.cs213.tuitionmanagerfx.implementation.enums.Location;
-import com.cs213.tuitionmanagerfx.implementation.enums.Major;
+import com.cs213.tuitionmanagerfx.model.config.Constants;
+import com.cs213.tuitionmanagerfx.model.config.TuitionConfig;
+import com.cs213.tuitionmanagerfx.model.enums.Location;
+import com.cs213.tuitionmanagerfx.model.enums.Major;
 
 /**
  * A model class representing a TriState student.

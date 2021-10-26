@@ -1,9 +1,9 @@
-package com.cs213.tuitionmanagerfx.implementation.test;
+package com.cs213.tuitionmanagerfx.model.test;
 
-import com.cs213.tuitionmanagerfx.implementation.backend.Roster;
-import com.cs213.tuitionmanagerfx.implementation.backend.student.*;
-import com.cs213.tuitionmanagerfx.implementation.enums.Location;
-import com.cs213.tuitionmanagerfx.implementation.enums.Major;
+import com.cs213.tuitionmanagerfx.model.backend.Roster;
+import com.cs213.tuitionmanagerfx.model.backend.student.*;
+import com.cs213.tuitionmanagerfx.model.enums.Location;
+import com.cs213.tuitionmanagerfx.model.enums.Major;
 import org.junit.Assert;
 import org.junit.Test;
 

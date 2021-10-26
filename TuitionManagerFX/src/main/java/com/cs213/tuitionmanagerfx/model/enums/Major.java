@@ -1,4 +1,4 @@
-package com.cs213.tuitionmanagerfx.implementation.enums;
+package com.cs213.tuitionmanagerfx.model.enums;
 
 /**
  * An enum class for Majors that a student can have.

@@ -1,6 +1,6 @@
-package com.cs213.tuitionmanagerfx.implementation.backend;
+package com.cs213.tuitionmanagerfx.model.backend;
 
-import com.cs213.tuitionmanagerfx.implementation.enums.Major;
+import com.cs213.tuitionmanagerfx.model.enums.Major;
 
 /**
  * A model class representing a student profile.

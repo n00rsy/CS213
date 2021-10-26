@@ -1,13 +1,9 @@
 package com.cs213.tuitionmanagerfx.controller;
 
-import com.cs213.tuitionmanagerfx.Application;
-import com.cs213.tuitionmanagerfx.implementation.backend.student.Student;
 import com.cs213.tuitionmanagerfx.util.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
@@ -15,6 +11,7 @@ import javafx.stage.Stage;
 
 /**
  * A controller class managing print-students-options.fxml
+ *
  * @author Noor, Umar
  */
 public class PrintStudentsOptionsController {
@@ -27,6 +24,7 @@ public class PrintStudentsOptionsController {
 
     /**
      * Handles the back button click event and returns to the main menu.
+     *
      * @param event
      */
     @FXML
@@ -38,6 +36,7 @@ public class PrintStudentsOptionsController {
 
     /**
      * Handles the submit button click event and attempts to display roster based on input.
+     *
      * @param event
      */
     @FXML
@@ -61,7 +60,7 @@ public class PrintStudentsOptionsController {
                     break;
             }
         } catch (Exception e) {
-            output.setText(e.toString());
+            output.setText(e.getLocalizedMessage());
         }
     }
 }

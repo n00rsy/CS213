@@ -1,4 +1,4 @@
-package com.cs213.tuitionmanagerfx.implementation.util;
+package com.cs213.tuitionmanagerfx.model.util;
 
 import java.util.Comparator;
 
@@ -10,7 +10,7 @@ import java.util.Comparator;
 public class ArrayUtil {
 
     /**
-     * Prints the contents of an array from start to end-1.
+     * Prints the contents of an array from start to end-1. Used for debugging purposes.
      *
      * @param array the array to iterate through
      * @param start start index

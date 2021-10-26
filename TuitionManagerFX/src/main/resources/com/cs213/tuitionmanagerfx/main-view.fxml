@@ -21,7 +21,7 @@
       <children>
           <Button onAction="#handleAddButtonClick" text="Add Student" />
          <Button onAction="#handleRemoveButtonClick" text="Remove Student" GridPane.columnIndex="1" />
-         <Button mnemonicParsing="false" text="Edit Student" GridPane.rowIndex="1" />
+         <Button onAction="#handleEditButtonClick" text="Edit Student" GridPane.rowIndex="1" />
          <Button mnemonicParsing="false" text="Calculate Tuition" GridPane.rowIndex="2" />
          <Button onAction="#handlePrintButtonClick" text="Print Roster" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          <Button mnemonicParsing="false" text="Pay Tuition" GridPane.columnIndex="1" GridPane.rowIndex="1" />

@@ -1,16 +1,13 @@
 package com.cs213.tuitionmanagerfx.controller;
 
-import com.cs213.tuitionmanagerfx.Application;
-import com.cs213.tuitionmanagerfx.implementation.backend.student.*;
-import com.cs213.tuitionmanagerfx.implementation.enums.Location;
-import com.cs213.tuitionmanagerfx.implementation.enums.Major;
-import com.cs213.tuitionmanagerfx.implementation.util.ParseUtil;
+import com.cs213.tuitionmanagerfx.model.backend.student.*;
+import com.cs213.tuitionmanagerfx.model.enums.Location;
+import com.cs213.tuitionmanagerfx.model.enums.Major;
+import com.cs213.tuitionmanagerfx.model.util.ParseUtil;
 import com.cs213.tuitionmanagerfx.util.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -20,6 +17,7 @@ import javafx.stage.Stage;
 
 /**
  * A controller class managing add-student.fxml
+ *
  * @author Noor, Umar
  */
 public class AddStudentController {
@@ -53,6 +51,7 @@ public class AddStudentController {
 
     /**
      * Handles the back button click event and returns to the main menu.
+     *
      * @param event
      */
     @FXML
@@ -64,6 +63,7 @@ public class AddStudentController {
 
     /**
      * Handles the back button click event and attempts to add a student to the roster. If successful, returns to the main menu.
+     *
      * @param event
      */
     @FXML
@@ -105,7 +105,7 @@ public class AddStudentController {
             mainController.addStudent(student);
             stage.show();
         } catch (Exception e) {
-            output.setText(e.toString());
+            output.setText(e.getLocalizedMessage());
         }
     }
 

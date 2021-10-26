@@ -1,12 +1,10 @@
-package com.cs213.tuitionmanagerfx.implementation.backend;
+package com.cs213.tuitionmanagerfx.model.backend;
 
-import com.cs213.tuitionmanagerfx.implementation.backend.student.International;
-import com.cs213.tuitionmanagerfx.implementation.backend.student.Resident;
-import com.cs213.tuitionmanagerfx.implementation.backend.student.Student;
-import com.cs213.tuitionmanagerfx.implementation.config.Constants;
-import com.cs213.tuitionmanagerfx.implementation.util.ArrayUtil;
-
-import java.lang.reflect.Array;
+import com.cs213.tuitionmanagerfx.model.backend.student.International;
+import com.cs213.tuitionmanagerfx.model.backend.student.Resident;
+import com.cs213.tuitionmanagerfx.model.backend.student.Student;
+import com.cs213.tuitionmanagerfx.model.config.Constants;
+import com.cs213.tuitionmanagerfx.model.util.ArrayUtil;
 
 /**
  * A class that defines a mutable, dynamically resizable list of Students that can be interacted with.
@@ -213,7 +211,7 @@ public class Roster {
             });
             Student[] students = new Student[trimmedRoster.length];
             for (int i = 0; i < trimmedRoster.length; i++) {
-                students[i] = (Student)trimmedRoster[i];
+                students[i] = (Student) trimmedRoster[i];
             }
             return students;
         }
@@ -226,7 +224,6 @@ public class Roster {
         if (size == 0) {
             throw new IllegalStateException(Constants.EMPTY_ROSTER_MESSAGE);
         } else {
-            System.out.println("* list of students made payments ordered by payment date **");
             Object[] trimmedRoster = ArrayUtil.copy(roster, 0, size);
 
             for (int i = 0; i < trimmedRoster.length; i++) {
@@ -244,7 +241,7 @@ public class Roster {
             });
             Student[] students = new Student[payingStudents.length];
             for (int i = 0; i < payingStudents.length; i++) {
-                students[i] = (Student)payingStudents[i];
+                students[i] = (Student) payingStudents[i];
             }
             return students;
         }

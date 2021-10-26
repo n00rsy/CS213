@@ -1,6 +1,6 @@
-package com.cs213.tuitionmanagerfx.implementation.backend;
+package com.cs213.tuitionmanagerfx.model.backend;
 
-import com.cs213.tuitionmanagerfx.implementation.config.DateConfig;
+import com.cs213.tuitionmanagerfx.model.config.DateConfig;
 
 import java.util.Calendar;
 

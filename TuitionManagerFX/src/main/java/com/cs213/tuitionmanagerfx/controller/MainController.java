@@ -1,11 +1,11 @@
 package com.cs213.tuitionmanagerfx.controller;
 
-import com.cs213.tuitionmanagerfx.implementation.backend.Date;
-import com.cs213.tuitionmanagerfx.implementation.backend.Roster;
-import com.cs213.tuitionmanagerfx.implementation.backend.student.Student;
-import com.cs213.tuitionmanagerfx.implementation.config.Constants;
-import com.cs213.tuitionmanagerfx.implementation.config.TuitionConfig;
-import com.cs213.tuitionmanagerfx.implementation.util.ParseUtil;
+import com.cs213.tuitionmanagerfx.model.backend.Date;
+import com.cs213.tuitionmanagerfx.model.backend.Roster;
+import com.cs213.tuitionmanagerfx.model.backend.student.Student;
+import com.cs213.tuitionmanagerfx.model.config.Constants;
+import com.cs213.tuitionmanagerfx.model.config.TuitionConfig;
+import com.cs213.tuitionmanagerfx.model.util.ParseUtil;
 import com.cs213.tuitionmanagerfx.util.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 
 /**
  * The main controller for the project containing the roster instance and links to navigate the rest of the program.
+ *
  * @author Noor, Umar
  */
 public class MainController {
@@ -35,6 +36,7 @@ public class MainController {
 
     /**
      * Handles the add student button click by switching to the add student scene.
+     *
      * @param event
      */
     @FXML
@@ -47,6 +49,7 @@ public class MainController {
 
     /**
      * Handles the remove student button click by switching to the remove student scene.
+     *
      * @param event
      */
     @FXML
@@ -59,6 +62,7 @@ public class MainController {
 
     /**
      * Handles the print roster button click by switching to the print roster scene.
+     *
      * @param event
      */
     @FXML
@@ -68,6 +72,20 @@ public class MainController {
                 (Stage) ((Node) event.getSource()).getScene().getWindow(),
                 output);
     }
+
+    /**
+     * Handles the edit student button click by switching to the edit student scene.
+     *
+     * @param event
+     */
+    @FXML
+    private void handleEditButtonClick(ActionEvent event) {
+        SceneManager.switchScene("/edit-student.fxml",
+                MainController.class,
+                (Stage) ((Node) event.getSource()).getScene().getWindow(),
+                output);
+    }
+
 
     /**
      * Adds a student to the collection and outputs the result to the output TextArea.
@@ -102,10 +120,8 @@ public class MainController {
     /**
      * Calculates tuition for every student in the roster.
      * Outputs to output TextArea when complete.
-     *
-     * @param roster the roster to calculate tuition for
      */
-    private void calculateTuition(Roster roster) {
+    private void calculateTuition() {
         roster.calculateTuition();
         output.setText("Calculation completed.");
     }
@@ -161,15 +177,11 @@ public class MainController {
      * Attempts to set study abroad status for a student and outputs results to cmd.
      * Checks to ensure that the input date is valid.
      *
-     * @param args   the cmd arguments to parse from the user
-     * @param roster the roster to update
+     * @param student the student to update
+     * @param status  the new study abroad status
      */
-    private void setStudyAbroad(String[] args, Roster roster) {
-        Student student = null;
-        boolean status = false;
+    public void setStudyAbroad(Student student, boolean status) {
         try {
-            student = ParseUtil.parseStudent(args);
-            status = ParseUtil.parseBoolean(args[3]);
             if (roster.setStudyAbroad(student, status)) {
                 output.setText("Tuition updated.");
             } else {
@@ -184,46 +196,30 @@ public class MainController {
      * Attempts to set financial aid amount for a resident student and outputs results to cmd.
      * Checks to ensure that the input date is valid.
      *
-     * @param args   the cmd arguments to parse from the user
-     * @param roster the roster to update
+     * @param student the student to update
+     * @param amount  the new financial aid amount for the student
      */
-    private void setFinancialAid(String[] args, Roster roster) {
-        Student student = null;
-        try {
-            student = ParseUtil.parseStudent(args);
-        } catch (Exception e) {
-            output.setText(e.getLocalizedMessage());
-            return;
-        }
-        if (args.length == 3) {
-            output.setText("Missing the amount.");
+    public void setFinancialAid(Student student, double amount) {
+        if (amount <= 0 || amount > TuitionConfig.MAX_FIN_AID) {
+            output.setText(Constants.INVALID_AMOUNT_MESSAGE);
         } else {
-            double amount = 0;
             try {
-                amount = Double.parseDouble(args[3]);
-            } catch (Exception e) {
-                output.setText(Constants.INVALID_AMOUNT_MESSAGE);
-                return;
-            }
-            if (amount <= 0 || amount > TuitionConfig.MAX_FIN_AID) {
-                output.setText(Constants.INVALID_AMOUNT_MESSAGE);
-            } else {
-                try {
-                    if (roster.setFinancialAid(student, amount)) {
-                        output.setText("Tuition updated.");
-                    } else {
-                        output.setText("Student not in the roster.");
-                    }
-                } catch (Exception e) {
-                    output.setText(e.getLocalizedMessage());
+                if (roster.setFinancialAid(student, amount)) {
+                    output.setText("Tuition updated.");
+                } else {
+                    output.setText("Student not in the roster.");
                 }
+            } catch (Exception e) {
+                output.setText(e.getLocalizedMessage());
             }
         }
+
     }
 
     /**
      * Switches to the print student results scene and shows students in the input array.
-     * @param stage the current stage
+     *
+     * @param stage    the current stage
      * @param students an array of students to display
      */
     private void showRoster(Stage stage, Student[] students) {
@@ -238,47 +234,47 @@ public class MainController {
             printStudentsResultController.setStudents(students);
 
             stage.show();
-        }catch (Exception e) {
-            output.setText(e.toString());
+        } catch (Exception e) {
+            output.setText(e.getLocalizedMessage());
         }
     }
 
     /**
      * Gets an unordered array of students from the roster and displays them.
+     *
      * @param stage the current stage.
      */
     public void showRosterUnordered(Stage stage) {
         try {
             showRoster(stage, roster.getRoster());
-        }
-        catch (Exception e) {
-            output.setText(e.toString());
+        } catch (Exception e) {
+            output.setText(e.getLocalizedMessage());
         }
     }
 
     /**
      * Gets an array of students ordered by name from the roster and displays them.
+     *
      * @param stage the current stage.
      */
     public void showRosterByStudentName(Stage stage) {
         try {
             showRoster(stage, roster.getRosterByStudentName());
-        }
-        catch (Exception e) {
-            output.setText(e.toString());
+        } catch (Exception e) {
+            output.setText(e.getLocalizedMessage());
         }
     }
 
     /**
      * Gets an array of students ordered by payment date from the roster and displays them.
+     *
      * @param stage the current stage.
      */
     public void showRosterByPaymentDate(Stage stage) {
         try {
             showRoster(stage, roster.getPaymentStudentsByPaymentDate());
-        }
-        catch (Exception e) {
-            output.setText(e.toString());
+        } catch (Exception e) {
+            output.setText(e.getLocalizedMessage());
         }
     }
 }

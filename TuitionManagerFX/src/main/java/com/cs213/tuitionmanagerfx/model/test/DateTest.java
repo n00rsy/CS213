@@ -1,6 +1,6 @@
-package com.cs213.tuitionmanagerfx.implementation.test;
+package com.cs213.tuitionmanagerfx.model.test;
 
-import com.cs213.tuitionmanagerfx.implementation.backend.Date;
+import com.cs213.tuitionmanagerfx.model.backend.Date;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,9 +1,9 @@
-package com.cs213.tuitionmanagerfx.implementation.util;
+package com.cs213.tuitionmanagerfx.model.util;
 
-import com.cs213.tuitionmanagerfx.implementation.backend.student.*;
-import com.cs213.tuitionmanagerfx.implementation.config.TuitionConfig;
-import com.cs213.tuitionmanagerfx.implementation.enums.Location;
-import com.cs213.tuitionmanagerfx.implementation.enums.Major;
+import com.cs213.tuitionmanagerfx.model.backend.student.*;
+import com.cs213.tuitionmanagerfx.model.config.TuitionConfig;
+import com.cs213.tuitionmanagerfx.model.enums.Location;
+import com.cs213.tuitionmanagerfx.model.enums.Major;
 
 import java.util.InputMismatchException;
 

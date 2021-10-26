@@ -1,4 +1,4 @@
-package com.cs213.tuitionmanagerfx.implementation.config;
+package com.cs213.tuitionmanagerfx.model.config;
 
 /**
  * A class containing constants relating to tuition values.
