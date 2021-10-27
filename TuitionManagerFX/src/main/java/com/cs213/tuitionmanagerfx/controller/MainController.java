@@ -5,7 +5,6 @@ import com.cs213.tuitionmanagerfx.model.backend.Roster;
 import com.cs213.tuitionmanagerfx.model.backend.student.Student;
 import com.cs213.tuitionmanagerfx.model.config.Constants;
 import com.cs213.tuitionmanagerfx.model.config.TuitionConfig;
-import com.cs213.tuitionmanagerfx.model.util.ParseUtil;
 import com.cs213.tuitionmanagerfx.util.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -86,6 +85,19 @@ public class MainController {
                 output);
     }
 
+    /**
+     * Handles the pay tuition button click by switching to the pay tuition scene.
+     *
+     * @param event
+     */
+    @FXML
+    private void handlePayTuitionButtonClick(ActionEvent event) {
+        SceneManager.switchScene("/pay-tuition.fxml",
+                MainController.class,
+                (Stage) ((Node) event.getSource()).getScene().getWindow(),
+                output);
+    }
+
 
     /**
      * Adds a student to the collection and outputs the result to the output TextArea.
@@ -121,7 +133,7 @@ public class MainController {
      * Calculates tuition for every student in the roster.
      * Outputs to output TextArea when complete.
      */
-    private void calculateTuition() {
+    public void calculateTuition() {
         roster.calculateTuition();
         output.setText("Calculation completed.");
     }
@@ -130,45 +142,24 @@ public class MainController {
      * Attempts to pay tuition for a student and outputs results to cmd.
      * Checks to ensure that the input date is valid.
      *
-     * @param args   the cmd arguments to parse from the user
-     * @param roster the roster to update
+     * @param student   the student to update
+     * @param amount the amount to add
+     * @param date  the payment date
      */
-    private void payTuition(String[] args, Roster roster) {
-        Student student = null;
-        try {
-            student = ParseUtil.parseStudent(args);
-        } catch (Exception e) {
-            output.setText(e.getLocalizedMessage());
-            return;
-        }
-        if (args.length == 3) {
-            output.setText("Payment amount missing.");
-
-        } else if (args.length == 4) {
-            output.setText("Missing data in output TextArea.");
+    public void payTuition(Student student, double amount, Date date) {
+        if (amount <= 0) {
+            output.setText(Constants.INVALID_AMOUNT_MESSAGE);
+        } else if (date == null || !date.isValid() || date.compareTo(new Date()) > 0 && date.compareTo(new Date("01/01/2021")) < 0) {
+            output.setText("Payment date invalid.");
         } else {
-            double amount = 0;
-            Date date = new Date(args[4]);
             try {
-                amount = Double.parseDouble(args[3]);
-            } catch (Exception e) {
-                output.setText(Constants.INVALID_AMOUNT_MESSAGE);
-                return;
-            }
-            if (amount <= 0) {
-                output.setText(Constants.INVALID_AMOUNT_MESSAGE);
-            } else if (date == null || !date.isValid() || date.compareTo(new Date()) > 0 && date.compareTo(new Date("01/01/2021")) < 0) {
-                output.setText("Payment date invalid.");
-            } else {
-                try {
-                    if (roster.payTuition(student, amount, date)) {
-                        output.setText("Payment applied.");
-                    } else {
-                        output.setText("Student not in the roster.");
-                    }
-                } catch (Exception e) {
-                    output.setText(e.getLocalizedMessage());
+                if (roster.payTuition(student, amount, date)) {
+                    output.setText("Payment applied.");
+                } else {
+                    output.setText("Student not in the roster.");
                 }
+            } catch (Exception e) {
+                output.setText(e.getLocalizedMessage());
             }
         }
     }
@@ -213,7 +204,6 @@ public class MainController {
                 output.setText(e.getLocalizedMessage());
             }
         }
-
     }
 
     /**
