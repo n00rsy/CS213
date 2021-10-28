@@ -178,7 +178,9 @@ public class Roster {
     }
 
     /**
-     * Displays all students to the output stream without specifying the order.
+     * Returns all students in the roster, unordered.
+     *
+     * @return Student[] unordered array of students in the roster
      */
     public Student[] getRoster() {
         if (size == 0) {
@@ -197,7 +199,9 @@ public class Roster {
     }
 
     /**
-     * Displays all students to the output stream, sorted by name in ascending order
+     * Returns all students in the roster, sorted by name in ascending order
+     *
+     * @return Student[] array of students in the roster ordered by name
      */
     public Student[] getRosterByStudentName() {
         if (size == 0) {
@@ -218,7 +222,9 @@ public class Roster {
     }
 
     /**
-     * Displays students who have made a tuition payment to the output stream, sorted by last payment date in descending order
+     * Returns students who have made a tuition payment, sorted by last payment date in descending order
+     *
+     * @return students who paid tuition ordered by last payment date
      */
     public Student[] getPaymentStudentsByPaymentDate() {
         if (size == 0) {

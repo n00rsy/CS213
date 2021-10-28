@@ -109,6 +109,11 @@ public class AddStudentController {
         }
     }
 
+    /**
+     * Handles when different student types are selected, and activates/ deactivates the correct fields
+     *
+     * @param event
+     */
     @FXML
     private void handleStudentTypeChange(ActionEvent event) {
         RadioButton radioButton = (RadioButton) event.getSource();

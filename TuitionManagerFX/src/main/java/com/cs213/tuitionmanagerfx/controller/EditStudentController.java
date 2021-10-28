@@ -13,6 +13,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
+/**
+ * A controller class for edit-student.fxml
+ * Handles requests to edit student information
+ *
+ * @author Noor, Umar
+ */
 public class EditStudentController {
 
     @FXML
@@ -30,6 +36,11 @@ public class EditStudentController {
     @FXML
     TextField financialAid;
 
+    /**
+     * Handles the back button click event and returns to the main menu.
+     *
+     * @param event
+     */
     @FXML
     private void handleBackButtonClick(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -37,6 +48,11 @@ public class EditStudentController {
         stage.show();
     }
 
+    /**
+     * Handles the submit button click event and attempts to edit the student in the requested way.
+     *
+     * @param event
+     */
     @FXML
     public void handleSubmitButtonClick(ActionEvent event) {
 

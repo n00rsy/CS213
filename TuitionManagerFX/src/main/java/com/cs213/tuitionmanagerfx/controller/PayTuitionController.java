@@ -14,6 +14,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
+/**
+ * Controller class for pay-tuition.fxml
+ * Handles tuition payment
+ *
+ * @author Noor, Umar
+ */
 public class PayTuitionController {
 
     @FXML
@@ -52,10 +58,10 @@ public class PayTuitionController {
     private void handleSubmitButtonClick(ActionEvent event) {
         try {
 
-            if(date.getText().trim().length() == 0) {
+            if (date.getText().trim().length() == 0) {
                 throw new IllegalArgumentException("Please enter a payment date.");
             }
-            if(amount.getText().trim().length() == 0) {
+            if (amount.getText().trim().length() == 0) {
                 throw new IllegalArgumentException("Please enter a payment amount.");
             }
 

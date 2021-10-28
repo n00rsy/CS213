@@ -98,6 +98,16 @@ public class MainController {
                 output);
     }
 
+    /**
+     * Handles the calculate tuition button click by switching calculating tuition for all students in the roster.
+     *
+     * @param event
+     */
+    @FXML
+    private void handleCalculateTuitionDueButtonClick(ActionEvent event) {
+        roster.calculateTuition();
+        output.setText("Tuition calculated successfully.");
+    }
 
     /**
      * Adds a student to the collection and outputs the result to the output TextArea.
@@ -142,9 +152,9 @@ public class MainController {
      * Attempts to pay tuition for a student and outputs results to cmd.
      * Checks to ensure that the input date is valid.
      *
-     * @param student   the student to update
-     * @param amount the amount to add
-     * @param date  the payment date
+     * @param student the student to update
+     * @param amount  the amount to add
+     * @param date    the payment date
      */
     public void payTuition(Student student, double amount, Date date) {
         if (amount <= 0) {
