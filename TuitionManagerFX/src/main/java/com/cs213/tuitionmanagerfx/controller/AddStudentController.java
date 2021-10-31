@@ -4,6 +4,7 @@ import com.cs213.tuitionmanagerfx.model.backend.student.*;
 import com.cs213.tuitionmanagerfx.model.enums.Location;
 import com.cs213.tuitionmanagerfx.model.enums.Major;
 import com.cs213.tuitionmanagerfx.model.util.ParseUtil;
+import com.cs213.tuitionmanagerfx.util.Constants;
 import com.cs213.tuitionmanagerfx.util.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -75,7 +76,7 @@ public class AddStudentController {
             Major inputMajor = ParseUtil.parseMajor(((RadioButton) major.getSelectedToggle()).getText());
             int inputNumCredits = ParseUtil.parseNumCredits(numCredits.getText());
             switch (inputType) {
-                case "International":
+                case Constants.INTERNATIONAL:
                     boolean inputStudyAbroad = ParseUtil.parseBoolean(((RadioButton) studyAbroad.getSelectedToggle()).getText());
                     student = new International(inputName,
                             inputMajor,
@@ -83,15 +84,15 @@ public class AddStudentController {
                             inputStudyAbroad);
                     break;
 
-                case "Resident":
+                case Constants.RESIDENT:
                     student = new Resident(inputName, inputMajor, inputNumCredits);
                     break;
 
-                case "Non-Resident":
+                case Constants.NONRESIDENT:
                     student = new NonResident(inputName, inputMajor, inputNumCredits);
                     break;
 
-                case "Tri-State":
+                case Constants.TRISTATE:
                     Location inputLocation = ParseUtil.parseLocation(((RadioButton) locationGroup.getSelectedToggle()).getText());
                     student = new TriState(inputName, inputMajor, inputNumCredits, inputLocation);
                     break;
@@ -110,21 +111,21 @@ public class AddStudentController {
     }
 
     /**
-     * Handles when different student types are selected, and activates/ deactivates the correct fields
+     * Handles button click event when different student types are selected, and activates/ deactivates the correct fields
      *
      * @param event
      */
     @FXML
     private void handleStudentTypeChange(ActionEvent event) {
         RadioButton radioButton = (RadioButton) event.getSource();
-        if (radioButton.getText().equals("International")) {
+        if (radioButton.getText().equals(Constants.INTERNATIONAL)) {
             studyAbroadContainer.setDisable(false);
         } else {
             studyAbroadContainer.setDisable(true);
             studyAbroad.selectToggle(null);
         }
 
-        if (radioButton.getText().equals("Tri-State")) {
+        if (radioButton.getText().equals(Constants.TRISTATE)) {
             locationContainer.setDisable(false);
         } else {
             locationContainer.setDisable(true);
