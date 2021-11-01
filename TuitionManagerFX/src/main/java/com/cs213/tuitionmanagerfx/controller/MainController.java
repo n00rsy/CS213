@@ -21,66 +21,131 @@ import javafx.scene.layout.HBox;
  */
 public class MainController {
 
+    /**
+     * TextArea for all program output.
+     */
     @FXML
     TextArea output;
 
+    /**
+     * Student Type group for use in creating new students.
+     */
     @FXML
     ToggleGroup studentType;
 
+    /**
+     * Major toggleGroup for use in creating new students.
+     */
     @FXML
     ToggleGroup addMajor;
 
+    /**
+     * Name TextField for use in creating new students.
+     */
     @FXML
     TextField addName;
 
+    /**
+     * Number of credits input for use in creating new students.
+     */
     @FXML
     TextField numCredits;
 
+    /**
+     * Container node for studyAbroad fields in student creation.
+     */
     @FXML
     HBox studyAbroadContainer;
 
+    /**
+     * studyAbroad toggleGroup for use in student creation.
+     */
     @FXML
     ToggleGroup addStudyAbroad;
 
+    /**
+     * Location selector container for use in student creation.
+     */
     @FXML
     HBox locationContainer;
 
+    /**
+     * Location toggleGroup for use in adding students.
+     */
     @FXML
     ToggleGroup locationGroup;
 
+    /**
+     * Name TextField for use in removing students.
+     */
     @FXML
     TextField removeName;
 
+    /**
+     * Major toggleGroup for use in removing existing students from the roster.
+     */
     @FXML
     ToggleGroup removeMajor;
 
+    /**
+     * Name TextField for use in editing students.
+     */
     @FXML
     TextField editName;
 
+    /**
+     * Major toggleGroup for use in editing existing students.
+     */
     @FXML
     ToggleGroup editMajor;
 
+    /**
+     * studyAbroad toggleGroup for use in changing a student's study abroad status.
+     */
     @FXML
     ToggleGroup editStudyAbroad;
 
+    /**
+     * Financial aid textField for changing a student's financial aid amount.
+     */
     @FXML
     TextField editFinancialAid;
 
+    /**
+     * TextField used to input the name of the student to pay tuition.
+     */
     @FXML
     TextField payName;
 
+
+    /**
+     * ToggleGroup to input the major of the student to pay tuition.
+     */
     @FXML
     ToggleGroup payMajor;
 
+
+    /**
+     * TextField used to input the amount of tuition to pay.
+     */
     @FXML
     TextField amount;
 
+    /**
+     * TextField used to input the tuition payment date.
+     */
     @FXML
     TextField date;
 
+    /**
+     * ToggleGroup used to select which sort type to use while printing.
+     */
     @FXML
     ToggleGroup printType;
 
+    /**
+     * Displays printed students.
+     */
     @FXML
     ListView studentView;
 
@@ -118,14 +183,13 @@ public class MainController {
 
     /**
      * Handles the add student button click event and attempts to add a student to the roster. If successful, returns to the main menu.
-     *
-     * @param event
      */
     @FXML
-    private void handleAddStudentButtonClick(ActionEvent event) {
+    private void handleAddStudentButtonClick() {
         try {
 
-            if (studentType.getSelectedToggle() == null) throw new IllegalArgumentException("Please select a student type.");
+            if (studentType.getSelectedToggle() == null)
+                throw new IllegalArgumentException("Please select a student type.");
             if (addMajor.getSelectedToggle() == null) throw new IllegalArgumentException("Please select a major.");
 
             Student student;
@@ -135,7 +199,8 @@ public class MainController {
             int inputNumCredits = ParseUtil.parseNumCredits(numCredits.getText());
             switch (inputType) {
                 case com.cs213.tuitionmanagerfx.util.Constants.INTERNATIONAL:
-                    if (addStudyAbroad.getSelectedToggle() == null) throw new IllegalArgumentException("Please select a study abroad status.");
+                    if (addStudyAbroad.getSelectedToggle() == null)
+                        throw new IllegalArgumentException("Please select a study abroad status.");
                     boolean inputStudyAbroad = ParseUtil.parseBoolean(((RadioButton) addStudyAbroad.getSelectedToggle()).getText());
                     student = new International(inputName,
                             inputMajor,
@@ -152,7 +217,8 @@ public class MainController {
                     break;
 
                 case com.cs213.tuitionmanagerfx.util.Constants.TRISTATE:
-                    if (locationGroup.getSelectedToggle() == null) throw new IllegalArgumentException("Please select a location.");
+                    if (locationGroup.getSelectedToggle() == null)
+                        throw new IllegalArgumentException("Please select a location.");
                     Location inputLocation = ParseUtil.parseLocation(((RadioButton) locationGroup.getSelectedToggle()).getText());
                     student = new TriState(inputName, inputMajor, inputNumCredits, inputLocation);
                     break;
@@ -161,17 +227,15 @@ public class MainController {
             }
             addStudent(student);
         } catch (Exception e) {
-            output.setText(e.getLocalizedMessage());
+            output.appendText("\n" + e.getLocalizedMessage());
         }
     }
 
     /**
      * Handles the remove student click event and attempts to remove a student.
-     *
-     * @param event
      */
     @FXML
-    private void handleRemoveStudentButtonClick(ActionEvent event) {
+    private void handleRemoveStudentButtonClick() {
         try {
             if (removeMajor.getSelectedToggle() == null) throw new IllegalArgumentException("Please select a major.");
             String inputName = ParseUtil.parseName(removeName.getText());
@@ -179,17 +243,15 @@ public class MainController {
             Student student = new Student(inputName, inputMajor);
             removeStudent(student);
         } catch (Exception e) {
-            output.setText(e.getLocalizedMessage());
+            output.appendText("\n" + e.getLocalizedMessage());
         }
     }
 
     /**
      * Handles the edit student click event and attempts to edit the student in the requested way.
-     *
-     * @param event
      */
     @FXML
-    public void handleEditStudentButtonClick(ActionEvent event) {
+    private void handleEditStudentButtonClick() {
         try {
             if (editMajor.getSelectedToggle() == null) throw new IllegalArgumentException("Please select a major.");
 
@@ -209,17 +271,15 @@ public class MainController {
                 }
             }
         } catch (Exception e) {
-            output.setText(e.getLocalizedMessage());
+            output.appendText("\n" + e.getLocalizedMessage());
         }
     }
 
     /**
      * Handles the pay tuition click event and attempts to submit a payment.
-     *
-     * @param event
      */
     @FXML
-    private void handlePayTuitionButtonClick(ActionEvent event) {
+    private void handlePayTuitionButtonClick() {
         try {
 
             if (date.getText().trim().length() == 0) {
@@ -239,33 +299,29 @@ public class MainController {
             Student student = new Student(inputName, inputMajor);
             payTuition(student, paymentAmount, paymentDate);
         } catch (Exception e) {
-            output.setText(e.getLocalizedMessage());
+            output.appendText("\n" + e.getLocalizedMessage());
         }
     }
 
     /**
      * Handles the calculate tuition button click by switching calculating tuition for all students in the roster.
-     *
-     * @param event
      */
     @FXML
-    private void handleCalculateTuitionDueButtonClick(ActionEvent event) {
+    private void handleCalculateTuitionDueButtonClick() {
         roster.calculateTuition();
-        output.setText("Tuition calculated successfully.");
+        output.appendText("\n" + "Tuition calculated successfully.");
     }
 
     /**
      * Handles the print roster click event and attempts to display roster based on input.
-     *
-     * @param event
      */
     @FXML
-    private void handlePrintRosterButtonClick(ActionEvent event) {
+    private void handlePrintRosterButtonClick() {
         try {
             String currentPrintType = "";
             try {
                 currentPrintType = ((RadioButton) printType.getSelectedToggle()).getId();
-            }catch (Exception e) {
+            } catch (Exception e) {
                 throw new IllegalArgumentException("Please select a print type.");
             }
 
@@ -283,7 +339,7 @@ public class MainController {
                     throw new IllegalArgumentException("Something is wrong!");
             }
         } catch (Exception e) {
-            output.setText(e.getLocalizedMessage());
+            output.appendText("\n" + e.getLocalizedMessage());
         }
     }
 
@@ -292,12 +348,12 @@ public class MainController {
      *
      * @param student the student to add
      */
-    public void addStudent(Student student) {
+    private void addStudent(Student student) {
         if (student != null) {
             if (roster.add(student)) {
-                output.setText("Student added.");
+                output.appendText("\n" + "Student added.");
             } else {
-                output.setText("Student is already in the roster.");
+                output.appendText("\n" + "Student is already in the roster.");
             }
         }
     }
@@ -307,12 +363,12 @@ public class MainController {
      *
      * @param student the student to remove
      */
-    public void removeStudent(Student student) {
+    private void removeStudent(Student student) {
         if (student != null) {
             if (roster.remove(student)) {
-                output.setText("Student removed from the roster.");
+                output.appendText("\n" + "Student removed from the roster.");
             } else {
-                output.setText("Student is not in the roster.");
+                output.appendText("\n" + "Student is not in the roster.");
             }
         }
     }
@@ -325,20 +381,20 @@ public class MainController {
      * @param amount  the amount to add
      * @param date    the payment date
      */
-    public void payTuition(Student student, double amount, Date date) {
+    private void payTuition(Student student, double amount, Date date) {
         if (amount <= 0) {
-            output.setText(Constants.INVALID_AMOUNT_MESSAGE);
+            output.appendText("\n" + Constants.INVALID_AMOUNT_MESSAGE);
         } else if (date == null || !date.isValid() || date.compareTo(new Date()) > 0 && date.compareTo(new Date("01/01/2021")) < 0) {
-            output.setText("Payment date invalid.");
+            output.appendText("\n" + "Payment date invalid.");
         } else {
             try {
                 if (roster.payTuition(student, amount, date)) {
-                    output.setText("Payment applied.");
+                    output.appendText("\n" + "Payment applied.");
                 } else {
-                    output.setText("Student not in the roster.");
+                    output.appendText("\n" + "Student not in the roster.");
                 }
             } catch (Exception e) {
-                output.setText(e.getLocalizedMessage());
+                output.appendText("\n" + e.getLocalizedMessage());
             }
         }
     }
@@ -350,15 +406,15 @@ public class MainController {
      * @param student the student to update
      * @param status  the new study abroad status
      */
-    public void setStudyAbroad(Student student, boolean status) {
+    private void setStudyAbroad(Student student, boolean status) {
         try {
             if (roster.setStudyAbroad(student, status)) {
-                output.setText("Tuition updated.");
+                output.appendText("\n" + "Tuition updated.");
             } else {
-                output.setText("Couldn't find the international student.");
+                output.appendText("\n" + "Couldn't find the international student.");
             }
         } catch (Exception e) {
-            output.setText(e.getLocalizedMessage());
+            output.appendText("\n" + e.getLocalizedMessage());
         }
     }
 
@@ -369,18 +425,18 @@ public class MainController {
      * @param student the student to update
      * @param amount  the new financial aid amount for the student
      */
-    public void setFinancialAid(Student student, double amount) {
+    private void setFinancialAid(Student student, double amount) {
         if (amount <= 0 || amount > TuitionConfig.MAX_FIN_AID) {
-            output.setText(Constants.INVALID_AMOUNT_MESSAGE);
+            output.appendText("\n" + Constants.INVALID_AMOUNT_MESSAGE);
         } else {
             try {
                 if (roster.setFinancialAid(student, amount)) {
-                    output.setText("Tuition updated.");
+                    output.appendText("\n" + "Tuition updated.");
                 } else {
-                    output.setText("Student not in the roster.");
+                    output.appendText("\n" + "Student not in the roster.");
                 }
             } catch (Exception e) {
-                output.setText(e.getLocalizedMessage());
+                output.appendText("\n" + e.getLocalizedMessage());
             }
         }
     }
@@ -390,48 +446,45 @@ public class MainController {
      *
      * @param students Student[] of students to display
      */
-    public void setStudents(Student[] students) {
+    private void setStudents(Student[] students) {
         String[] studentStrings = new String[students.length];
         for (int i = 0; i < students.length; i++) {
             studentStrings[i] = students[i].toString();
         }
-        for(String s : studentStrings) System.out.println(s);
+        for (String s : studentStrings) System.out.println(s);
         studentView.setItems(FXCollections.observableArrayList(studentStrings));
     }
 
     /**
      * Gets an unordered array of students from the roster and displays them.
-     *
      */
-    public void showRosterUnordered() {
+    private void showRosterUnordered() {
         try {
             setStudents(roster.getRoster());
         } catch (Exception e) {
-            output.setText(e.getLocalizedMessage());
+            output.appendText("\n" + e.getLocalizedMessage());
         }
     }
 
     /**
      * Gets an array of students ordered by name from the roster and displays them.
-     *
      */
-    public void showRosterByStudentName() {
+    private void showRosterByStudentName() {
         try {
             setStudents(roster.getRosterByStudentName());
         } catch (Exception e) {
-            output.setText(e.getLocalizedMessage());
+            output.appendText("\n" + e.getLocalizedMessage());
         }
     }
 
     /**
      * Gets an array of students ordered by payment date from the roster and displays them.
-     *
      */
-    public void showRosterByPaymentDate() {
+    private void showRosterByPaymentDate() {
         try {
             setStudents(roster.getPaymentStudentsByPaymentDate());
         } catch (Exception e) {
-            output.setText(e.getLocalizedMessage());
+            output.appendText("\n" + e.getLocalizedMessage());
         }
     }
 }

@@ -16,6 +16,7 @@ public class Application extends javafx.application.Application {
 
     /**
      * The entry point for the application.
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -24,6 +25,7 @@ public class Application extends javafx.application.Application {
 
     /**
      * Sets up initial scene in the JavaFX app.
+     *
      * @param stage
      * @throws IOException
      */
