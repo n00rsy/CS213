@@ -2,17 +2,17 @@ package com.cs213.tuitionmanagerfx.controller;
 
 import com.cs213.tuitionmanagerfx.model.backend.Date;
 import com.cs213.tuitionmanagerfx.model.backend.Roster;
-import com.cs213.tuitionmanagerfx.model.backend.student.Student;
+import com.cs213.tuitionmanagerfx.model.backend.student.*;
 import com.cs213.tuitionmanagerfx.model.config.Constants;
 import com.cs213.tuitionmanagerfx.model.config.TuitionConfig;
-import com.cs213.tuitionmanagerfx.util.SceneManager;
+import com.cs213.tuitionmanagerfx.model.enums.Location;
+import com.cs213.tuitionmanagerfx.model.enums.Major;
+import com.cs213.tuitionmanagerfx.model.util.ParseUtil;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.TextArea;
-import javafx.stage.Stage;
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 
 /**
  * The main controller for the project containing the roster instance and links to navigate the rest of the program.
@@ -24,78 +24,223 @@ public class MainController {
     @FXML
     TextArea output;
 
+    @FXML
+    ToggleGroup studentType;
+
+    @FXML
+    ToggleGroup addMajor;
+
+    @FXML
+    TextField addName;
+
+    @FXML
+    TextField numCredits;
+
+    @FXML
+    HBox studyAbroadContainer;
+
+    @FXML
+    ToggleGroup addStudyAbroad;
+
+    @FXML
+    HBox locationContainer;
+
+    @FXML
+    ToggleGroup locationGroup;
+
+    @FXML
+    TextField removeName;
+
+    @FXML
+    ToggleGroup removeMajor;
+
+    @FXML
+    TextField editName;
+
+    @FXML
+    ToggleGroup editMajor;
+
+    @FXML
+    ToggleGroup editStudyAbroad;
+
+    @FXML
+    TextField editFinancialAid;
+
+    @FXML
+    TextField payName;
+
+    @FXML
+    ToggleGroup payMajor;
+
+    @FXML
+    TextField amount;
+
+    @FXML
+    TextField date;
+
+    @FXML
+    ToggleGroup printType;
+
+    @FXML
+    ListView studentView;
+
     Roster roster;
 
     /**
-     * Runs on load and initializes the roster.
+     * Runs on start and initializes the roster.
      */
     public void initialize() {
         roster = new Roster();
     }
 
     /**
-     * Handles the add student button click by switching to the add student scene.
+     * Handles button click event when different student types are selected, and activates/ deactivates the correct fields
      *
      * @param event
      */
     @FXML
-    private void handleAddButtonClick(ActionEvent event) {
-        SceneManager.switchScene("/add-student.fxml",
-                MainController.class,
-                (Stage) ((Node) event.getSource()).getScene().getWindow(),
-                output);
+    private void handleStudentTypeChange(ActionEvent event) {
+        RadioButton radioButton = (RadioButton) event.getSource();
+        if (radioButton.getText().equals(com.cs213.tuitionmanagerfx.util.Constants.INTERNATIONAL)) {
+            studyAbroadContainer.setDisable(false);
+        } else {
+            studyAbroadContainer.setDisable(true);
+            addStudyAbroad.selectToggle(null);
+        }
+
+        if (radioButton.getText().equals(com.cs213.tuitionmanagerfx.util.Constants.TRISTATE)) {
+            locationContainer.setDisable(false);
+        } else {
+            locationContainer.setDisable(true);
+            locationGroup.selectToggle(null);
+        }
     }
 
     /**
-     * Handles the remove student button click by switching to the remove student scene.
+     * Handles the add student button click event and attempts to add a student to the roster. If successful, returns to the main menu.
      *
      * @param event
      */
     @FXML
-    private void handleRemoveButtonClick(ActionEvent event) {
-        SceneManager.switchScene("/remove-student.fxml",
-                MainController.class,
-                (Stage) ((Node) event.getSource()).getScene().getWindow(),
-                output);
+    private void handleAddStudentButtonClick(ActionEvent event) {
+        try {
+
+            if (studentType.getSelectedToggle() == null) throw new IllegalArgumentException("Please select a student type.");
+            if (addMajor.getSelectedToggle() == null) throw new IllegalArgumentException("Please select a major.");
+
+            Student student;
+            String inputName = ParseUtil.parseName(addName.getText());
+            String inputType = ((RadioButton) studentType.getSelectedToggle()).getText();
+            Major inputMajor = ParseUtil.parseMajor(((RadioButton) addMajor.getSelectedToggle()).getText());
+            int inputNumCredits = ParseUtil.parseNumCredits(numCredits.getText());
+            switch (inputType) {
+                case com.cs213.tuitionmanagerfx.util.Constants.INTERNATIONAL:
+                    if (addStudyAbroad.getSelectedToggle() == null) throw new IllegalArgumentException("Please select a study abroad status.");
+                    boolean inputStudyAbroad = ParseUtil.parseBoolean(((RadioButton) addStudyAbroad.getSelectedToggle()).getText());
+                    student = new International(inputName,
+                            inputMajor,
+                            inputNumCredits,
+                            inputStudyAbroad);
+                    break;
+
+                case com.cs213.tuitionmanagerfx.util.Constants.RESIDENT:
+                    student = new Resident(inputName, inputMajor, inputNumCredits);
+                    break;
+
+                case com.cs213.tuitionmanagerfx.util.Constants.NONRESIDENT:
+                    student = new NonResident(inputName, inputMajor, inputNumCredits);
+                    break;
+
+                case com.cs213.tuitionmanagerfx.util.Constants.TRISTATE:
+                    if (locationGroup.getSelectedToggle() == null) throw new IllegalArgumentException("Please select a location.");
+                    Location inputLocation = ParseUtil.parseLocation(((RadioButton) locationGroup.getSelectedToggle()).getText());
+                    student = new TriState(inputName, inputMajor, inputNumCredits, inputLocation);
+                    break;
+                default:
+                    throw new IllegalArgumentException("Please select a student type.");
+            }
+            addStudent(student);
+        } catch (Exception e) {
+            output.setText(e.getLocalizedMessage());
+        }
     }
 
     /**
-     * Handles the print roster button click by switching to the print roster scene.
+     * Handles the remove student click event and attempts to remove a student.
      *
      * @param event
      */
     @FXML
-    private void handlePrintButtonClick(ActionEvent event) {
-        SceneManager.switchScene("/print-students-options.fxml",
-                MainController.class,
-                (Stage) ((Node) event.getSource()).getScene().getWindow(),
-                output);
+    private void handleRemoveStudentButtonClick(ActionEvent event) {
+        try {
+            if (removeMajor.getSelectedToggle() == null) throw new IllegalArgumentException("Please select a major.");
+            String inputName = ParseUtil.parseName(removeName.getText());
+            Major inputMajor = ParseUtil.parseMajor(((RadioButton) removeMajor.getSelectedToggle()).getText());
+            Student student = new Student(inputName, inputMajor);
+            removeStudent(student);
+        } catch (Exception e) {
+            output.setText(e.getLocalizedMessage());
+        }
     }
 
     /**
-     * Handles the edit student button click by switching to the edit student scene.
+     * Handles the edit student click event and attempts to edit the student in the requested way.
      *
      * @param event
      */
     @FXML
-    private void handleEditButtonClick(ActionEvent event) {
-        SceneManager.switchScene("/edit-student.fxml",
-                MainController.class,
-                (Stage) ((Node) event.getSource()).getScene().getWindow(),
-                output);
+    public void handleEditStudentButtonClick(ActionEvent event) {
+        try {
+            if (editMajor.getSelectedToggle() == null) throw new IllegalArgumentException("Please select a major.");
+
+            String inputName = ParseUtil.parseName(editName.getText());
+            Major inputMajor = ParseUtil.parseMajor(((RadioButton) editMajor.getSelectedToggle()).getText());
+            Student student = new Student(inputName, inputMajor);
+            RadioButton studyAbroadToggle = (RadioButton) editStudyAbroad.getSelectedToggle();
+
+            if (studyAbroadToggle != null) {
+                setStudyAbroad(student, ParseUtil.parseBoolean(studyAbroadToggle.getText()));
+            } else {
+                try {
+                    double financialAidAmount = Double.parseDouble(editFinancialAid.getText());
+                    setFinancialAid(student, financialAidAmount);
+                } catch (Exception e) {
+                    throw new IllegalArgumentException("Please submit a valid change to the student.");
+                }
+            }
+        } catch (Exception e) {
+            output.setText(e.getLocalizedMessage());
+        }
     }
 
     /**
-     * Handles the pay tuition button click by switching to the pay tuition scene.
+     * Handles the pay tuition click event and attempts to submit a payment.
      *
      * @param event
      */
     @FXML
     private void handlePayTuitionButtonClick(ActionEvent event) {
-        SceneManager.switchScene("/pay-tuition.fxml",
-                MainController.class,
-                (Stage) ((Node) event.getSource()).getScene().getWindow(),
-                output);
+        try {
+
+            if (date.getText().trim().length() == 0) {
+                throw new IllegalArgumentException("Please enter a payment date.");
+            }
+            if (amount.getText().trim().length() == 0) {
+                throw new IllegalArgumentException("Please enter a payment amount.");
+            }
+
+            if (payMajor.getSelectedToggle() == null) throw new IllegalArgumentException("Please select a major.");
+
+            String inputName = ParseUtil.parseName(payName.getText());
+            Major inputMajor = ParseUtil.parseMajor(((RadioButton) payMajor.getSelectedToggle()).getText());
+            Date paymentDate = new Date(date.getText());
+            double paymentAmount = Double.parseDouble(amount.getText());
+
+            Student student = new Student(inputName, inputMajor);
+            payTuition(student, paymentAmount, paymentDate);
+        } catch (Exception e) {
+            output.setText(e.getLocalizedMessage());
+        }
     }
 
     /**
@@ -107,6 +252,39 @@ public class MainController {
     private void handleCalculateTuitionDueButtonClick(ActionEvent event) {
         roster.calculateTuition();
         output.setText("Tuition calculated successfully.");
+    }
+
+    /**
+     * Handles the print roster click event and attempts to display roster based on input.
+     *
+     * @param event
+     */
+    @FXML
+    private void handlePrintRosterButtonClick(ActionEvent event) {
+        try {
+            String currentPrintType = "";
+            try {
+                currentPrintType = ((RadioButton) printType.getSelectedToggle()).getId();
+            }catch (Exception e) {
+                throw new IllegalArgumentException("Please select a print type.");
+            }
+
+            switch (currentPrintType) {
+                case "unordered":
+                    showRosterUnordered();
+                    break;
+                case "name":
+                    showRosterByStudentName();
+                    break;
+                case "payment":
+                    showRosterByPaymentDate();
+                    break;
+                default:
+                    throw new IllegalArgumentException("Something is wrong!");
+            }
+        } catch (Exception e) {
+            output.setText(e.getLocalizedMessage());
+        }
     }
 
     /**
@@ -137,15 +315,6 @@ public class MainController {
                 output.setText("Student is not in the roster.");
             }
         }
-    }
-
-    /**
-     * Calculates tuition for every student in the roster.
-     * Outputs to output TextArea when complete.
-     */
-    public void calculateTuition() {
-        roster.calculateTuition();
-        output.setText("Calculation completed.");
     }
 
     /**
@@ -217,36 +386,26 @@ public class MainController {
     }
 
     /**
-     * Switches to the print student results scene and shows students in the input array.
+     * Displays the students passed in using the studentView listView.
      *
-     * @param stage    the current stage
-     * @param students an array of students to display
+     * @param students Student[] of students to display
      */
-    private void showRoster(Stage stage, Student[] students) {
-        try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource(
-                            "/print-students-result.fxml"
-                    )
-            );
-            stage.setScene(new Scene(loader.load()));
-            PrintStudentsResultController printStudentsResultController = loader.getController();
-            printStudentsResultController.setStudents(students);
-
-            stage.show();
-        } catch (Exception e) {
-            output.setText(e.getLocalizedMessage());
+    public void setStudents(Student[] students) {
+        String[] studentStrings = new String[students.length];
+        for (int i = 0; i < students.length; i++) {
+            studentStrings[i] = students[i].toString();
         }
+        for(String s : studentStrings) System.out.println(s);
+        studentView.setItems(FXCollections.observableArrayList(studentStrings));
     }
 
     /**
      * Gets an unordered array of students from the roster and displays them.
      *
-     * @param stage the current stage.
      */
-    public void showRosterUnordered(Stage stage) {
+    public void showRosterUnordered() {
         try {
-            showRoster(stage, roster.getRoster());
+            setStudents(roster.getRoster());
         } catch (Exception e) {
             output.setText(e.getLocalizedMessage());
         }
@@ -255,11 +414,10 @@ public class MainController {
     /**
      * Gets an array of students ordered by name from the roster and displays them.
      *
-     * @param stage the current stage.
      */
-    public void showRosterByStudentName(Stage stage) {
+    public void showRosterByStudentName() {
         try {
-            showRoster(stage, roster.getRosterByStudentName());
+            setStudents(roster.getRosterByStudentName());
         } catch (Exception e) {
             output.setText(e.getLocalizedMessage());
         }
@@ -268,11 +426,10 @@ public class MainController {
     /**
      * Gets an array of students ordered by payment date from the roster and displays them.
      *
-     * @param stage the current stage.
      */
-    public void showRosterByPaymentDate(Stage stage) {
+    public void showRosterByPaymentDate() {
         try {
-            showRoster(stage, roster.getPaymentStudentsByPaymentDate());
+            setStudents(roster.getPaymentStudentsByPaymentDate());
         } catch (Exception e) {
             output.setText(e.getLocalizedMessage());
         }

@@ -7,14 +7,14 @@ package com.cs213.tuitionmanagerfx.util;
  */
 public class Constants {
 
+    public static final int WIDTH = 700;
+    public static final int HEIGHT = 500;
+
     public static final String MAIN_VIEW_PATH = "main-view.fxml";
     public static final String STAGE_TITLE = "Tuition Manager";
-
 
     public static final String INTERNATIONAL = "International";
     public static final String RESIDENT = "Resident";
     public static final String NONRESIDENT = "Non-Resident";
     public static final String TRISTATE = "Tri-State";
-
-
 }

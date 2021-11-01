@@ -3,29 +3,251 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" prefHeight="249.0" prefWidth="425.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs213.tuitionmanagerfx.controller.MainController">
+<VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="700.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.cs213.tuitionmanagerfx.controller.MainController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
-   <GridPane>
-     <columnConstraints>
-       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-     </columnConstraints>
-     <rowConstraints>
-       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-     </rowConstraints>
-      <children>
-          <Button onAction="#handleAddButtonClick" text="Add Student" />
-         <Button onAction="#handleRemoveButtonClick" text="Remove Student" GridPane.columnIndex="1" />
-         <Button onAction="#handleEditButtonClick" text="Edit Student" GridPane.rowIndex="1" />
-         <Button mnemonicParsing="false" text="Calculate Tuition" GridPane.rowIndex="2" />
-         <Button onAction="#handlePrintButtonClick" text="Print Roster" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         <Button onAction="#handlePayTuitionButtonClick" text="Pay Tuition" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-      </children>
-   </GridPane>
-   <TextArea fx:id="output" prefHeight="86.0" prefWidth="385.0" />
+    <TabPane prefHeight="300.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab text="Add Student">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <VBox prefHeight="128.0" prefWidth="700.0">
+                                <children>
+                                    <Text>Student Type</Text>
+                                    <RadioButton fx:id="resident" onAction="#handleStudentTypeChange" text="Resident">
+                                        <toggleGroup>
+                                            <ToggleGroup fx:id="studentType" />
+                                        </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton fx:id="nonresident" onAction="#handleStudentTypeChange" text="Non-Resident" toggleGroup="$studentType" />
+                                    <RadioButton fx:id="international" onAction="#handleStudentTypeChange" text="International" toggleGroup="$studentType" />
+                                    <RadioButton fx:id="tristate" onAction="#handleStudentTypeChange" text="Tri-State" toggleGroup="$studentType" />
+
+                                    <HBox>
+                                        <Label>Name:</Label>
+                                        <TextField fx:id="addName" promptText="e.g. John Smith" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label>Major:</Label>
+                                        <RadioButton fx:id="ADD_CS" text="CS">
+                                            <toggleGroup>
+                                                <ToggleGroup fx:id="addMajor" />
+                                            </toggleGroup>
+                                        </RadioButton>
+                                        <RadioButton text="IT" toggleGroup="$addMajor" />
+                                        <RadioButton text="BA" toggleGroup="$addMajor" />
+                                        <RadioButton text="EE" toggleGroup="$addMajor" />
+                                        <RadioButton text="ME" toggleGroup="$addMajor" />
+                                    </HBox>
+
+                                    <HBox>
+                                        <Label>Number of Credit Hours:</Label>
+                                        <TextField fx:id="numCredits" promptText="e.g. 15" />
+                                    </HBox>
+                                    <HBox fx:id="studyAbroadContainer" disable="true">
+
+                                        <Label>Study Abroad:</Label>
+                                        <RadioButton text="True">
+                                            <toggleGroup>
+                                                <ToggleGroup fx:id="addStudyAbroad" />
+                                            </toggleGroup>
+                                        </RadioButton>
+                                        <RadioButton text="False" toggleGroup="$addStudyAbroad" />
+
+                                    </HBox>
+
+                                    <HBox fx:id="locationContainer" disable="true">
+
+                                        <Label>Location:</Label>
+                                        <RadioButton fx:id="locationNY" text="NY">
+                                            <toggleGroup>
+                                                <ToggleGroup fx:id="locationGroup" />
+                                            </toggleGroup>
+                                        </RadioButton>
+                                        <RadioButton fx:id="locationCT" text="CT" toggleGroup="$locationGroup" />
+
+                                    </HBox>
+
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                        <children>
+                                            <Button mnemonicParsing="false" onAction="#handleAddStudentButtonClick" text="Submit" />
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </VBox>
+                        </children>
+                    </AnchorPane>
+                </content>
+            </Tab>
+            <Tab text="Remove Student">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <VBox prefHeight="128.0" prefWidth="700.0">
+                                <children>
+                                    <HBox>
+                                        <Label>Name:</Label>
+                                        <TextField fx:id="removeName" promptText="e.g. John Smith" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label>Major:</Label>
+                                        <RadioButton text="CS">
+                                            <toggleGroup>
+                                                <ToggleGroup fx:id="removeMajor" />
+                                            </toggleGroup>
+                                        </RadioButton>
+                                        <RadioButton text="IT" toggleGroup="$removeMajor" />
+                                        <RadioButton text="BA" toggleGroup="$removeMajor" />
+                                        <RadioButton text="EE" toggleGroup="$removeMajor" />
+                                        <RadioButton text="ME" toggleGroup="$removeMajor" />
+
+                                    </HBox>
+
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                        <children>
+                                            <Button mnemonicParsing="false" onAction="#handleRemoveStudentButtonClick" text="Submit" />
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </VBox>
+                        </children>
+                    </AnchorPane>
+                </content>
+            </Tab>
+            <Tab text="Edit Student">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <VBox prefHeight="128.0" prefWidth="700.0">
+                                <children>
+                                    <HBox>
+                                        <Label>Name:</Label>
+                                        <TextField fx:id="editName" promptText="e.g. John Smith" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label>Major:</Label>
+                                        <RadioButton text="CS">
+                                            <toggleGroup>
+                                                <ToggleGroup fx:id="editMajor" />
+                                            </toggleGroup>
+                                        </RadioButton>
+                                        <RadioButton text="IT" toggleGroup="$editMajor" />
+                                        <RadioButton text="BA" toggleGroup="$editMajor" />
+                                        <RadioButton text="EE" toggleGroup="$editMajor" />
+                                        <RadioButton text="ME" toggleGroup="$editMajor" />
+
+                                    </HBox>
+
+                                    <HBox>
+                                        <Label>Set Study Abroad (International students only):</Label>
+                                        <RadioButton text="True">
+                                            <toggleGroup>
+                                                <ToggleGroup fx:id="editStudyAbroad" />
+                                            </toggleGroup>
+                                        </RadioButton>
+                                        <RadioButton text="False" toggleGroup="$editStudyAbroad" />
+                                    </HBox>
+
+                                    <HBox>
+                                        <Label>Set Financial Aid (Residential students only):</Label>
+                                        <TextField fx:id="editFinancialAid" />
+                                    </HBox>
+
+
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                        <children>
+                                            <Button mnemonicParsing="false" onAction="#handleEditStudentButtonClick" text="Submit" />
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </VBox>
+                        </children>
+                    </AnchorPane>
+                </content>
+            </Tab>
+            <Tab text="Manage Tuition">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <VBox prefHeight="128.0" prefWidth="700.0">
+                                <children>
+                                    <Button mnemonicParsing="false" onAction="#handleCalculateTuitionDueButtonClick" text="Calculate Tuition Due" />
+                                    <Text>Pay Tuition</Text>
+                                    <HBox>
+                                        <Label>Name:</Label>
+                                        <TextField fx:id="payName" promptText="e.g. John Smith" />
+                                    </HBox>
+                                    <HBox>
+                                        <Label>Major:</Label>
+                                        <RadioButton text="CS">
+                                            <toggleGroup>
+                                                <ToggleGroup fx:id="payMajor" />
+                                            </toggleGroup>
+                                        </RadioButton>
+                                        <RadioButton text="IT" toggleGroup="$payMajor" />
+                                        <RadioButton text="BA" toggleGroup="$payMajor" />
+                                        <RadioButton text="EE" toggleGroup="$payMajor" />
+                                        <RadioButton text="ME" toggleGroup="$payMajor" />
+
+                                    </HBox>
+
+                                    <HBox>
+                                        <Label>Amount:</Label>
+                                        <TextField fx:id="amount" promptText="e.g. 1000" />
+                                    </HBox>
+
+                                    <HBox>
+                                        <Label>Date:</Label>
+                                        <TextField fx:id="date" promptText="e.g. 1/1/2021" />
+                                    </HBox>
+
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                        <children>
+                                            <Button mnemonicParsing="false" onAction="#handlePayTuitionButtonClick" text="Submit" />
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </VBox>
+                        </children>
+                    </AnchorPane>
+                </content>
+            </Tab>
+            <Tab text="Print Roster">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <VBox prefHeight="128.0" prefWidth="700.0">
+                                <children>
+                                    <Text>Print Roster Options</Text>
+                                    <VBox>
+                                        <Label>Print Options:</Label>
+                                        <RadioButton fx:id="unordered" text="All students sorted by current order">
+                                            <toggleGroup>
+                                                <ToggleGroup fx:id="printType" />
+                                            </toggleGroup>
+                                        </RadioButton>
+                                        <RadioButton fx:id="name" text="All students sorted by name" toggleGroup="$printType" />
+                                        <RadioButton fx:id="payment" text="Students with payments by the last payment dates" toggleGroup="$printType" />
+
+                                    </VBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                        <children>
+                                            <Button mnemonicParsing="false" onAction="#handlePrintRosterButtonClick" text="Submit" />
+                                        </children>
+                                    </HBox>
+                                    <Text>Roster:</Text>
+                                    <ListView fx:id="studentView" minHeight="-Infinity" prefHeight="100.0" prefWidth="600.0" />
+                                </children>
+                            </VBox>
+                        </children>
+                    </AnchorPane>
+                </content>
+            </Tab>
+        </tabs>
+    </TabPane>
+    <TextArea fx:id="output" prefHeight="86.0" prefWidth="385.0" />
 </VBox>

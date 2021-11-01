@@ -1,7 +1,6 @@
 package com.cs213.tuitionmanagerfx;
 
 import com.cs213.tuitionmanagerfx.util.Constants;
-import com.cs213.tuitionmanagerfx.util.SceneManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -30,10 +29,10 @@ public class Application extends javafx.application.Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        SceneManager.setMainLoader(new FXMLLoader(Application.class.getResource(Constants.MAIN_VIEW_PATH)));
-        SceneManager.setMainScene(new Scene(SceneManager.getMainLoader().load(), SceneManager.WIDTH, SceneManager.HEIGHT));
+        FXMLLoader loader = new FXMLLoader(Application.class.getResource(Constants.MAIN_VIEW_PATH));
+        Scene scene = new Scene(loader.load(), Constants.WIDTH, Constants.HEIGHT);
         stage.setTitle(Constants.STAGE_TITLE);
-        stage.setScene(SceneManager.getMainScene());
+        stage.setScene(scene);
         stage.show();
     }
 }
