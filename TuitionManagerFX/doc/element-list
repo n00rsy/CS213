@@ -1,0 +1,10 @@
+module:com.cs213.tuitionmanagerfx.fx
+com.cs213.tuitionmanagerfx
+com.cs213.tuitionmanagerfx.controller
+com.cs213.tuitionmanagerfx.model.backend
+com.cs213.tuitionmanagerfx.model.backend.student
+com.cs213.tuitionmanagerfx.model.config
+com.cs213.tuitionmanagerfx.model.enums
+com.cs213.tuitionmanagerfx.model.test
+com.cs213.tuitionmanagerfx.model.util
+com.cs213.tuitionmanagerfx.util
