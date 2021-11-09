@@ -1,4 +1,4 @@
-package com.ordermanager.ordermanager.model;
+package com.ordermanager.ordermanager.model.pizza;
 
 import java.util.ArrayList;
 
