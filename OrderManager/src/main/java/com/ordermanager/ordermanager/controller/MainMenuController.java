@@ -2,7 +2,6 @@ package com.ordermanager.ordermanager.controller;
 
 import com.ordermanager.ordermanager.model.Order;
 import com.ordermanager.ordermanager.model.pizza.Pizza;
-import com.ordermanager.ordermanager.util.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -35,9 +34,8 @@ public class MainMenuController {
             CustomizationViewController customizationViewController = loader.getController();
             customizationViewController.initDeluxePizza();
             stage.show();
-        }
-        catch (Exception e) {
-
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
 

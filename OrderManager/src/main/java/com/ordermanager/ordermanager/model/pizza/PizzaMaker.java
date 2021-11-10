@@ -1,9 +1,5 @@
 package com.ordermanager.ordermanager.model.pizza;
 
-import com.ordermanager.ordermanager.model.pizza.Deluxe;
-import com.ordermanager.ordermanager.model.pizza.Hawaiian;
-import com.ordermanager.ordermanager.model.pizza.Pepperoni;
-import com.ordermanager.ordermanager.model.pizza.Pizza;
 import com.ordermanager.ordermanager.util.Constants;
 
 
@@ -16,8 +12,9 @@ public class PizzaMaker {
 
     /**
      * Creates an instance of Pizza subclasses based on the chosen flavor
-     * @param flavor    The flavor of the pizza
-     * @return  Pizza object with correct flavor
+     *
+     * @param flavor The flavor of the pizza
+     * @return Pizza object with correct flavor
      */
     public static Pizza createPizza(String flavor) {
         switch (flavor.toLowerCase()) {

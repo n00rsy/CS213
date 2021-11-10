@@ -1,4 +1,15 @@
 package com.ordermanager.ordermanager.model.pizza;
 
-public class Topping {
+public enum Topping {
+    TOMATO,
+    ONION,
+    BELL_PEPPERS,
+    JALAPENOS,
+    SPINACH,
+    PEPPERONI,
+    PINEAPPLE,
+    HAM,
+    MUSHROOM,
+    OLIVES,
+    SAUSAGE
 }

@@ -1,4 +1,8 @@
 package com.ordermanager.ordermanager.model.pizza;
 
-public class Size {
+public enum Size {
+    SMALL,
+    MEDIUM,
+    LARGE,
+    EXTRA_LARGE
 }
