@@ -1,15 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ordermanager.ordermanager.controller.CustomizationViewController">
     <children>
-        <Label fx:id="title" text="Pizza Type" />
-      <HBox prefHeight="100.0" prefWidth="200.0">
+        <Label fx:id="title" alignment="CENTER" text="Pizza Type" />
+      <HBox>
          <children>
-            <ImageView fx:id="pizzaImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox>
+               <children>
+                  <ImageView fx:id="pizzaImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets right="30.0" />
+                     </VBox.margin></ImageView>
+                   <Text fx:id="priceText" text="Price:">
+                     <font>
+                        <Font size="24.0" />
+                     </font></Text>
+               </children>
+            </VBox>
+            <VBox minHeight="-Infinity">
+               <children>
+                  <Label text="Size:" />
+                  <HBox>
+                     <children>
+                        <RadioButton mnemonicParsing="false" text="Small">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="size" />
+                           </toggleGroup>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" text="Medium" toggleGroup="$size">
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding></RadioButton>
+                        <RadioButton mnemonicParsing="false" text="Large" toggleGroup="$size" />
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" />
+                     </padding>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <VBox fx:id="presetToppingsContainer" prefWidth="200.0">
+                           <children>
+                              <Label text="Preset Toppings:" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="additionalToppingsContainer" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Additional Toppings:" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+
+
+                  <Button alignment="CENTER" mnemonicParsing="false" text="Place Order" />
+               </children></VBox>
          </children></HBox>
     </children>
 </VBox>

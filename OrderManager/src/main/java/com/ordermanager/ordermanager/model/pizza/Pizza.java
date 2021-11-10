@@ -7,4 +7,5 @@ public abstract class Pizza {
     protected Size size;
 
     public abstract double price();
+    public abstract ArrayList<Topping> getToppings();
 }

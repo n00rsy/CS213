@@ -13,4 +13,9 @@ public class Deluxe extends Pizza {
     public double price() {
         return 0;
     }
+
+    @Override
+    public ArrayList<Topping> getToppings() {
+        return this.toppings;
+    }
 }

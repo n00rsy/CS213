@@ -11,5 +11,6 @@ public enum Topping {
     HAM,
     MUSHROOM,
     OLIVES,
-    SAUSAGE
+    SAUSAGE,
+    EXTRA_CHEESE
 }
