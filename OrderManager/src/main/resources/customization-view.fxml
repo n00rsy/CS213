@@ -28,7 +28,7 @@
                   <Label text="Size:" />
                   <HBox>
                      <children>
-                        <RadioButton mnemonicParsing="false" text="Small">
+                        <RadioButton mnemonicParsing="false" onAction="#pizzaChanged" selected="true" text="SMALL">
                            <toggleGroup>
                               <ToggleGroup fx:id="size" />
                            </toggleGroup>
@@ -36,11 +36,11 @@
                               <Insets right="20.0" />
                            </padding>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Medium" toggleGroup="$size">
+                        <RadioButton mnemonicParsing="false" onAction="#pizzaChanged" text="MEDIUM" toggleGroup="$size">
                            <padding>
                               <Insets right="20.0" />
                            </padding></RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Large" toggleGroup="$size" />
+                        <RadioButton mnemonicParsing="false" onAction="#pizzaChanged" text="LARGE" toggleGroup="$size" />
                      </children>
                      <padding>
                         <Insets bottom="20.0" />
@@ -60,9 +60,15 @@
                         </VBox>
                      </children>
                   </HBox>
-
-
-                  <Button alignment="CENTER" mnemonicParsing="false" text="Place Order" />
+                  <HBox>
+                     <children>
+                        <Button mnemonicParsing="false" text="Back" onAction="#handleBackButtonClick" />
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handlePlaceOrderButtonClick" text="Place Order">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
                </children></VBox>
          </children></HBox>
     </children>

@@ -28,50 +28,47 @@
                   <Label text="Size:" />
                   <HBox>
                      <children>
-                        <RadioButton mnemonicParsing="false" text="Small">
+                        <RadioButton mnemonicParsing="false" onAction="#pizzaChanged" selected="true" text="SMALL">
                            <toggleGroup>
                               <ToggleGroup fx:id="size" />
                            </toggleGroup>
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Medium" toggleGroup="$size" />
-                        <RadioButton mnemonicParsing="false" text="Large" toggleGroup="$size" />
+                        <RadioButton mnemonicParsing="false" onAction="#pizzaChanged" text="MEDIUM" toggleGroup="$size">
+                           <padding>
+                              <Insets right="20.0" />
+                           </padding></RadioButton>
+                        <RadioButton mnemonicParsing="false" onAction="#pizzaChanged" text="LARGE" toggleGroup="$size" />
                      </children>
                      <padding>
                         <Insets bottom="20.0" />
                      </padding>
                   </HBox>
-                  <Label text="Toppings:" />
-                  <GridPane>
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                  <HBox>
                      <children>
-                        <CheckBox mnemonicParsing="false" text="Tomato" onAction="#toppingChanged" />
-                        <CheckBox mnemonicParsing="false" text="Onions" GridPane.columnIndex="1" />
-                        <CheckBox mnemonicParsing="false" text="Jalapenos" GridPane.rowIndex="1" />
-                        <CheckBox mnemonicParsing="false" text="Spinach" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <CheckBox mnemonicParsing="false" text="Pineapple" GridPane.rowIndex="2" />
-                        <CheckBox mnemonicParsing="false" text="Ham" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <CheckBox mnemonicParsing="false" text="Bell Peppers" GridPane.columnIndex="2" />
-                        <CheckBox mnemonicParsing="false" text="Pepperoni" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <CheckBox mnemonicParsing="false" text="Mushrooms" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <CheckBox mnemonicParsing="false" text="Olives" GridPane.rowIndex="3" />
-                        <CheckBox mnemonicParsing="false" text="Sausage" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <CheckBox mnemonicParsing="false" text="Extra Cheese" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <VBox fx:id="presetToppingsContainer" prefWidth="200.0">
+                           <children>
+                              <Label text="Preset Toppings:" />
+                           </children>
+                        </VBox>
+                        <VBox fx:id="additionalToppingsContainer" prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Additional Toppings:" />
+                           </children>
+                        </VBox>
                      </children>
-                     <padding>
-                        <Insets bottom="20.0" />
-                     </padding>
-                  </GridPane>
-                  <Button alignment="CENTER" mnemonicParsing="false" text="Place Order" />
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Button mnemonicParsing="false" text="Back" />
+                        <Button alignment="CENTER" mnemonicParsing="false" text="Place Order">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin></Button>
+                     </children>
+                  </HBox>
                </children></VBox>
          </children></HBox>
     </children>

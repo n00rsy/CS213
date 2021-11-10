@@ -8,8 +8,4 @@ public class Hawaiian extends Pizza {
         return 0;
     }
 
-    @Override
-    public ArrayList<Topping> getToppings() {
-        return null;
-    }
 }

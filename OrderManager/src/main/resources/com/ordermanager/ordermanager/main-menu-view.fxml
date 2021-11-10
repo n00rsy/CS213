@@ -13,9 +13,9 @@
     <Label fx:id="welcomeText" text="Order New Pizza"/>
     <HBox alignment="TOP_CENTER">
         <children>
-            <Button mnemonicParsing="false" onAction="#HandleOrderDeluxePizzaClick" text="Deluxe"/>
-            <Button mnemonicParsing="false" text="Hawaiian"/>
-            <Button mnemonicParsing="false" text="Pepperoni"/>
+            <Button mnemonicParsing="false" onAction="#handleOrderDeluxePizzaClick" text="Deluxe"/>
+            <Button mnemonicParsing="false" onAction="#handleOrderHawaiianPizzaClick" text="Hawaiian"/>
+            <Button mnemonicParsing="false" onAction="#handleOrderPepperoniPizzaClick" text="Pepperoni"/>
         </children>
     </HBox>
     <Button mnemonicParsing="false" text="Current Order"/>
