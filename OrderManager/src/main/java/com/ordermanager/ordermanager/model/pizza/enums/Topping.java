@@ -1,4 +1,4 @@
-package com.ordermanager.ordermanager.model.pizza;
+package com.ordermanager.ordermanager.model.pizza.enums;
 
 public enum Topping {
     TOMATO,

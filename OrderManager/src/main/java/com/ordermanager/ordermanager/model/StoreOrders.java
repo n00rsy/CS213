@@ -9,8 +9,8 @@ public class StoreOrders {
         return orders;
     }
 
-    public void setOrders(ArrayList<Order> orders) {
-        this.orders = orders;
+    public void addOrder(Order order) {
+        orders.add(order);
     }
 
     public StoreOrders() {

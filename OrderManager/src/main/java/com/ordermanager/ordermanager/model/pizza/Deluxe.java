@@ -1,5 +1,6 @@
 package com.ordermanager.ordermanager.model.pizza;
 
+import com.ordermanager.ordermanager.model.pizza.enums.Size;
 import com.ordermanager.ordermanager.util.Constants;
 
 import java.util.ArrayList;

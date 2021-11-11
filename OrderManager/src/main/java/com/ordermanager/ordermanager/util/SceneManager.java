@@ -2,6 +2,7 @@ package com.ordermanager.ordermanager.util;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
@@ -71,5 +72,11 @@ public class SceneManager {
         } catch (Exception e) {
             error.setText(e.getLocalizedMessage());
         }
+    }
+
+    public static void showErrorAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }

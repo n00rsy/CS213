@@ -4,6 +4,7 @@ import com.ordermanager.ordermanager.model.Order;
 import com.ordermanager.ordermanager.model.StoreOrders;
 import com.ordermanager.ordermanager.model.pizza.Pizza;
 import com.ordermanager.ordermanager.util.Constants;
+import com.ordermanager.ordermanager.util.SceneManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -21,9 +22,9 @@ public class MainMenuController {
      * Runs on load and initializes the roster.
      */
     public void initialize() {
+        storeOrders = new StoreOrders();
         currentOrder = new Order();
     }
-
 
     public void handleOrderDeluxePizzaClick(ActionEvent event) {
         handleOrderClick(event, Constants.DELUXE);
@@ -50,12 +51,31 @@ public class MainMenuController {
         }
     }
 
+    public void handleCurrentOrderClick(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/current-order-view.fxml"));
+            Scene scene = new Scene(loader.load());
+            CurrentOrderController currentOrderController = loader.getController();
+            currentOrderController.setCurrentOrder(currentOrder);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+
     public void addPizzaToOrder(Pizza pizza) {
-        currentOrder.getPizzas().add(pizza);
+        currentOrder.addPizza(pizza);
+    }
+
+    public void completeCurrentOrder() {
+            storeOrders.addOrder(currentOrder);
+            currentOrder = new Order();
     }
 
     public void removePizzaFromOrder(Pizza pizza) {
-
+        currentOrder.removePizza(pizza);
     }
 
 

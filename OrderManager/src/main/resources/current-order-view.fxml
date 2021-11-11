@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            xmlns="http://javafx.com/javafx"
-            fx:controller="com.ordermanager.ordermanager.controller.CurrentOrderController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx"
+      fx:controller="com.ordermanager.ordermanager.controller.CurrentOrderController"
+      prefHeight="400.0" prefWidth="600.0">
+    <HBox>
+        <Label>Phone Number:</Label>
+        <TextField fx:id="phoneNumber" promptText="(111)-111-1111"></TextField>
+    </HBox>
+    <TableView fx:id="pizzaTableView">
+        <columns>
+            <TableColumn text="Pizza">
+            </TableColumn>
+            <TableColumn text="Subtotal">
+            </TableColumn>
+        </columns>
+    </TableView>
+    <Text fx:id="taxText">Sales Tax: </Text>
+    <Text fx:id="totalText">Order Total: </Text>
+    <Button fx:id="submitButton" onAction="#handleSubmitButtonClick">Submit Order</Button>
+</VBox>

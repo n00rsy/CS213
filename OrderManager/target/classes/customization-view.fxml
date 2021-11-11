@@ -62,8 +62,8 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <Button mnemonicParsing="false" text="Back" />
-                        <Button alignment="CENTER" mnemonicParsing="false" text="Place Order">
+                        <Button mnemonicParsing="false" text="Back" onAction="#handleBackButtonClick" />
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handlePlaceOrderButtonClick" text="Place Order">
                            <HBox.margin>
                               <Insets left="20.0" />
                            </HBox.margin></Button>

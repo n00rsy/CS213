@@ -7,13 +7,13 @@ import java.util.ArrayList;
 
 public class Order {
     private ArrayList<Pizza> pizzas;
-    private int phoneNumber;
+    private String phoneNumber;
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -25,8 +25,12 @@ public class Order {
         return pizzas;
     }
 
-    public void setPizzas(ArrayList<Pizza> pizzas) {
-        this.pizzas = pizzas;
+    public void addPizza(Pizza pizza) {
+        pizzas.add(pizza);
+    }
+
+    public void removePizza(Pizza pizza) {
+        pizzas.remove(pizza);
     }
 
     public double price() {
@@ -35,5 +39,9 @@ public class Order {
             total += pizza.price();
         }
         return total * Constants.TAX_RATE;
+    }
+
+    public boolean isValid() {
+        return pizzas.size() > 0 && phoneNumber.matches("^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$");
     }
 }

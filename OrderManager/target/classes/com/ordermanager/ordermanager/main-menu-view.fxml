@@ -18,6 +18,6 @@
             <Button mnemonicParsing="false" onAction="#handleOrderPepperoniPizzaClick" text="Pepperoni"/>
         </children>
     </HBox>
-    <Button mnemonicParsing="false" text="Current Order"/>
+    <Button mnemonicParsing="false" onAction="#handleCurrentOrderClick" text="Current Order"/>
     <Button mnemonicParsing="false" text="Store Orders"/>
 </VBox>
