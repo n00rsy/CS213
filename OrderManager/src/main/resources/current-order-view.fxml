@@ -19,13 +19,17 @@
     </HBox>
     <TableView fx:id="pizzaTableView">
         <columns>
-            <TableColumn text="Pizza">
+            <TableColumn fx:id="details" text="Pizza Details">
             </TableColumn>
-            <TableColumn text="Subtotal">
+            <TableColumn fx:id="price" text="Price">
             </TableColumn>
         </columns>
     </TableView>
     <Text fx:id="taxText">Sales Tax: </Text>
     <Text fx:id="totalText">Order Total: </Text>
-    <Button fx:id="submitButton" onAction="#handleSubmitButtonClick">Submit Order</Button>
+    <Button onAction="#handleRemovePizzaButtonClick">Remove Pizza</Button>
+    <HBox>
+        <Button mnemonicParsing="false" text="Back" onAction="#handleBackButtonClick" />
+        <Button fx:id="submitButton" onAction="#handleSubmitButtonClick">Submit Order</Button>
+    </HBox>
 </VBox>

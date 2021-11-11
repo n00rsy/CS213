@@ -11,8 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-
 public class MainMenuController {
 
     private StoreOrders storeOrders;
@@ -33,6 +31,7 @@ public class MainMenuController {
     public void handleOrderHawaiianPizzaClick(ActionEvent event) {
         handleOrderClick(event, Constants.HAWAIIAN);
     }
+
     public void handleOrderPepperoniPizzaClick(ActionEvent event) {
         handleOrderClick(event, Constants.PEPPERONI);
     }
@@ -47,7 +46,7 @@ public class MainMenuController {
             customizationViewController.init(flavor);
             stage.show();
         } catch (Exception e) {
-            System.out.println(e);
+            SceneManager.showErrorAlert(e.toString());
         }
     }
 
@@ -61,7 +60,7 @@ public class MainMenuController {
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
-            System.out.println(e);
+            SceneManager.showErrorAlert(e.toString());
         }
     }
 
@@ -70,8 +69,8 @@ public class MainMenuController {
     }
 
     public void completeCurrentOrder() {
-            storeOrders.addOrder(currentOrder);
-            currentOrder = new Order();
+        storeOrders.addOrder(currentOrder);
+        currentOrder = new Order();
     }
 
     public void removePizzaFromOrder(Pizza pizza) {

@@ -17,6 +17,6 @@ public class Constants {
 
     public static final double EXTRA_TOPPING_PRICE = 1.49;
     public static final double SIZE_PRICE = 2.00;
-    public static final double TAX_RATE = 1.06625;
+    public static final double TAX_RATE = 0.06625;
     public static final int MAX_TOPPINGS = 7;
 }

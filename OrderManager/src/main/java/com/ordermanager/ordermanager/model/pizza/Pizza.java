@@ -2,8 +2,10 @@ package com.ordermanager.ordermanager.model.pizza;
 
 import com.ordermanager.ordermanager.model.pizza.enums.Size;
 import com.ordermanager.ordermanager.model.pizza.enums.Topping;
+import com.ordermanager.ordermanager.util.Constants;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Pizza {
     protected ArrayList<Topping> toppings = new ArrayList<Topping>();
@@ -26,4 +28,39 @@ public abstract class Pizza {
     }
 
     public abstract double price();
+
+    protected List<Topping> getRemovedToppings(Topping[] defaultToppings) {
+        ArrayList<Topping> removedToppings = new ArrayList<>();
+        for (Topping defaultTopping : defaultToppings) {
+            boolean found = false;
+            for (Topping userTopping : toppings) {
+                if (defaultTopping == userTopping) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                removedToppings.add(defaultTopping);
+            }
+        }
+        return removedToppings;
+    }
+
+    protected List<Topping> getAddedToppings(Topping[] defaultToppings) {
+        ArrayList<Topping> addedToppings = new ArrayList<>();
+        for (Topping userTopping : toppings) {
+            boolean found = false;
+            for (Topping defaultTopping : defaultToppings) {
+                if (defaultTopping == userTopping) {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found) {
+                addedToppings.add(userTopping);
+            }
+        }
+        return addedToppings;
+    }
+
 }

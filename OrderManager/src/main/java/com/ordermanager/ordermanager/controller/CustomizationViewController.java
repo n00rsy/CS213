@@ -7,12 +7,13 @@ import com.ordermanager.ordermanager.model.pizza.enums.Topping;
 import com.ordermanager.ordermanager.util.Configuration;
 import com.ordermanager.ordermanager.util.Constants;
 import com.ordermanager.ordermanager.util.SceneManager;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -23,7 +24,6 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class CustomizationViewController {
@@ -76,8 +76,7 @@ public class CustomizationViewController {
                 if (oldValue == false && newValue == true && getSelectedToppings().size() > Constants.MAX_TOPPINGS) {
                     checkbox.setSelected(false);
                     SceneManager.showErrorAlert("Pizza cannot have more than 7 toppings.");
-                }
-                else {
+                } else {
                     checkbox.setSelected(newValue);
                 }
             });
@@ -116,7 +115,7 @@ public class CustomizationViewController {
             Image image = new Image(getClass().getClassLoader().getResourceAsStream(path));
             pizzaImageView.setImage(image);
         } catch (Exception e) {
-            System.out.println(e);
+            SceneManager.showErrorAlert(e.toString());
         }
     }
 

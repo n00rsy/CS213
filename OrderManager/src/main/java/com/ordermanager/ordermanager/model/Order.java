@@ -9,16 +9,16 @@ public class Order {
     private ArrayList<Pizza> pizzas;
     private String phoneNumber;
 
+    public Order() {
+        pizzas = new ArrayList<>();
+    }
+
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public Order() {
-        pizzas = new ArrayList<>();
     }
 
     public ArrayList<Pizza> getPizzas() {
@@ -38,7 +38,11 @@ public class Order {
         for (Pizza pizza : pizzas) {
             total += pizza.price();
         }
-        return total * Constants.TAX_RATE;
+        return total;
+    }
+
+    public double tax() {
+        return price() * Constants.TAX_RATE;
     }
 
     public boolean isValid() {
