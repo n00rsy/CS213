@@ -18,6 +18,9 @@
         <TextField fx:id="phoneNumber" promptText="(111)-111-1111"></TextField>
     </HBox>
     <TableView fx:id="pizzaTableView">
+        <placeholder>
+            <Label text="No Pizzas!"/>
+        </placeholder>
         <columns>
             <TableColumn fx:id="details" text="Pizza Details">
             </TableColumn>

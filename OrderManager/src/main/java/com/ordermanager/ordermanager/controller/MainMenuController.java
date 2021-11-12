@@ -56,7 +56,21 @@ public class MainMenuController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/current-order-view.fxml"));
             Scene scene = new Scene(loader.load());
             CurrentOrderController currentOrderController = loader.getController();
-            currentOrderController.setCurrentOrder(currentOrder);
+            currentOrderController.init(currentOrder, storeOrders);
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e) {
+            SceneManager.showErrorAlert(e.toString());
+        }
+    }
+
+    public void handleStoreOrdersClick(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/store-orders-view.fxml"));
+            Scene scene = new Scene(loader.load());
+            StoreOrdersController storeOrdersController = loader.getController();
+            storeOrdersController.init(storeOrders);
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {

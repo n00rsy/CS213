@@ -46,6 +46,6 @@ public class Order {
     }
 
     public boolean isValid() {
-        return pizzas.size() > 0 && phoneNumber.matches("^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$");
+        return pizzas.size() > 0 && phoneNumber != null && phoneNumber.matches("^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$");
     }
 }

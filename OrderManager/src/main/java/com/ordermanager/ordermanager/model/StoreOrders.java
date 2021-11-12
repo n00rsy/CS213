@@ -17,6 +17,19 @@ public class StoreOrders {
         orders.add(order);
     }
 
+    public void removeOrder(Order order) {
+        orders.remove(order);
+    }
+
+    public boolean contains(String phoneNumber) {
+        for (Order order : orders) {
+            if (order.getPhoneNumber().equals(phoneNumber)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void export() {
 
     }

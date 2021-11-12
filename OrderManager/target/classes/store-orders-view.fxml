@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml"
-            xmlns="http://javafx.com/javafx"
-            fx:controller="com.ordermanager.ordermanager.controller.StoreOrdersController"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+      xmlns="http://javafx.com/javafx"
+      fx:controller="com.ordermanager.ordermanager.controller.StoreOrdersController"
+      prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+    <TableView fx:id="orderTableView">
+        <placeholder>
+            <Label text="No Orders!"/>
+        </placeholder>
+        <columns>
+            <TableColumn fx:id="phoneNumber" text="Phone Number">
+            </TableColumn>
+            <TableColumn fx:id="details" text="Order Details">
+            </TableColumn>
+            <TableColumn fx:id="totalPrice" text="Total Price">
+            </TableColumn>
+        </columns>
+    </TableView>
+    <Button onAction="#handleRemoveOrderButtonClick">Remove Order</Button>
+    <HBox>
+        <Button mnemonicParsing="false" text="Back" onAction="#handleBackButtonClick" />
+        <Button fx:id="exportButton" onAction="#handleExportButtonClick">Export Orders</Button>
+    </HBox>
+</VBox>

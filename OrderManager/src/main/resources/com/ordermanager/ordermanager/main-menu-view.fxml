@@ -19,5 +19,5 @@
         </children>
     </HBox>
     <Button mnemonicParsing="false" onAction="#handleCurrentOrderClick" text="Current Order"/>
-    <Button mnemonicParsing="false" text="Store Orders"/>
+    <Button mnemonicParsing="false" onAction="#handleStoreOrdersClick" text="Store Orders"/>
 </VBox>

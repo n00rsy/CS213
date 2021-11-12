@@ -24,7 +24,7 @@ public class Pepperoni extends Pizza {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder(size.toString()+ " Pepperoni Pizza\n");
+        StringBuilder sb = new StringBuilder(size.toString() + " Pepperoni Pizza\n");
 
         for (Topping topping : getAddedToppings(Constants.PEPPERONI_TOPPINGS)) {
             sb.append("\t+ " + topping + "\n");

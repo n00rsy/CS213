@@ -6,7 +6,6 @@ import com.ordermanager.ordermanager.util.Constants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class Hawaiian extends Pizza {
 
@@ -24,7 +23,7 @@ public class Hawaiian extends Pizza {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder(size.toString()+ " Hawaiian Pizza\n");
+        StringBuilder sb = new StringBuilder(size.toString() + " Hawaiian Pizza\n");
 
         for (Topping topping : getAddedToppings(Constants.HAWAIIAN_TOPPINGS)) {
             sb.append("\t+ " + topping + "\n");
