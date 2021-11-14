@@ -9,4 +9,5 @@ module com.ordermanager.ordermanager {
     exports com.ordermanager.ordermanager;
     exports com.ordermanager.ordermanager.controller;
     opens com.ordermanager.ordermanager.controller to javafx.fxml;
+    exports com.ordermanager.ordermanager.test to junit;
 }

@@ -26,7 +26,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class CustomizationViewController {
+/**
+ * The controller class associated with customization-view.fxml
+ *
+ * @author Noor, Umar
+ */
+public class CustomizationController {
 
     Pizza currentPizza;
     ArrayList<CheckBox> defaultToppings = new ArrayList<>();
@@ -50,6 +55,11 @@ public class CustomizationViewController {
     @FXML
     ToggleGroup size;
 
+    /**
+     * Sets up the scene with the correct flavor.
+     *
+     * @param flavor The flavor to initiate the customization menu with.
+     */
     public void init(String flavor) {
         switch (flavor) {
             case Constants.DELUXE -> init("Add Deluxe Pizza", "deluxe.png", Constants.DELUXE);
