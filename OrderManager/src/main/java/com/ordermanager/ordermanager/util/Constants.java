@@ -2,6 +2,9 @@ package com.ordermanager.ordermanager.util;
 
 import com.ordermanager.ordermanager.model.pizza.enums.Topping;
 
+/**
+ * A class containing constants for use throughout the solution.
+ */
 public class Constants {
     public static final String DELUXE = "deluxe";
     public static final String HAWAIIAN = "hawaiian";

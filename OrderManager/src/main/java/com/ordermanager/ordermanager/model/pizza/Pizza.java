@@ -6,6 +6,12 @@ import com.ordermanager.ordermanager.model.pizza.enums.Topping;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * An abstract class for Pizza.
+ * Deluxe, Pepperoni, and Hawaiian extend this class.
+ *
+ * @author Noor, Umar
+ */
 public abstract class Pizza {
     protected ArrayList<Topping> toppings = new ArrayList<Topping>();
     protected Size size;
@@ -61,5 +67,4 @@ public abstract class Pizza {
         }
         return addedToppings;
     }
-
 }

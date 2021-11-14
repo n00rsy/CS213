@@ -1,5 +1,8 @@
 package com.ordermanager.ordermanager.model.pizza.enums;
 
+/**
+ * An enum class for the different toppings a pizza can have.
+ */
 public enum Topping {
     TOMATO,
     ONION,

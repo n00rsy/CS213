@@ -8,11 +8,27 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * A driver class for the application.
+ *
+ * @author Noor, Umar
+ */
 public class Application extends javafx.application.Application {
+    /**
+     * The entry point for the application.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         launch();
     }
 
+    /**
+     * Sets up initial scene in the JavaFX app.
+     *
+     * @param stage
+     * @throws IOException
+     */
     @Override
     public void start(Stage stage) throws IOException {
         SceneManager.setMainLoader(new FXMLLoader(Application.class.getResource("main-menu-view.fxml")));

@@ -33,9 +33,9 @@ import java.util.stream.Collectors;
  */
 public class CustomizationController {
 
-    Pizza currentPizza;
-    ArrayList<CheckBox> defaultToppings = new ArrayList<>();
-    ArrayList<CheckBox> additionalToppings = new ArrayList<>();
+    private Pizza currentPizza;
+    private ArrayList<CheckBox> defaultToppings = new ArrayList<>();
+    private ArrayList<CheckBox> additionalToppings = new ArrayList<>();
 
     @FXML
     Label title;
@@ -69,8 +69,15 @@ public class CustomizationController {
         }
     }
 
-    private void init(String name, String imgPath, String flavor) {
-        title.setText(name);
+    /**
+     * Sets up the scene using the provided inputs.
+     *
+     * @param titleText  The text to display as the scene title.
+     * @param imgPath   The path to the image of the pizza
+     * @param flavor    The string representation of the pizza flavor.
+     */
+    private void init(String titleText, String imgPath, String flavor) {
+        title.setText(titleText);
         setPizzaImage(imgPath);
         currentPizza = PizzaMaker.createPizza(flavor);
         createToppingCheckboxes(presetToppingsContainer, defaultToppings, currentPizza.getToppings(), true);
@@ -78,6 +85,14 @@ public class CustomizationController {
         pizzaChanged();
     }
 
+    /**
+     * Builds up the topping checkboxes that toggle toppings on the pizza and sets their default values.
+     *
+     * @param container The container pane to put the checkboxes in
+     * @param checkboxes    A List of CheckBox objects to store references in
+     * @param toppings  A List of Topping objects to generate CheckBoxes for
+     * @param selected  The default value for the checkboxes
+     */
     private void createToppingCheckboxes(Pane container, List<CheckBox> checkboxes, List<Topping> toppings, boolean selected) {
         for (Topping topping : toppings) {
             CheckBox checkbox = new CheckBox(topping.toString());
@@ -96,6 +111,11 @@ public class CustomizationController {
         container.getChildren().addAll(checkboxes);
     }
 
+    /**
+     * Leverages the defaultToppings and additionalToppings Lists to return a list of all selected toppings.
+     *
+     * @return
+     */
     private ArrayList<Topping> getSelectedToppings() {
         ArrayList<Topping> newToppings = new ArrayList<>();
         for (CheckBox checkBox : defaultToppings) {
@@ -111,6 +131,9 @@ public class CustomizationController {
         return newToppings;
     }
 
+    /**
+     * Updates the UI when the pizza is changed.
+     */
     public void pizzaChanged() {
 
         ArrayList<Topping> newToppings = getSelectedToppings();
@@ -120,6 +143,10 @@ public class CustomizationController {
         priceText.setText("Price: $" + String.format(Configuration.PRICE_FORMAT, currentPizza.price()));
     }
 
+    /**
+     * Sets the pizza image using the path to the image provided.
+     * @param path  Path to the pizza image
+     */
     private void setPizzaImage(String path) {
         try {
             Image image = new Image(getClass().getClassLoader().getResourceAsStream(path));
@@ -129,13 +156,11 @@ public class CustomizationController {
         }
     }
 
-    @FXML
-    public void handleBackButtonClick(ActionEvent event) {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(SceneManager.getMainScene());
-        stage.show();
-    }
-
+    /**
+     * Handles the place order button click by adding the current pizza to the order and switching back to the main scene.
+     *
+     * @param event
+     */
     @FXML
     public void handlePlaceOrderButtonClick(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -144,4 +169,16 @@ public class CustomizationController {
         mainMenuController.addPizzaToOrder(currentPizza);
         stage.show();
     }
+
+    /**
+     * Handles the back button click event by returning to the main menu scene.
+     * @param event
+     */
+    @FXML
+    public void handleBackButtonClick(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(SceneManager.getMainScene());
+        stage.show();
+    }
+
 }

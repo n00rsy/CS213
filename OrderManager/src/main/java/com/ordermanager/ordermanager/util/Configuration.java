@@ -1,5 +1,10 @@
 package com.ordermanager.ordermanager.util;
 
+/**
+ * A class containing technical constants for configuration used throughout the solution.
+ *
+ * @author Noor, Umar
+ */
 public class Configuration {
 
     public static final int WINDOW_WIDTH = 600;

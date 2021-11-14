@@ -7,7 +7,7 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 /**
- * A helper class for use in switching between scenes.
+ * A helper class for use in scene management.
  *
  * @author Noor, Umar
  */
@@ -55,31 +55,21 @@ public class SceneManager {
         SceneManager.mainScene = mainScene;
     }
 
-    /**
-     * Switch from the current scene to the new one passed in using new FXMLLoader
-     *
-     * @param path       the path to the new scene .fxml file
-     * @param controller the current controller
-     * @param stage      the current stage
-     * @param error      the area to output error messages for the user.
-     */
-    public static void switchScene(String path, Class controller, Stage stage, TextArea error) {
-        try {
-            FXMLLoader loader = new FXMLLoader(controller.getResource(path));
-            Scene scene = new Scene(loader.load(), WIDTH, HEIGHT);
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            error.setText(e.getLocalizedMessage());
-        }
-    }
 
+    /**
+     * Shows an error alert with the message passed in
+     * @param msg   The message to display
+     */
     public static void showErrorAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setContentText(msg);
         alert.showAndWait();
     }
 
+    /**
+     * Shows an information alert with the message passed in
+     * @param msg   The message to display
+     */
     public static void showInformationAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText(msg);

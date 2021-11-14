@@ -19,6 +19,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+/**
+ * Controller class for current-order-view.fxml
+ *
+ * @author Noor, Umar
+ */
 public class CurrentOrderController {
 
     @FXML
@@ -37,6 +42,10 @@ public class CurrentOrderController {
     private Order currentOrder;
     private Pizza selectedPizza;
 
+    /**
+     * Initializes the scene.
+     * Called automatically by JavaFX.
+     */
     public void initialize() {
         price.setCellValueFactory((Callback<TableColumn.CellDataFeatures<Pizza, String>, ObservableValue<String>>) p ->
                 new ReadOnlyStringWrapper("$" + String.format(Configuration.PRICE_FORMAT, p.getValue().price()))
@@ -51,6 +60,12 @@ public class CurrentOrderController {
         });
     }
 
+    /**
+     * Initializes the scene using custom parameters.
+     *
+     * @param order the current order to edit
+     * @param storeOrders   All orders in the system.
+     */
     public void init(Order order, StoreOrders storeOrders) {
         System.out.println("setting current order");
         currentOrder = order;
@@ -59,6 +74,9 @@ public class CurrentOrderController {
         currentOrderChanged();
     }
 
+    /**
+     * Updates the UI when the order is changed.
+     */
     private void currentOrderChanged() {
         pizzaTableView.getItems().clear();
         pizzaTableView.setItems(FXCollections.observableArrayList(currentOrder.getPizzas()));
@@ -68,6 +86,11 @@ public class CurrentOrderController {
         totalText.setText("Order Total: $" + String.format(Configuration.PRICE_FORMAT, price + tax));
     }
 
+    /**
+     * Handles the submit button click by adding the current order to storeOrders and switching back to the main menu.
+     *
+     * @param event
+     */
     public void handleSubmitButtonClick(ActionEvent event) {
 
         currentOrder.setPhoneNumber(phoneNumber.getText());
@@ -84,6 +107,11 @@ public class CurrentOrderController {
         }
     }
 
+    /**
+     * Removes a pizza from the order.
+     *
+     * @param event
+     */
     @FXML
     public void handleRemovePizzaButtonClick(ActionEvent event) {
         if (selectedPizza == null) {
@@ -94,11 +122,14 @@ public class CurrentOrderController {
         }
     }
 
+    /**
+     * Handles the back button click event by returning to the main menu scene.
+     * @param event
+     */
     @FXML
     public void handleBackButtonClick(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(SceneManager.getMainScene());
         stage.show();
     }
-
 }
