@@ -39,7 +39,7 @@ public class StoreOrdersController {
         );
 
         details.setCellValueFactory((Callback<TableColumn.CellDataFeatures<Order, String>, ObservableValue<String>>) p ->
-                new ReadOnlyStringWrapper(p.getValue().toString())
+                new ReadOnlyStringWrapper(p.getValue().getPizzasAsString())
         );
 
         orderTableView.getSelectionModel().selectedItemProperty().addListener((ChangeListener<Order>) (observable, oldValue, newValue) -> {
@@ -76,6 +76,11 @@ public class StoreOrdersController {
 
     @FXML
     public void handleExportButtonClick() {
-
+        try {
+            storeOrders.export(Configuration.EXPORT_PATH);
+            SceneManager.showInformationAlert("Exported orders to: " + Configuration.EXPORT_PATH);
+        } catch (Exception e) {
+            SceneManager.showErrorAlert(e.toString());
+        }
     }
 }

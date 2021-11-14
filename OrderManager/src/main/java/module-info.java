@@ -2,6 +2,7 @@ module com.ordermanager.ordermanager {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
+    requires junit;
 
 
     opens com.ordermanager.ordermanager to javafx.fxml;

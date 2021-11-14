@@ -1,6 +1,7 @@
 package com.ordermanager.ordermanager.model;
 
 import com.ordermanager.ordermanager.model.pizza.Pizza;
+import com.ordermanager.ordermanager.util.Configuration;
 import com.ordermanager.ordermanager.util.Constants;
 
 import java.util.ArrayList;
@@ -47,5 +48,20 @@ public class Order {
 
     public boolean isValid() {
         return pizzas.size() > 0 && phoneNumber != null && phoneNumber.matches("^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$");
+    }
+
+    public String getPizzasAsString() {
+        StringBuilder sb = new StringBuilder();
+        for (Pizza pizza : pizzas) {
+            sb.append(pizza.toString());
+        }
+        return sb.toString();
+    }
+
+    @Override
+    public String toString() {
+        return "Phone number: " + String.format(Configuration.PRICE_FORMAT, price() + tax()) +
+                "\nPizzas: \n" + getPizzasAsString();
+
     }
 }

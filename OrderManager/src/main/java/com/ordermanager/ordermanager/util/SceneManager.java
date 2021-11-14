@@ -79,4 +79,10 @@ public class SceneManager {
         alert.setContentText(msg);
         alert.showAndWait();
     }
+
+    public static void showInformationAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText(msg);
+        alert.showAndWait();
+    }
 }

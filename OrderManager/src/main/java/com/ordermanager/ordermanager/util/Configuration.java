@@ -8,4 +8,6 @@ public class Configuration {
 
     public static final String PRICE_FORMAT = "%,.2f";
 
+    public static final String EXPORT_PATH = "orders.txt";
+
 }

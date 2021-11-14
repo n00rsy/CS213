@@ -1,0 +1,12 @@
+Phone number: 11.72
+Pizzas: 
+SMALL Hawaiian Pizza
+Phone number: 26.07
+Pizzas: 
+SMALL Hawaiian Pizza
+	+ BELL_PEPPERS
+	+ JALAPENOS
+	+ SPINACH
+SMALL Pepperoni Pizza
+	+ TOMATO
+	- PEPPERONI
