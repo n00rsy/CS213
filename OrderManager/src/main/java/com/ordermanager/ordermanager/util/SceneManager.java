@@ -3,8 +3,6 @@ package com.ordermanager.ordermanager.util;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextArea;
-import javafx.stage.Stage;
 
 /**
  * A helper class for use in scene management.
@@ -58,7 +56,8 @@ public class SceneManager {
 
     /**
      * Shows an error alert with the message passed in
-     * @param msg   The message to display
+     *
+     * @param msg The message to display
      */
     public static void showErrorAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -68,7 +67,8 @@ public class SceneManager {
 
     /**
      * Shows an information alert with the message passed in
-     * @param msg   The message to display
+     *
+     * @param msg The message to display
      */
     public static void showInformationAlert(String msg) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);

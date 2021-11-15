@@ -21,7 +21,8 @@ public class StoreOrders {
 
     /**
      * Orders list accessor
-     * @return  This StoreOrders's orders
+     *
+     * @return This StoreOrders's orders
      */
     public ArrayList<Order> getOrders() {
         return orders;
@@ -29,6 +30,7 @@ public class StoreOrders {
 
     /**
      * Adds an order to the list
+     *
      * @param order The order to add
      */
     public void addOrder(Order order) {
@@ -37,6 +39,7 @@ public class StoreOrders {
 
     /**
      * Removes an order from the list
+     *
      * @param order The order to remove
      */
     public void removeOrder(Order order) {
@@ -45,8 +48,9 @@ public class StoreOrders {
 
     /**
      * Checks if the system contains an order with a phone number
-     * @param phoneNumber   The phone number to check against
-     * @return  True if found a match, false otherwise
+     *
+     * @param phoneNumber The phone number to check against
+     * @return True if found a match, false otherwise
      */
     public boolean contains(String phoneNumber) {
         for (Order order : orders) {
@@ -60,7 +64,7 @@ public class StoreOrders {
     /**
      * Exports the contents of the orders list to a txt file.
      *
-     * @param path  Path to the output file
+     * @param path Path to the output file
      */
     public void export(String path) {
         try {

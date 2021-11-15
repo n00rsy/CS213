@@ -63,8 +63,8 @@ public class CurrentOrderController {
     /**
      * Initializes the scene using custom parameters.
      *
-     * @param order the current order to edit
-     * @param storeOrders   All orders in the system.
+     * @param order       the current order to edit
+     * @param storeOrders All orders in the system.
      */
     public void init(Order order, StoreOrders storeOrders) {
         System.out.println("setting current order");
@@ -124,6 +124,7 @@ public class CurrentOrderController {
 
     /**
      * Handles the back button click event by returning to the main menu scene.
+     *
      * @param event
      */
     @FXML

@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TableColumn?>
 <VBox xmlns:fx="http://javafx.com/fxml"
       xmlns="http://javafx.com/javafx"
       fx:controller="com.ordermanager.ordermanager.controller.CurrentOrderController"
@@ -28,11 +23,11 @@
             </TableColumn>
         </columns>
     </TableView>
-    <Text fx:id="taxText">Sales Tax: </Text>
-    <Text fx:id="totalText">Order Total: </Text>
+    <Text fx:id="taxText">Sales Tax:</Text>
+    <Text fx:id="totalText">Order Total:</Text>
     <Button onAction="#handleRemovePizzaButtonClick">Remove Pizza</Button>
     <HBox>
-        <Button mnemonicParsing="false" text="Back" onAction="#handleBackButtonClick" />
+        <Button mnemonicParsing="false" text="Back" onAction="#handleBackButtonClick"/>
         <Button fx:id="submitButton" onAction="#handleSubmitButtonClick">Submit Order</Button>
     </HBox>
 </VBox>

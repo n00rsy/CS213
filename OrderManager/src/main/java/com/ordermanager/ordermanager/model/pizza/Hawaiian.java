@@ -26,7 +26,7 @@ public class Hawaiian extends Pizza {
     /**
      * Calculates the price of this pizza given its toppings and size, without tax
      *
-     * @return  The price of pizza
+     * @return The price of pizza
      */
     public double price() {
         int extraToppingsCount = toppings.size() - Constants.HAWAIIAN_TOPPINGS.length;
@@ -38,7 +38,7 @@ public class Hawaiian extends Pizza {
     /**
      * Generates a string representation of this pizza object.
      *
-     * @return  string description of this pizza.
+     * @return string description of this pizza.
      */
     @Override
     public String toString() {

@@ -33,27 +33,21 @@ import java.util.stream.Collectors;
  */
 public class CustomizationController {
 
+    @FXML
+    Label title;
+    @FXML
+    ImageView pizzaImageView;
+    @FXML
+    VBox presetToppingsContainer;
+    @FXML
+    VBox additionalToppingsContainer;
+    @FXML
+    Text priceText;
+    @FXML
+    ToggleGroup size;
     private Pizza currentPizza;
     private ArrayList<CheckBox> defaultToppings = new ArrayList<>();
     private ArrayList<CheckBox> additionalToppings = new ArrayList<>();
-
-    @FXML
-    Label title;
-
-    @FXML
-    ImageView pizzaImageView;
-
-    @FXML
-    VBox presetToppingsContainer;
-
-    @FXML
-    VBox additionalToppingsContainer;
-
-    @FXML
-    Text priceText;
-
-    @FXML
-    ToggleGroup size;
 
     /**
      * Sets up the scene with the correct flavor.
@@ -72,7 +66,7 @@ public class CustomizationController {
     /**
      * Sets up the scene using the provided inputs.
      *
-     * @param titleText  The text to display as the scene title.
+     * @param titleText The text to display as the scene title.
      * @param imgPath   The path to the image of the pizza
      * @param flavor    The string representation of the pizza flavor.
      */
@@ -88,10 +82,10 @@ public class CustomizationController {
     /**
      * Builds up the topping checkboxes that toggle toppings on the pizza and sets their default values.
      *
-     * @param container The container pane to put the checkboxes in
-     * @param checkboxes    A List of CheckBox objects to store references in
-     * @param toppings  A List of Topping objects to generate CheckBoxes for
-     * @param selected  The default value for the checkboxes
+     * @param container  The container pane to put the checkboxes in
+     * @param checkboxes A List of CheckBox objects to store references in
+     * @param toppings   A List of Topping objects to generate CheckBoxes for
+     * @param selected   The default value for the checkboxes
      */
     private void createToppingCheckboxes(Pane container, List<CheckBox> checkboxes, List<Topping> toppings, boolean selected) {
         for (Topping topping : toppings) {
@@ -145,7 +139,8 @@ public class CustomizationController {
 
     /**
      * Sets the pizza image using the path to the image provided.
-     * @param path  Path to the pizza image
+     *
+     * @param path Path to the pizza image
      */
     private void setPizzaImage(String path) {
         try {
@@ -172,6 +167,7 @@ public class CustomizationController {
 
     /**
      * Handles the back button click event by returning to the main menu scene.
+     *
      * @param event
      */
     @FXML

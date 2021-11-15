@@ -1,0 +1,8 @@
+module:com.ordermanager.ordermanager
+com.ordermanager.ordermanager
+com.ordermanager.ordermanager.controller
+com.ordermanager.ordermanager.model
+com.ordermanager.ordermanager.model.pizza
+com.ordermanager.ordermanager.model.pizza.enums
+com.ordermanager.ordermanager.test
+com.ordermanager.ordermanager.util

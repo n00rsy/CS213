@@ -25,7 +25,8 @@ public class Order {
 
     /**
      * Phone number accessor
-     * @return  This order's phone number
+     *
+     * @return This order's phone number
      */
     public String getPhoneNumber() {
         return phoneNumber;
@@ -33,7 +34,8 @@ public class Order {
 
     /**
      * Phone number mutator
-     * @param phoneNumber   New phone number
+     *
+     * @param phoneNumber New phone number
      */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
@@ -42,7 +44,7 @@ public class Order {
     /**
      * pizza List accessor
      *
-     * @return  This Order's pizzas list
+     * @return This Order's pizzas list
      */
     public List<Pizza> getPizzas() {
         return pizzas;
@@ -59,6 +61,7 @@ public class Order {
 
     /**
      * Removes a pizza from this order
+     *
      * @param pizza The pizza to remove
      */
     public void removePizza(Pizza pizza) {
@@ -68,7 +71,7 @@ public class Order {
     /**
      * Calculates the price of the entire order
      *
-     * @return  Total price for the order
+     * @return Total price for the order
      */
     public double price() {
         double total = 0;
@@ -89,7 +92,8 @@ public class Order {
 
     /**
      * Checks if this order has a valid phone number and greater than one pizza
-     * @return  True if valid, false otherwise
+     *
+     * @return True if valid, false otherwise
      */
     public boolean isValid() {
         return pizzas.size() > 0 && phoneNumber != null && phoneNumber.matches("^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$");
@@ -97,7 +101,8 @@ public class Order {
 
     /**
      * Returns the pizzas in this order as a string
-     * @return  String representation of the pizza list
+     *
+     * @return String representation of the pizza list
      */
     public String getPizzasAsString() {
         StringBuilder sb = new StringBuilder();
@@ -109,6 +114,7 @@ public class Order {
 
     /**
      * Returns the string representation of this Order object
+     *
      * @return
      */
     @Override

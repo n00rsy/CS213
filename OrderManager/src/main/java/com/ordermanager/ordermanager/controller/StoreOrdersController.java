@@ -59,7 +59,7 @@ public class StoreOrdersController {
     /**
      * Initializes the current scene with custom parameters.
      *
-     * @param storeOrders   StoreOrders object to get a list of orders from
+     * @param storeOrders StoreOrders object to get a list of orders from
      */
     public void init(StoreOrders storeOrders) {
         this.storeOrders = storeOrders;
@@ -102,6 +102,7 @@ public class StoreOrdersController {
 
     /**
      * Handles the back button click event by returning to the main menu scene.
+     *
      * @param event
      */
     @FXML
