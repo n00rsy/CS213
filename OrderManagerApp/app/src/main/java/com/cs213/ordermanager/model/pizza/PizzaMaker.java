@@ -1,0 +1,31 @@
+package com.cs213.ordermanager.model.pizza;
+
+import com.cs213.ordermanager.util.Constants;
+
+
+/**
+ * Factory class for Pizza
+ *
+ * @author Noor, Umar
+ */
+public class PizzaMaker {
+
+    /**
+     * Creates an instance of Pizza subclasses based on the chosen flavor
+     *
+     * @param flavor The flavor of the pizza
+     * @return Pizza object with correct flavor
+     */
+    public static Pizza createPizza(String flavor) {
+        switch (flavor.toLowerCase()) {
+            case Constants.DELUXE:
+                return new Deluxe();
+            case Constants.HAWAIIAN:
+                return new Hawaiian();
+            case Constants.PEPPERONI:
+                return new Pepperoni();
+            default:
+                throw new IllegalArgumentException("Pizza type not found.");
+        }
+    }
+}
