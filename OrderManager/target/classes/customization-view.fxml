@@ -2,74 +2,87 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ordermanager.ordermanager.controller.CustomizationViewController">
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2"
+      fx:controller="com.ordermanager.ordermanager.controller.CustomizationController">
     <children>
-        <Label fx:id="title" alignment="CENTER" text="Pizza Type" />
-      <HBox>
-         <children>
-            <VBox>
-               <children>
-                  <ImageView fx:id="pizzaImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <VBox.margin>
-                        <Insets right="30.0" />
-                     </VBox.margin></ImageView>
-                   <Text fx:id="priceText" text="Price:">
-                     <font>
-                        <Font size="24.0" />
-                     </font></Text>
-               </children>
-            </VBox>
-            <VBox minHeight="-Infinity">
-               <children>
-                  <Label text="Size:" />
-                  <HBox>
-                     <children>
-                        <RadioButton mnemonicParsing="false" onAction="#pizzaChanged" selected="true" text="SMALL">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="size" />
-                           </toggleGroup>
-                           <padding>
-                              <Insets right="20.0" />
-                           </padding>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" onAction="#pizzaChanged" text="MEDIUM" toggleGroup="$size">
-                           <padding>
-                              <Insets right="20.0" />
-                           </padding></RadioButton>
-                        <RadioButton mnemonicParsing="false" onAction="#pizzaChanged" text="LARGE" toggleGroup="$size" />
-                     </children>
-                     <padding>
-                        <Insets bottom="20.0" />
-                     </padding>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <VBox fx:id="presetToppingsContainer" prefWidth="200.0">
-                           <children>
-                              <Label text="Preset Toppings:" />
-                           </children>
-                        </VBox>
-                        <VBox fx:id="additionalToppingsContainer" prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <Label text="Additional Toppings:" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Button mnemonicParsing="false" text="Back" onAction="#handleBackButtonClick" />
-                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#handlePlaceOrderButtonClick" text="Place Order">
-                           <HBox.margin>
-                              <Insets left="20.0" />
-                           </HBox.margin></Button>
-                     </children>
-                  </HBox>
-               </children></VBox>
-         </children></HBox>
+        <Label fx:id="title" alignment="CENTER" text="Pizza Type"/>
+        <HBox>
+            <children>
+                <VBox>
+                    <children>
+                        <ImageView fx:id="pizzaImageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <VBox.margin>
+                                <Insets right="30.0"/>
+                            </VBox.margin>
+                        </ImageView>
+                        <Text fx:id="priceText" text="Price:">
+                            <font>
+                                <Font size="24.0"/>
+                            </font>
+                        </Text>
+                    </children>
+                </VBox>
+                <VBox minHeight="-Infinity">
+                    <children>
+                        <Label text="Size:"/>
+                        <HBox>
+                            <children>
+                                <RadioButton mnemonicParsing="false" onAction="#pizzaChanged" selected="true"
+                                             text="SMALL">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="size"/>
+                                    </toggleGroup>
+                                    <padding>
+                                        <Insets right="20.0"/>
+                                    </padding>
+                                </RadioButton>
+                                <RadioButton mnemonicParsing="false" onAction="#pizzaChanged" text="MEDIUM"
+                                             toggleGroup="$size">
+                                    <padding>
+                                        <Insets right="20.0"/>
+                                    </padding>
+                                </RadioButton>
+                                <RadioButton mnemonicParsing="false" onAction="#pizzaChanged" text="LARGE"
+                                             toggleGroup="$size"/>
+                            </children>
+                            <padding>
+                                <Insets bottom="20.0"/>
+                            </padding>
+                        </HBox>
+                        <HBox>
+                            <children>
+                                <VBox fx:id="presetToppingsContainer" prefWidth="200.0">
+                                    <children>
+                                        <Label text="Preset Toppings:"/>
+                                    </children>
+                                </VBox>
+                                <VBox fx:id="additionalToppingsContainer" prefHeight="200.0" prefWidth="200.0">
+                                    <children>
+                                        <Label text="Additional Toppings:"/>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                        <HBox>
+                            <children>
+                                <Button mnemonicParsing="false" text="Back" onAction="#handleBackButtonClick"/>
+                                <Button alignment="CENTER" mnemonicParsing="false"
+                                        onAction="#handlePlaceOrderButtonClick" text="Place Order">
+                                    <HBox.margin>
+                                        <Insets left="20.0"/>
+                                    </HBox.margin>
+                                </Button>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
     </children>
 </VBox>
