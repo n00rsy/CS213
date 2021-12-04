@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.cs213.ordermanager.util.Constants;
@@ -43,5 +42,15 @@ public class MainMenuActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
+    public void viewCurrentOrder(View view) {
+        Intent intent = new Intent(this, CurrentOrderActivity.class);
+        startActivity(intent);
+    }
+
+    public void viewStoreOrders(View view) {
+
+    }
+
 }
 

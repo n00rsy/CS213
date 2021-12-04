@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -23,6 +24,7 @@ import com.cs213.ordermanager.model.pizza.Pizza;
 import com.cs213.ordermanager.model.pizza.PizzaMaker;
 import com.cs213.ordermanager.model.pizza.enums.Size;
 import com.cs213.ordermanager.model.pizza.enums.Topping;
+import com.cs213.ordermanager.util.Constants;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -53,6 +55,19 @@ public class AddPizzaActivity extends AppCompatActivity {
 
         createToppingCheckBoxes(presetToppingsLayout, currentPizza.getToppings(), true);
         createToppingCheckBoxes(additionalToppingsLayout, Arrays.stream(Topping.values()).filter(t -> !currentPizza.getToppings().contains(t)).collect(Collectors.toList()), false);
+
+        ImageView imageView = v.findViewById(R.id.imageView);
+
+        switch (pizzaType) {
+            case Constants.DELUXE:
+                imageView.setImageResource(R.drawable.deluxe);
+                break;
+            case Constants.HAWAIIAN:
+                imageView.setImageResource(R.drawable.hawaiian);
+                break;
+            case Constants.PEPPERONI:
+                imageView.setImageResource(R.drawable.pepperoni);
+        }
 
         setContentView(v);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
