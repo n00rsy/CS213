@@ -9,8 +9,18 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.cs213.ordermanager.util.Constants;
 
+/**
+ * Activity class for the main menu.
+ *
+ * @author Noor, Umar
+ */
 public class MainMenuActivity extends AppCompatActivity {
 
+    /**
+     * Sets up the activity.
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,13 +53,23 @@ public class MainMenuActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Switches to CurrentOrderActivity. Linked to button onClick.
+     *
+     * @param view
+     */
     public void viewCurrentOrder(View view) {
         Intent intent = new Intent(this, CurrentOrderActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Switches to StoreOrdersActivity. Linked to button onClick.
+     * @param view
+     */
     public void viewStoreOrders(View view) {
-
+        Intent intent = new Intent(this, StoreOrdersActivity.class);
+        startActivity(intent);
     }
 
 }

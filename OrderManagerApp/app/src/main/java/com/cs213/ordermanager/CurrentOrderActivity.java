@@ -1,5 +1,6 @@
 package com.cs213.ordermanager;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,11 +16,20 @@ import com.cs213.ordermanager.model.Order;
 import com.cs213.ordermanager.model.StoreOrders;
 import com.cs213.ordermanager.model.pizza.Pizza;
 
+/**
+ * Activity class for current order activity.
+ *
+ * @author Noor, Umar
+ */
 public class CurrentOrderActivity extends AppCompatActivity {
 
     Order currentOrder;
     OrderManagerApp app;
 
+    /**
+     * Runs when the scene is started. Initializes global variables and sets up the activity.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +41,9 @@ public class CurrentOrderActivity extends AppCompatActivity {
         orderChanged();
     }
 
+    /**
+     * Updates the UI when a pizza in the order is changed.
+     */
     public void orderChanged() {
 
         TableLayout tableLayout = findViewById(R.id.tableLayout);
@@ -42,6 +55,9 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
         title1.setText("Pizza Details\t\t\t\t\t\t");
         title2.setText("Price");
+
+        title1.setTypeface(null, Typeface.BOLD);
+        title2.setTypeface(null, Typeface.BOLD);
 
         title.addView(title1);
         title.addView(title2);
@@ -71,9 +87,13 @@ public class CurrentOrderActivity extends AppCompatActivity {
         tax.setText("Tax: " + String.format("%,.2f", currentOrder.tax()));
 
         TextView total = findViewById(R.id.total);
-        total.setText("Total: " + String.format("%,.2f", currentOrder.price()));
+        total.setText("Total: " + String.format("%,.2f", currentOrder.price() + currentOrder.tax()));
     }
 
+    /**
+     * Validates an order, then submits it to StoreOrders and moves to the main menu.
+     * @param view
+     */
     public void submitOrder(View view) {
 
         TextView phoneNumber = findViewById(R.id.editTextPhone);
@@ -91,6 +111,11 @@ public class CurrentOrderActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Handles the back button click in the action bar.
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

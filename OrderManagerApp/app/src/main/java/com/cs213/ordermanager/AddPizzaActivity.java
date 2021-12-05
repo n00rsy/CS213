@@ -31,11 +31,21 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Activity class for the add pizza activity.
+ *
+ * @author Noor, Umar
+ */
 public class AddPizzaActivity extends AppCompatActivity {
 
     private Pizza currentPizza;
     private ArrayList<CheckBox> checkboxes = new ArrayList<>();
 
+    /**
+     * Sets up the scene and initializes global variables.
+     *
+     * @param savedInstanceState
+     */
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +87,11 @@ public class AddPizzaActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Gets a list of selected toppings from the checkboxes in the activity.
+     *
+     * @return ArrayList of selected toppings
+     */
     private ArrayList<Topping> getSelectedToppings() {
         ArrayList<Topping> selectedToppings = new ArrayList<>();
         for (CheckBox checkBox : checkboxes) {
@@ -87,6 +102,13 @@ public class AddPizzaActivity extends AppCompatActivity {
         return selectedToppings;
     }
 
+    /**
+     * Builds up the checkboxes in the scene.
+     *
+     * @param layout
+     * @param toppings
+     * @param checked
+     */
     private void createToppingCheckBoxes(LinearLayout layout, List<Topping> toppings, boolean checked) {
 
         for (Topping topping : toppings) {
@@ -109,6 +131,11 @@ public class AddPizzaActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Handles the back button click in the action bar.
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -120,6 +147,10 @@ public class AddPizzaActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Validates the current pizza. If it is valid, adds it to the order and returns to the main menu.
+     * @param view
+     */
     public void orderPizza(View view) {
 
         currentPizza.setToppings(getSelectedToppings());
