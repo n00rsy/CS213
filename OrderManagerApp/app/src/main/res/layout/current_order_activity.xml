@@ -32,36 +32,16 @@
                 android:inputType="phone"
                 android:contentDescription="e.x. (111)-111-1111"/>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Simply tap a pizza to remove it from the order." />
+
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/tableLayout">
 
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_column="0"
-                        android:layout_margin="1dp"
-                        android:background="#FFFFFF"
-                        android:gravity="center"
-                        android:text="Pizza Details"
-                        android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_column="0"
-                        android:layout_margin="1dp"
-                        android:background="#FFFFFF"
-                        android:gravity="center"
-                        android:text="Price"
-                        android:textAppearance="?android:attr/textAppearanceLarge"></TextView>
-
-                </TableRow>
             </TableLayout>
 
             <TextView

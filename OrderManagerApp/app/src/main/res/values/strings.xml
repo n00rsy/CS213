@@ -25,4 +25,5 @@
     <string name="order_new">Order New Pizza</string>
     <string name="current_order">Current Order</string>
     <string name="store_orders">Store Orders</string>
+    <string name="add_pizza">Add Pizza</string>
 </resources>

@@ -32,13 +32,9 @@ public class OrderManagerApp extends Application {
         this.currentOrder = currentOrder;
     }
 
-    public boolean submitOrder (String phoneNumber) {
-        if (currentOrder.isValid() && !storeOrders.contains(phoneNumber)) {
-            storeOrders.addOrder(currentOrder);
-            currentOrder = new Order();
-            return true;
-        }
-        return false;
+    public void submitOrder() {
+        storeOrders.addOrder(currentOrder);
+        currentOrder = new Order();
     }
 }
 
