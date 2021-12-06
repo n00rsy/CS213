@@ -65,6 +65,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
     /**
      * Switches to StoreOrdersActivity. Linked to button onClick.
+     *
      * @param view
      */
     public void viewStoreOrders(View view) {

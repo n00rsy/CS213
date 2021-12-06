@@ -119,11 +119,7 @@ public class AddPizzaActivity extends AppCompatActivity {
                 if (isChecked && getSelectedToppings().size() > 7) {
                     buttonView.setChecked(false);
 
-                    Context context = getApplicationContext();
-                    CharSequence text = "Can't have more than 7 toppings!";
-                    int duration = Toast.LENGTH_SHORT;
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+                    Toast.makeText(getApplicationContext(), R.string.topping_error, Toast.LENGTH_SHORT).show();
                 }
             });
             checkboxes.add(checkBox);
@@ -133,6 +129,7 @@ public class AddPizzaActivity extends AppCompatActivity {
 
     /**
      * Handles the back button click in the action bar.
+     *
      * @param item
      * @return
      */
@@ -149,6 +146,7 @@ public class AddPizzaActivity extends AppCompatActivity {
 
     /**
      * Validates the current pizza. If it is valid, adds it to the order and returns to the main menu.
+     *
      * @param view
      */
     public void orderPizza(View view) {
@@ -160,19 +158,12 @@ public class AddPizzaActivity extends AppCompatActivity {
 
         currentPizza.setSize(Size.valueOf(radioButton.getText().toString().toUpperCase()));
 
-        System.out.println(currentPizza.getSize());
-
         OrderManagerApp app = (OrderManagerApp) getApplicationContext();
         Order currentOrder = app.getCurrentOrder();
 
         currentOrder.addPizza(currentPizza);
 
         NavUtils.navigateUpFromSameTask(this);
-
-        Context context = getApplicationContext();
-        CharSequence text = "Pizza successfully ordered.";
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
+        Toast.makeText(getApplicationContext(), R.string.add_pizza_success, Toast.LENGTH_SHORT).show();
     }
 }

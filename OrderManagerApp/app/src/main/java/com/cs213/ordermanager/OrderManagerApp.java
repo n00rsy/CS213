@@ -26,6 +26,7 @@ public class OrderManagerApp extends Application {
 
     /**
      * StoreOrders accessor
+     *
      * @return current StoreOrders
      */
     public StoreOrders getStoreOrders() {
@@ -34,6 +35,7 @@ public class OrderManagerApp extends Application {
 
     /**
      * StoreOrders mutator
+     *
      * @param storeOrders new StoreOrders
      */
     public void setStoreOrders(StoreOrders storeOrders) {
@@ -42,6 +44,7 @@ public class OrderManagerApp extends Application {
 
     /**
      * currentOrder accessor
+     *
      * @return current Order
      */
     public Order getCurrentOrder() {
@@ -50,6 +53,7 @@ public class OrderManagerApp extends Application {
 
     /**
      * currentOrder mutator
+     *
      * @param currentOrder new currentOrder
      */
     public void setCurrentOrder(Order currentOrder) {

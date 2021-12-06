@@ -79,7 +79,6 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
             tableRow.addView(details);
             tableRow.addView(price);
-
             tableLayout.addView(tableRow);
         }
 
@@ -103,7 +102,6 @@ public class CurrentOrderActivity extends AppCompatActivity {
 
         if (currentOrder.isValid() && !storeOrders.contains(phoneNumber.getText().toString())) {
             app.submitOrder();
-            System.out.println(storeOrders.toString());
             NavUtils.navigateUpFromSameTask(this);
             Toast.makeText(getApplicationContext(), "Order added.", Toast.LENGTH_SHORT).show();
         } else {

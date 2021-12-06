@@ -26,4 +26,7 @@
     <string name="current_order">Current Order</string>
     <string name="store_orders">Store Orders</string>
     <string name="add_pizza">Add Pizza</string>
+
+    <string name="topping_error">Can\'t have more than 7 toppings!</string>
+    <string name="add_pizza_success">Pizza successfully ordered.</string>
 </resources>

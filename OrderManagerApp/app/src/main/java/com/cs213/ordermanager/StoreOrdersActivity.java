@@ -67,7 +67,7 @@ public class StoreOrdersActivity extends AppCompatActivity {
         title.addView(title3);
         tableLayout.addView(title);
 
-        for (Order order: storeOrders.getOrders()) {
+        for (Order order : storeOrders.getOrders()) {
             TableRow tableRow = new TableRow(this);
 
             tableRow.setOnClickListener(v -> {
@@ -93,6 +93,7 @@ public class StoreOrdersActivity extends AppCompatActivity {
 
     /**
      * Handles the back button click in the action bar.
+     *
      * @param item
      * @return
      */
